@@ -2,10 +2,8 @@
 ## Lucía Segura Benito
 ### Ingeniería de la Salud, UBU, Curso 24/25
 
-Las epidemias han sido, a lo largo de la historia, fenómenos con gran impacto en la sociedad, la economía y la salud pública. En este contexto, los modelos matemáticos se convierten en instrumentos fundamentales para comprender la dinámica de transmisión, estimar parámetros críticos y evaluar la efectividad de diversas estrategias de intervención.
+En este proyecto se estudia el modelado determinista de epidemias mediante el análisis e implementación de modelos compartimentalesclásicos como SI, SIS, SIR y SEIR, utilizando herramientas de simulación en MATLAB y Simulink. Se incorporan variantes con vacunación y se desarrolla un controlador PID aplicado al modelo SIR para simular medidas de control como cuarentenas.
 
-Los modelos deterministas compartimentales representan una de las aproximaciones más uitilizadas. Dividen a la población en grupos homogéneos y describen las transiciones entre los grupos mediante sistemas de ecuaciones diferenciales. Modelos como SI, SIS, SIR o SEIR permiten simular la evolución temporal de una enfermedad bajo diferentes condiciones, aportando visión simplificada pero útil del comportamiento de una epidemia. 
 
-El uso de Simulink facilita la implementación visual e interactiva de los modelos, permitiendo experimentar con los paráemtros, analizar diferentes escenarios y observar los efectos de diferentes políticas sanitarias, como vacunación o confinamiento.
 
-El trabajo tiene como finalidad analizar y simular distintos modelos epidemiológicos deterministas, evaluar su comportamiento, y estudiar los modelos con datos reales de epidemias, adaptando el modelo más adecuado. 
+El trabajo incluye la simulación con datos hipotéticos y reales, permitiendo evaluar la capacidad predictiva de cada modelo. Además, se diseña una aplicación interactiva que permite al usuario introducir parámetros y visualizar la evolución de la epidemia de forma gráfica y accesible, sin necesidad de conocimientos técnicos avanzados.
