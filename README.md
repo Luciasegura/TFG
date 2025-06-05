@@ -2,7 +2,7 @@
 ## Lucía Segura Benito
 ### Ingeniería de la Salud, UBU, Curso 24/25
 
-En este proyecto se estudia el modelado determinista de epidemias mediante el análisis e implementación de modelos compartimentalesclásicos como SI, SIS, SIR y SEIR, utilizando herramientas de simulación en MATLAB y Simulink. Se incorporan variantes con vacunación y se desarrolla un controlador PID aplicado al modelo SIR para simular medidas de control como cuarentenas.
+En este proyecto se estudia el modelado determinista de epidemias mediante el análisis e implementación de modelos compartimentales clásicos como SI, SIS, SIR y SEIR, utilizando herramientas de simulación en MATLAB y Simulink. Se incorporan variantes con vacunación y se desarrolla un controlador PID aplicado al modelo SIR para simular medidas de control como cuarentenas.
 
 
 
