@@ -266,12 +266,14 @@ En el modelo SIRV, las personas susceptibles pueden infectarse al entrar en cont
 
 Esta mejora del modelo permite analizar el impacto de diferentes tasas de vacunación sobre la evolución de la enfermedad y estudiar posibles estrategias de control. Además, ofrece una visión más ajustada a la situación actual, en la que la vacunación juega un papel fundamental en la protección individual y colectiva frente a enfermedades.
 
+\textbf{Supuestos del modelo}. Es importante señalar que se mantienen los mismos supuestos básicos que en el modelo SIR. La única diferencia es la incorporación de la vacunación como medida de control de la enfermedad. En este modelo, se asume que las personas susceptibles que reciben la vacuna adquieren una inmunidad equivalente a la de quienes se han recuperado de la infección. Por ello, se considera que los individuos vacunados pasan directamente del compartimento de susceptibles al de recuperados, sin transitar por el estado de infectados.
+
 Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:ejemplo SIRV}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{img/diagrama_SIRV.png}
-    \caption{Resultado típico de un modelo SIRV}
+    \caption{Diagrma de flujo modelo SIRV}
     \label{fig:ejemplo SIRV}
     \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
 \end{figure}
@@ -299,6 +301,12 @@ Se calcula como en la ecuación \eqref{eq:nu}
 \nu = \frac{1}{\text{tiempo}}
 \label{eq:nu}
 \end{equation}
+Es importante señalar, que normalmente lo que se encuentra es la cobertura de vacunación, por lo que hay que calcular la tasa de vacunación, para ello se utiliza la ecuación\eqref{eq:nu_log}.
+\begin{equation}
+\nu = \frac{-\ln(1 - \text{cobertura})}{\text{tiempo}}
+\label{eq:nu_log}
+\end{equation}
+
 
 \end{itemize}
 
@@ -309,6 +317,161 @@ Es importante señalar que la tasa de transmisión ($\beta$) no varía directame
 Por tanto, $\beta$ se mantiene constante en el modelo si no cambian ni el virus ni las condiciones sociales de la población. Lo que sí se ve directamente afectado por la vacunación es el número de susceptibles. Al disminuir el tamaño del grupo susceptible mediante la inmunización, también se reduce la probabilidad de que se produzcan nuevos contagios, incluso si $\beta$ permanece constante. Aunque el virus mantenga su capacidad de contagio, al haber menos personas expuestas, disminuye el número efectivo de nuevas infecciones.
 
 Además, se está utilizando la $\beta$ efectiva o ajustada, que es el valor de $\beta$ dividido entre la población total. En este caso, si la población total cambia, el valor de $\beta$ ajustada también cambiará, incluso si $\beta$ se mantiene constante. Esto se debe a que el tamaño poblacional afecta directamente al cálculo del número esperado de contactos efectivos entre susceptibles e infectados.
+
+\subsection{Control PID para modelo SIR}
+Con el objetivo de limitar la cantidad de personas infectadas, se incorporó un mecanismo de control basado en un regulador PID. Este controlador actúa modificando el parámetro $\beta$, lo que equivale a simular la implementación de medidas como el distanciamiento social, el confinamiento o el uso de mascarillas. El propósito del controlador es mantener el número de infectados cerca de un valor deseado, también llamado setpoint.
+
+Las simulaciones se realizaron directamente en MATLAB, utilizando código para resolver numéricamente el sistema de ecuaciones diferenciales mediante el método de Euler. El controlador PID también se programó en MATLAB, permitiendo ajustar sus parámetros y analizar la respuesta del sistema en distintos escenarios, variando los valores de $\beta$ y $\gamma$. Esto permite observar el comportamiento de la epidemia y la capacidad del controlador para mantenerla bajo control.
+
+En la figura \ref{fig:simu3pid} se muestra un ejemplo de la introducción de un regulador en el modelo. Se puede observar que el pico de infectados no alcanza un valor muy elevado, ya que el número de personas infectadas se mantiene aproximadamente en torno al valor de referencia (setpoint). A medida que la epidemia avanza y disminuye la cantidad de personas susceptibles, el número de infectados tiende a cero.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/modeloSIR_PID3.png}
+    \caption{Simulación 1 para modelo SIR con PID}
+    \label{fig:simu3pid}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+\section{Modelo SEIR}
+El modelo SEIR añade un estado de exposición (E) al SIR, para representar enfermedades con periodo de incubación. Los individuos pasan de susceptibles a expuestos, luego a infectados y finalmente a recuperados con inmunidad. Es útil para modelar infecciones con retraso en la transmisibilidad.
+
+\textbf{Suposiciones del modelo}. En este modelo se asume también que la población total es constante, sin nacimientos ni muertes, y que los individuos solo atraviesan una vez cada uno de los estados. Asimismo, se supone una mezcla homogénea, es decir, todos los individuos tienen la misma probabilidad de interactuar entre sí.
+
+Relevante cuando se necesita considerar el impacto del periodo de incubación en la propagación de la enfermedad. Simplificación de la realidad, ofrece una aproximación más ajustada que el modelo SIR para muchas infecciones reales.
+
+Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:diagrama SEIR}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/diagrama_SEIR.png}
+    \caption{Diagrma de flujo modelo SEIR}
+    \label{fig:diagrama SEIR}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:dS_SEIR}\eqref{eq:dE_SEIR}\eqref{eq:dI_SEIR}\eqref{eq:dR_SEIR}. 
+\begin{align}
+\frac{dS}{dt} &= -\beta SI \label{eq:dS_SEIR} \\
+\frac{dE}{dt} &= \beta SI - \sigma E \label{eq:dE_SEIR} \\
+\frac{dI}{dt} &= \sigma E - \gamma I \label{eq:dI_SEIR} \\
+\frac{dR}{dt} &= \gamma I \label{eq:dR_SEIR}
+\end{align}
+
+Donde:
+\begin{itemize}
+    \item 	La ecuación dS⁄dt \eqref{eq:dS_SEIR}, representa la disminución de individuos susceptibles por el contacto con personas infectadas. La disminución depende del número de susceptibles, del número de infectados y de la tasa de transmisión. Es negativa porque los susceptibles disminuyen con el tiempo al contagiarse.
+    \item 	La ecuación dE⁄dt \eqref{eq:dE_SEIR}, describe el cambio en el número de individuos expuestos. Aumenta cuando un susceptible se infecta y disminuye cuando uno expuesto pasa a la fase infecciosa.
+    \item 	La ecuación dI⁄dt \eqref{eq:dI_SEIR}, muestra la evolución de los infectados. Aumenta cuando los expuestos se vuelven contagiosos y disminuye por las recuperaciones. El balance entre estos dos procesos determina si el número de infectados crece o decrece.
+    \item 	La ecuación dR⁄dt \eqref{eq:dR_SEIR}, refleja el aumento de individuos recuperados, que ya no pueden contagiarse ni contagiar. La velocidad de recuperación está determinada por la tasa de recuperación.
+    \item Beta ($\beta$), tasa de transmisión: representa la probabilidad de que un individuo susceptible se infecte tras entrar en contacto con un infectado. 
+    \item Sigma ($\sigma$), tasa de incubación: la inversa del tiempo medio que tarda un individuo expuesto en volverse contagioso. Se calcula como en la ecuación \eqref{eq:sigma}.
+    \begin{equation}
+    \sigma = \frac{1}{\text{tiempo de incubación}}
+    \label{eq:sigma}
+    \end{equation}
+    \item Gamma ($\gamma$), tasa de recuperación: indica cuántos infectados se recuperan por unidad de tiempo. Es el inverso del tiempo medio de infección.
+\end{itemize}
+
+\textbf{El número básico de reproducción $R_0$} sigue siendo importante ya que es un indicador clave para poder estimar el potencial de propagación de una enfermedad. Se calcula de la misma manera, como en la ecuación \eqref{eq:ecR0}. Determina si se producirá un brote:
+\begin{itemize}
+    \item 	Si $R_0$ > 1, la infección tiende a propagarse.
+    \item 	Si $R_0$ <1, tiende a desaparecer.
+\end{itemize}
+
+Hay que dejar claro que el modelo ha sido simplificado para su implementación en Simulink, se ha optado por no incluir explícitamente en el coeficiente la población total. En su lugar, se redefine el parámetro beta, multiplicándolo por la población, incorporando de esta manera el efecto de la población total dentro del valor propio del parámetro. Esta modificación es algébricamente equivalente a la formulación original y permite mantener la coherencia del modelo al trabajar con cantidades absolutas de la población. 
+
+Es importante tener en cuenta la distinción entre individuos infectados e infecciosos, especialmente al comparar diferentes modelos epidemiológicos. En los modelos SIR y SIS se asume que un individuo infectado pasa inmediatamente a ser infeccioso, que puede transmitir la enfermedad en el mismo instante en que se contagia. En estos modelos no se contempla un periodo de latencia.
+
+Sin embargo, el modelo SEIR introduce una mejora al incorporar un compartimento de individuos expuestos. En este caso, cuando una persona susceptible entra en contacto con un individuo infeccioso, pasa primero al estado de “expuesto”, lo que significa que está infectada pero aún no es capaz de contagiar a otros. Este periodo de latencia representa el tiempo de incubación del patógeno, durante el cual el individuo no presenta síntomas y no es detectable clínicamente ni contagioso.
+
+Este aspecto tiene implicaciones relevantes al momento de establecer las condiciones iniciales para una simulación. En la práctica, no es posible conocer con exactitud cuántas personas se encuentran en el estado de exposición, ya que no presentan síntomas, no dan positivo en pruebas diagnósticas inmediatamente y además tampoco tienen capacidad de contagiar.
+Por esta razón, se va a asumir que el número inicial de expuestos es cero en las simulaciones. Aun así, este compartimento resulta fundamental para modelar de forma más realista enfermedades que incluyen un periodo de incubación significativo.
+
+
+El modelo se implementa en Simulink. Para mostrar su funcionamiento y lo que sería un resultado típico de este modelo, se realiza una simulación utilizando datos aleatorios, con el objetivo de observar el comportamiento del modelo SEIR en un caso práctico \ref{fig:eje SEIR}. La población total es de 1000, siendo susceptibles iniciales 990 individuos, 10 individuos iniciales infectados y tanto expuestos como recuperados 0 individuos.
+La tasa de transmisión utilizada es $\beta$ = 0.5. Sin embargo, dado que los valores de población con los que se trabajan son absolutos, esta tasa debe transformarse multiplicándola por la población total \eqref{eq:beta_efectiva_0.0005}, resultando en una beta efectiva de 0.0005.
+\begin{equation}
+\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0.5}{1000} = 0.0005
+\label{eq:beta_efectiva_0.0005}
+\end{equation}
+Por lo que una personas infectada contagia al 0.05\% de la población susceptible por día.
+El tiempo de recuperación medio es de 14 días, por lo que hay que calcular la tasa de recuperación gamma \eqref{eq:gamma_77}.
+\begin{equation}
+\gamma = \frac{1}{\text{tiempo medio de recuperación}} = \frac{1}{14} = 0.071\ \text{días}^{-1}
+\label{eq:gamma_77}
+\end{equation}
+Esto significa que, de media, el 7,1\% de los individuos infectados se recupera cada día y se pasa al compartimento de los recuperados.
+En cuanto al tiempo de incubación es de 5,2 los individuos tardan este tiempo en ser contagiosos tras haberse infectado, por lo que hay que calcular la tasa de incubación \eqref{eq:sigma_valor}.
+\begin{equation}
+\sigma = \frac{1}{\text{tiempo de incubación}} = \frac{1}{5.2} \approx 0.19
+\label{eq:sigma_valor}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/modelo_SEIR_resultado_ejemplo.png}
+    \caption{Resultado típico de un modelo SEIR}
+    \label{fig:eje SEIR}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+Como se observa en la figura al inicio de la epidemia, casi toda la población son susceptibles, por lo que existe un alto riesgo de contagio. A medida que los individuos susceptibles entran en contacto con personas infecciosas, se infectan y pasan al compartimento de expuestos, lo que hace que el número de susceptibles disminuya rápidamente en las fases iniciales del brote.
+
+El número de expuestos comienza siendo cero, pero crece rápido conforme se producen nuevos contagios. Estas personas están infectadas, pero aún no son contagiosas debido al período de incubación. Una vez transcurrido ese tiempo, pasan al compartimento de infectados. Por esta razón, la curva de los expuestos alcanza su pico antes que la de los infectados. Conforme los expuestos van pasando a infectados, la curva de expuestos disminuye.
+
+La población infectada aumenta a medida que los expuestos se vuelven infecciosos. El número de infectados alcanza su máximo cuando el ritmo de nuevos contagios supera al de las recuperaciones, lo que suele coincidir con el momento en que el número de susceptibles todavía es elevado. A medida que los infectados se recuperan, el número de personas en este compartimento comienza a descender.
+
+Finalmente, el compartimento de recuperados incrementa a medida que los infectados superan la enfermedad y adquieren inmunidad permanente. Esta curva se estabiliza cuando la mayoría de la población ha pasado ya por la enfermedad, indicando el fin de la epidemia.
+Importante calcular el número básico de reproducción con estos parámetros \eqref{eq:R0_calculo_7}.
+\begin{equation}
+R_0 = \frac{\beta}{\gamma} = \frac{0.5}{0.071} \approx 7
+\label{eq:R0_calculo_7}
+\end{equation}
+$R_0$ es 7, con lo que es mayor que 1, por lo tanto la enfermedad tiende a crecer, se ve que en la gráfica \ref{fig:eje SEIR} se cumple este comportamiento.
+
+\subsection{Mejora modelo SEIR}
+Mejorar el modelo SEIR como medida de control, incorporando el explícitamente el efecto de la vacunación. Esta adaptación del modelo clásico SEIR se conoce como modelo \textbf{SEIRV} (Susceptibles – Expuestos – Infectados – Recuperados – Vacunados), en el cual se añade un nuevo compartimento denominado V (Vacunados), que permite representar a las personas que, siendo inicialmente susceptibles, reciben una vacuna eficaz y desarrollan inmunidad contra el virus.
+
+En esta versión extendida del modelo, se considera que las personas susceptibles pueden seguir el curso natural de exposición e infección o, alternativamente, pasar directamente al grupo de inmunizados mediante vacunación, uniéndose al compartimento de recuperados, bajo el supuesto de que la inmunidad inducida por la vacuna es completa y duradera, al igual que en el caso de los individuos que se recuperan de la enfermedad. Aunque en la realidad la duración de la inmunidad puede variar y algunas vacunas no garantizan protección absoluta, esta simplificación permite estudiar de forma clara el efecto global de la inmunización sobre la propagación del virus.
+
+Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:eje SEIRV}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/diagrama_SEIRV.png}
+    \caption{Diagrama de flujo del modelo SEIRV}
+    \label{fig:eje SEIRV}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:dS_vacunacion}\eqref{eq:dE_SEIRV}\eqref{eq:dI_SEIRV}\eqref{eq:dR_vacunacion}.
+\begin{align}
+\frac{dS}{dt} &= -\beta SI - \nu S \label{eq:dS_vacunacion} \\
+\frac{dE}{dt} &= \beta SI - \sigma E \label{eq:dE_SEIRV} \\
+\frac{dI}{dt} &= \sigma E - \gamma I \label{eq:dI_SEIRV} \\
+\frac{dR}{dt} &= \gamma I + \nu S \label{eq:dR_vacunacion}
+\end{align}
+Donde:
+\begin{itemize}
+    \item 	La ecuación dS⁄dt \eqref{eq:dS_vacunacion} representa la disminución de personas susceptibles con el tiempo. Este número disminuye por dos mecanismos el contagio y la vacunación. Por contagio cuando los susceptibles entran en contacto con infectados, se infectan y dejan de ser susceptibles. La vacunación los susceptibles salen del compartimento al ponerse la vacuna, ganando inmunidad directa sin tener que pasar por la enfermedad.
+    \item 	La ecuación dE⁄dt \eqref{eq:dE_SEIRV} muestra el aumento de personas expuestas, personas infectadas que todavía no son contagiosas, debido a nuevos contagios, y su disminución a medida que pasan a estado de infectados. Aumentan por el término de contagio y disminuyen por el paso a infectados.
+    \item 	La ecuación dI⁄dt \eqref{eq:dI_SEIRV}indica la variación del número de personas infectadas. Aumenta a medida que los expuestos se vuelven infecciosos y disminuye cuando los infectados se recuperan. Este balance determina su el número de infectados aumenta produciéndose una epidemia, o si por el contrario disminuye y se controla.
+    \item La ecuación dR⁄dt \eqref{eq:dR_vacunacion}, muestra el aumento del número de personas inmunizadas. Se suman tanto los infectados que se recuperan como los susceptibles que se vacunan.
+    \item 	Beta ($\beta$), tasa de transmisión: representa cuantos contagios ocurren por unidad de tiempo cuando una personas susceptible entra en contacto con una infectada.
+    \item Sigma ($\sigma$), tasa de incubación. Inverso del tiempo de incubación.
+    \item Gamma ($\sigma$), tasa de recuperación: inverso del tiempo de recuperación.
+    \item 	Nu ($\nu$), tasa de vacunación: representa la fracción de la población susceptible que se vacuna por unidad de tiempo.
+\end{itemize}
+
+En este modelo no se ha incluido un compartimento explícito para los vacunados, ya que se asume que la vacunación proporciona una inmunidad equivalente a la adquirida tras pasar la enfermedad. Por lo tanto, las personas vacunadas son incorporadas de manera directa al compartimento de recuperados, simplificando así el modelo sin perder su capacidad explicativa. También dejar claro que no se añade la población total de forma explícita para su simplificación. Se redefine el parámetro beta como ya se ha visto anteriormente.
+
+Es importante señalar que la tasa de transmisión ($\beta$) no varía directamente como consecuencia de la vacunación, ya que se trata de un parámetro biológico y social que describe la probabilidad de contagio efectivo entre un individuo susceptible y uno infectado por unidad de tiempo. Esta tasa depende de factores como la contagiosidad del virus, el número medio de contactos diarios entre personas y las medidas de comportamiento social.
+
+Por tanto, $\beta$ se mantiene constante en el modelo si no cambian ni el virus ni las condiciones sociales de la población. Lo que sí se ve directamente afectado por la vacunación es el número de susceptibles. Al disminuir el tamaño del grupo susceptible mediante la inmunización, también se reduce la probabilidad de que se produzcan nuevos contagios, incluso si $\beta$ permanece constante. Aunque el virus mantenga su capacidad de contagio, al haber menos personas expuestas, disminuye el número efectivo de nuevas infecciones.
+
+Además, se está utilizando la $\beta$ efectiva o ajustada, que es el valor de $\beta$ dividido entre la población total. En este caso, si la población total cambia, el valor de $\beta$ ajustada también cambiará, incluso si $\beta$ se mantiene constante. Esto se debe a que el tamaño poblacional afecta directamente al cálculo del número esperado de contactos efectivos entre susceptibles e infectados.
+
+
+
+
 
 
 
@@ -406,6 +569,18 @@ Una vez se ha calculado beta\eqref{eq:beta_calculo}, hay que calcular la beta aj
 
 Lo que significa que cada personas infectado contagia al 0.00000045\% de la población susceptible por día.
 
+\vspace{2em}
+\textbf{Modelo SIRV}. La única diferencia introducida es la incorporación de una tasa de vacunación correspondiente a una cobertura del 92,7\% de la población en un periodo de seis meses, lo cual se ajusta a datos reales observados en campañas de vacunación contra el sarampión. Este porcentaje se ha convertido en un valor de tasa ($\nu$) para integrarlo dentro del sistema de ecuaciones del modelo SIRV, y así simular cómo evolucionaría la epidemia bajo una estrategia de inmunización masiva \cite{cdc_measles_cases_2025}.
+
+De esta manera, se busca evaluar cuantitativamente cómo la vacunación modifica la evolución del brote, en particular en términos de reducción de contagios y aceleración de la inmunidad colectiva, y contrastar estos resultados con los obtenidos previamente en ausencia de intervenciones.
+Se tiene la cobertura de vacunación, pero hay que calcular la tasa de vacunación con los datos que se han obtenido. Se calcula a partir de la siguiente fórmula \eqref{eq:nu_vacunacion}. 
+\begin{equation}
+\nu = \frac{-\ln(1 - 0{,}927)}{183} \approx 0{,}014
+\label{eq:nu_vacunacion}
+\end{equation}
+Esto significa que aproximadamente el 1,4\% de la población susceptible se vacuna cada día durante ese periodo, adquiriendo inmunidad y pasando directamente al compartimento de recuperados. Esta tasa se incorpora en el modelo como un nuevo flujo desde susceptibles a recuperados, simulando el efecto de la vacunación masiva sobre la dinámica de propagación del sarampión.
+
+
 \subsection{Datos modelo SEIR}
 Para la implementación del modelo SEIR con datos reales se ha seleccionado la enfermedad del COVID-19. Esta elección se debe a que las características epidemiológicas del COVID-19 se ajustan a la estructura del modelo, lo que permite representar de forma realista su dinámica de transmisión.
 
@@ -447,6 +622,19 @@ Una vez se ha calculado la beta, hay que calcular la beta efectiva\eqref{eq:beta
 \label{eq:beta_efectiva_final}
 \end{equation}
 
+\vspace{2em}
+
+
+\textbf{Modelo SEIRV}. Con el fin de ampliar el análisis realizado sobre el COVID-19 mediante el modelo SEIR, se ha decidido incorporar la vacunación en la simulación a través del modelo SEIRV. Permite estudiar cómo una campaña de vacunación influye en la dinámica de propagación del virus, proporcionando una visión más realista del contexto epidemiológico vivido en España durante la pandemia.
+Para mantener la coherencia entre escenarios, se han conservado los mismos parámetros epidemiológicos utilizados en el modelo SEIR básico: la tasa de transmisión, el tiempo de incubación y la tasa de recuperación. La diferencia es la inclusión de un parámetro, la tasa de vacunación, que representa el efecto de la inmunización masiva iniciada en España a finales de 2020.
+Según los datos oficiales, la campaña de vacunación comenzó el 27 de diciembre de 2020, y hasta el 15 de enero de 2021 se habían administrado 768.950 dosis \cite{sanidad_giv_20210115}. Posteriormente, la cobertura vacunal alcanzó el 92,6\% de la población en un año \cite{sanidad_historico_covid}. Para incorporar esta información en el modelo, es necesario calcular la tasa diaria de vacunación, lo cual se realiza con la siguiente fórmula \eqref{eq:nu_926}.
+\begin{equation}
+\nu = \frac{-\ln(1 - 0{,}926)}{365} \approx 0{,}0071
+\label{eq:nu_926}
+\end{equation}
+
+Este valor indica que aproximadamente el 0,71\% de la población susceptible se vacuna cada día durante ese periodo. En el modelo, estas personas abandonan directamente el compartimento de susceptibles y pasan al de recuperados, ya que se considera que la vacunación confiere una inmunidad funcional equivalente a la adquirida tras superar la infección.
+Se mantiene, la misma estructura conceptual del modelo SEIR. La única diferencia es la inclusión del flujo adicional introducido por la vacunación. Así, el modelo SEIRV permite simular con mayor precisión cómo las campañas de inmunización modifican la evolución de la pandemia, en particular reduciendo el número de contagios y acelerando el logro de la inmunidad colectiva.
 
 
 

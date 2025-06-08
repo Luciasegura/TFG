@@ -1,8 +1,78 @@
 \apendice{Descripción de aquisición y tratamiento de datos}
 
 \section{Descripción formal de los datos}
+Los datos utilizados en este trabajo han sido extraídos de diversos estudios científicos y publicaciones especializadas, todos ellos debidamente citados en la bibliografía de la memoria. No se han empleado conjuntos de datos descargables o bases oficiales, sino que los valores han sido recogidos manualmente o digitalizados a partir de tablas y gráficas publicadas en dichos estudios.
+
+Los datos empleados incluyen:
+\begin{itemize}
+    \item Número de personas infectadas, susceptibles, recuperadas y población total.
+    \item Parámetros epidemiológicos clave:
+        \begin{itemize}
+            \item Tasa de transmisión (\( \beta \))
+            \item Tiempo medio de recuperación (\( \gamma^{-1} \))
+            \item Tiempo medio de incubación (en modelo SEIR)
+            \item Cobertura de vacunación.
+            \item Número reproductivo básico (\( R_0 \)).
+        \end{itemize}
+\end{itemize}
+
+En algunos casos, los parámetros han sido directamente obtenidos de los estudios. En otros, han sido estimados o deducidos a partir de las relaciones matemáticas de los modelos, como por ejemplo:
+
+\[
+R_0 = \frac{\beta}{\gamma}
+\quad \text{o} \quad
+\beta = R_0 \cdot \gamma
+\]
+
+\bigskip
+Los datos han sido tratados en MATLAB para ajustarlos al formato de entrada de los modelos. 
+Estos datos han servido tanto para calibrar los modelos (SI, SIR, SEIR con y sin vacunación) como para comparar los resultados simulados con los patrones observados en situaciones reales.
+
+
+
 
 \section{Descripción clínica de los datos}
 
+Desde un punto de vista clínico, los datos empleados reflejan la evolución temporal de una enfermedad infecciosa en una población concreta, segmentada en distintos estados epidemiológicos:
+
+\begin{itemize}
+    \item \textbf{Susceptibles (S):} individuos sanos sin inmunidad previa, que pueden infectarse al entrar en contacto con agentes infecciosos. Clínicamente, representan la población en riesgo de contraer la enfermedad.
+    \item \textbf{Expuestos (E):} personas que han sido infectadas recientemente y que se encuentran en un período de incubación durante el cual aún no son contagiosas. Clínicamente, este grupo representa la fase pre-sintomática o latente de la infección.
+    \item \textbf{Infectados (I):} individuos que actualmente tienen el virus y son capaces de transmitirlo a los susceptibles. Este grupo clínico puede incluir desde casos asintomáticos hasta pacientes con síntomas severos.
+    \item \textbf{Recuperados (R):} se agrupan tanto los individuos que han superado la infección y desarrollado inmunidad, como aquellos que han adquirido protección a través de la vacunación. En ambos casos, se asume que ya no pueden infectarse ni transmitir la enfermedad.
+\end{itemize}
+
+También es importante hacer una descripción clínica de las principales tasas epidemiológicas que se utilizan en este estudio.
+
+
+\begin{itemize}
+    \item \textbf{Tasa de transmisión, $\beta$:} Representa la probabilidad o velocidad con la que una persona susceptible se infecta al entrar en contacto con un individuo infectado. Clínicamente, esta tasa está influenciada por la virulencia del patógeno, el comportamiento social (contactos, movilidad), y medidas de prevención (uso de mascarillas, higiene, distanciamiento social). Un aumento en $\beta$ puede indicar mayor contagiosidad o relajación de medidas sanitarias.
+    \item \textbf{Tasa de incubación, $\sigma$:} indica la velocidad con la que los individuos en el estado expuesto (infectados pero no contagiosos) pasan a ser infectantes. Clínicamente, esta tasa está relacionada con el período de incubación del virus, es decir, el tiempo que tarda en manifestarse la capacidad de contagiar tras la infección.
+    \item \textbf{Tasa de recuperación, $\gamma$:} refleja la velocidad con la que los infectados superan la enfermedad y pasan al estado de recuperados, asumiendo inmunidad. Clínicamente, esta tasa depende de la duración media de la enfermedad y del acceso a tratamientos médicos eficaces. Un aumento en $\gamma$ puede indicar mejoras en la atención sanitaria o en la respuesta inmune.
+    \item \textbf{Tasa de vacunación, $\nu$}: representa la velocidad a la que los individuos susceptibles reciben la vacuna y adquieren inmunidad. Clínicamente, esta tasa refleja la capacidad y cobertura de vacunación en la población, afectando directamente al tamaño del grupo susceptible y, por tanto, al control de la epidemia.
+    
+\end{itemize}
+
+Esta descripción clínica de las variables y parámetros permite entender cómo se traduce la información epidemiológica en las ecuaciones del modelo, y facilita la interpretación de los resultados para la toma de decisiones sanitarias.
+
+
 \section{Información relevante de los simulaciones}
+
+Las simulaciones realizadas permiten analizar la evolución temporal de la epidemia bajo distintos escenarios y condiciones iniciales. A través de estas simulaciones se observan dinámicas clave de la propagación del virus, lo que facilita la evaluación de posibles estrategias de control.
+
+ Variaciones en parámetros fundamentales, provocan cambios significativos tanto en la magnitud del brote como en su duración. Por ejemplo, un incremento en la tasa de vacunación reduce notablemente el número máximo de infectados y acorta el tiempo total de propagación de la epidemia. La curva de infectados presenta un pico cuya altura y momento dependen directamente de los parámetros epidemiológicos y de las intervenciones aplicadas.
+Estas simulaciones permiten identificar puntos críticos a partir de los cuales es posible controlar o incluso erradicar la epidemia mediante intervenciones adecuadas. Los resultados obtenidos aportan una visión cuantitativa del comportamiento dinámico del sistema epidemiológico, lo que resulta útil para diseñar estrategias de mitigación que minimicen el impacto sanitario.
+
+No obstante, es importante tener en cuenta que el modelo se basa en una serie de supuestos que simplifican la realidad para hacer el sistema tratable desde el punto de vista matemático. Entre las principales suposiciones adoptadas se encuentran:
+
+\begin{itemize}
+    \item La población total se considera constante durante el periodo analizado; no se contemplan nacimientos, muertes naturales ni movimientos migratorios.
+    \item La inmunidad adquirida, ya sea por recuperación o por vacunación, se asume permanente durante el horizonte temporal de la simulación.
+    \item La tasa de vacunación (\(\nu\)) es constante y homogénea, sin variaciones geográficas ni sociales.
+    \item Los individuos en el estado de expuestos (E) no son contagiosos, y el período de incubación es constante y conocido.
+    \item No se contempla la aparición de nuevas variantes del patógeno con características diferentes a las iniciales.
+    \item Las medidas de control (como el uso de mascarillas, confinamientos o distanciamiento social) se consideran constantes o se reflejan mediante ajustes en parámetros como \(\beta\).
+\end{itemize}
+
+Estas condiciones permiten obtener resultados consistentes y comparables entre escenarios, pero también limitan la capacidad del modelo para reflejar situaciones más complejas o variables. Por ello, los resultados deben interpretarse en el contexto de estas hipótesis, y siempre en combinación con datos reales y conocimiento clínico-epidemiológico actualizado.
 

@@ -1,3 +1,29 @@
 \capitulo{6}{Conclusiones}
+Se ha llevado a cabo un estudio completo y detallado sobre el modelado determinista de epidemias, centrándose en los modelos clásicos SI, SIS, SIR y SEIR, que representan diferentes dinámicas de transmisión y recuperación de enfermedades infecciosas en una población. Se ha realizado una ampliación significativa en los modelos SIR y SEIR mediante la incorporación de la vacunación, bajo la hipótesis de que la inmunidad adquirida a través de la vacunación es equivalente a la obtenida tras la recuperación natural. Esta simplificación, aunque no considera variaciones en la eficacia de la vacuna o en la duración de la inmunidad, permite una aproximación adecuada para analizar el impacto de las estrategias de vacunación en la evolución de la epidemia.
+
+Un aporte clave de este trabajo ha sido la implementación de un controlador PID en el modelo SIR, que simula medidas de intervención sanitaria como cuarentenas o restricciones sociales. La integración de este regulador posibilita un análisis más dinámico y realista, mostrando cómo la aplicación de políticas de control puede influir en la reducción de la transmisión y en el manejo de brotes epidémicos.
+
+Para validar la utilidad y aplicabilidad de los modelos, se han empleado tanto datos aleatorios como datos reales. Los datos simulados han permitido examinar la respuesta teórica de los modelos bajo diferentes condiciones y parámetros, mientras que los datos reales han facilitado la comparación con situaciones epidémicas auténticas, evidenciando las fortalezas y limitaciones de cada modelo. Esto proporciona una visión práctica y fundamentada que puede ser de gran utilidad para profesionales en salud pública y modeladores matemáticos.
+
+Además, se ha desarrollado una aplicación interactiva con una interfaz gráfica que hace posible visualizar de manera intuitiva y accesible el comportamiento de cada modelo. Esta herramienta está diseñada para que cualquier usuario, sin necesidad de conocimientos técnicos, pueda interactuar con los modelos y entender cómo distintas variables afectan la evolución de una epidemia. Esta accesibilidad contribuye a la difusión del conocimiento científico y puede apoyar la educación en temas de salud pública y prevención.
+
 
 \section{Aspectos relevantes}
+\begin{itemize}
+    \item Estudio exhaustivo de modelos epidemiológicos deterministas, el análisis abarca cuatro modelos fundamentales en la epidemiología matemática: SI (susceptible-infectado), SIS (susceptible-infectado-susceptible), SIR (susceptible-infectado-recuperado) y SEIR (susceptible-expuesto-infectado-recuperado). Cada modelo representa distintas características y escenarios epidemiológicos, lo que permite comprender mejor cómo se propagan diferentes tipos de enfermedades infecciosas y las posibles transiciones entre estados.
+    \item Incorporación de la vacunación en modelos SIR y SEIR. La introducción de la vacunación en estos modelos aporta un elemento crucial para el análisis de control epidémico, reflejando el efecto protector de las vacunas al desplazar individuos directamente al estado de inmunidad. Esto facilita la evaluación del impacto potencial de campañas de vacunación masiva, ayudando a predecir cómo puede cambiar la dinámica de contagios y la eventual reducción de la población susceptible.
+    \item Diseño y aplicación de un regulador PID en el modelo SIR. El desarrollo de un controlador PID aplicado al modelo SIR representa un avance importante en la simulación de políticas públicas de control. Este controlador permite modelar intervenciones como cuarentenas, restricciones de movilidad y otras medidas no farmacológicas, evaluando su eficacia y optimizando su aplicación para mitigar el avance de la enfermedad.
+    \item Uso combinado de datos aleatorios y datos reales para validación. El empleo de datos generados aleatoriamente ha sido esencial para probar la estabilidad y comportamiento de los modelos bajo diferentes escenarios hipotéticos. Por otro lado, la aplicación de datos reales permite una validación práctica, demostrando la capacidad predictiva de los modelos y su utilidad en la toma de decisiones en situaciones reales.
+    \item Desarrollo de una aplicación gráfica accesible. La creación de una herramienta visual interactiva, amplía el alcance del trabajo al hacerlo accesible para un público más amplio, incluyendo profesionales, estudiantes y personas interesadas en el tema. La interfaz gráfica facilita la manipulación de parámetros y la observación de resultados en tiempo real, fomentando la comprensión y el aprendizaje de la dinámica epidémica.
+    \item Relevancia para la salud pública y la educación. Más allá del aspecto técnico, el trabajo contribuye a la sensibilización y educación sobre la importancia del modelado matemático en la gestión de epidemias. Permite a usuarios no especializados comprender cómo diferentes factores afectan la propagación de enfermedades y la efectividad de intervenciones, apoyando así la difusión de información científica y la toma de decisiones informadas en contextos de salud pública.
+    \item Posibilidad de futuras ampliaciones. El enfoque y las herramientas desarrolladas abren la puerta a futuras investigaciones, tales como la incorporación de modelos estocásticos, el análisis de inmunidad temporal, variantes virales, o la inclusión de factores sociales y económicos en la modelización, lo que puede enriquecer y actualizar las predicciones y estrategias de control epidémico.
+\end{itemize}
+
+
+
+
+
+
+
+
+

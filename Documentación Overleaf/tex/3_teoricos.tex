@@ -35,12 +35,12 @@ Una pandemia es una epidemia que se ha propagado a nivel mundial, afectando a un
 \subsection{Grupos vulnerables ante las epidemias}
 Las epidemias afectan de manera desigual factores sociales, económicos y biológicos. Según \cite{nasution2021poblaciones} entre los más vulnerables se encuentran :
 \begin{itemize}
-  \item Personas mayores de 60 años, debido al mayor riesgo de complicaciones.
-  \item Personas con inmunodeficiencia, ya sea adquirida o congénita.
-  \item Mujeres embarazadas, por los cambios fisiológicos que afectan al sistema inmunológico.
+  \item Personas mayores de 60 años.
+  \item Personas con inmunodeficiencia.
+  \item Mujeres embarazadas.
    \item Personas con obesidad.
-   \item Personas con enfermedades crónicas, como diabetes, enfermedades cardiovasculares, renales, hepáticas o pulmonares.
-   \item Grupos socioeconómicos desfavorecidos, que presentan limitaciones en el acceso a servicios de salud y viven en condiciones precarias. 
+   \item Personas con enfermedades crónicas.
+   \item Grupos socioeconómicos desfavorecidos. 
 \end{itemize}
 
 \subsection{Gestión, control y prevención de epidemias}
@@ -67,16 +67,9 @@ A lo largo de la historia, distintas epidemias han dejado una huella significati
   
     \item \textbf{VIH/SIDA (desde 1981)}: el virus de la inmunodeficiencia humana ha causado una pandemia global que ha provocado más de 26 millones de muertes. Ha tenido un impacto desproporcionado en regiones como África subsahariana, aunque se han logrado importantes avances en investigación, prevención y tratamiento \cite{miranda2022tale}.
     \item \textbf{Ébola (2013-2016)}: el brote en África Occidental causó alrededor de 11000 muertes y colapsó los sistemas de salud locales. La respuesta internacional incluyó el desarrollo de tratamientos y vacunas, así como mejoras en infraestructuras sanitarias \cite{who2014ebola}.
-    \item \textbf{COVID-19 (desde 2019)}: causada por el virus SARS-CoV-2, ha provocado millones de muertes y ha tenido un impacto sin precedentes en la salud pública, la economía y la vida cotidiana. Ha subrayado la importancia de la preparación ante emergencias, la cooperación internacional y la rápida implementación de medidas de salud pública. Se ve en la figura \ref{fig:covid} obtenida de \cite{bbc2020corea} como se vestían los especialistas para realizar prubas y no contagiarse
+    \item \textbf{COVID-19 (desde 2019)}: causada por el virus SARS-CoV-2, ha provocado millones de muertes y ha tenido un impacto sin precedentes en la salud pública, la economía y la vida cotidiana. Ha subrayado la importancia de la preparación ante emergencias, la cooperación internacional y la rápida implementación de medidas de salud pública. 
     
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{img/covid.png}
-        \caption{Realización de pruebas y vestimenta durante la pandemia}
-        \label{fig:covid}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-    \end{figure}
-\end{enumerate}
+
 
 \subsection{Epidemiología}
 La epidemiología es la ciencia que estudia la distribución y los determinantes de los eventos relacionados con la salud en poblaciones específicas, así como la aplicación de ese conocimiento para la prevención y control de problemas de salud. Se enfoca en identificar factores de riesgo, causas de enfermedades y en desarrollar e implementar intervenciones para su control \cite{hajat2010introduction}.
@@ -101,8 +94,9 @@ En la figura \ref{fig:difernecias}\footnote{Obtenida de \cite{rie2020covid}}, se
 
 
 \section{Modelos epidemiológicos  deterministas}
+
 \subsection{Modelos epidemiologícos}
-Los modelos epidemiológicos son herramientas matemáticas y computacionales que permiten representar de manera simplificada los procesos biológicos, sociales y ambientales que influyen en la propagación de enfermedades dentro de una población. Estos modelos describen cómo las enfermedades infecciosas (y, en algunos casos, no infecciosas) se transmiten entre individuos y cómo varía el estado de salud de la población a lo largo del tiempo.
+Los modelos epidemiológicos son herramientas matemáticas y computacionales que permiten representar de manera simplificada los procesos biológicos, sociales y ambientales que influyen en la propagación de enfermedades dentro de una población. Estos modelos describen cómo las enfermedades infecciosas (y, en algunos casos, no infecciosas) se transmiten entre individuos y cómo varía el estado de salud de la población a lo largo del tiempo \cite{ferrero2021modelos}.
 
 En términos generales, un modelo epidemiológico intenta captar las dinámicas clave del contagio, recuperación, inmunidad, nacimiento y muerte, mediante el uso de ecuaciones diferenciales, teoría de probabilidades o simulaciones computacionales. Dependiendo de su complejidad, pueden incorporar factores como heterogeneidad en la población, movilidad, redes de contacto, y respuesta a intervenciones sanitarias.
 
@@ -130,7 +124,7 @@ Por lo tanto, los modelos epidemiológicos deterministas son herramientas matem�
 
 Dentro del enfoque determinista, existen distintos modelos clásicos que se utilizan para representar diversas realidades epidemiológicas en función de las características del agente infeccioso y de la inmunidad que genera. Estos modelos se conocen como modelos compartimentales, ya que dividen a la población en distintos compartimentos o grupos, cada uno de los cuales representa un estado específico frente a la enfermedad, como susceptibles, infectados, recuperados, etc. La dinámica de la enfermedad se modela a través del flujo de individuos entre estos compartimentos, de acuerdo con tasas de transición establecidas por las ecuaciones del modelo.
 
-Los principales modelos que se estudiarán en este trabajo son: SI, SIS, SIR y SEIR. En este apartado se ofrecerá una descripción general de cada uno, mientras que un análisis más detallado y riguroso se presentará posteriormente en el apartado dedicado a la metodología.
+Los principales modelos que se estudiarán en este trabajo son: SI, SIS, SIR y SEIR. En este apartado se ofrecerá una descripción general de cada uno, mientras que un análisis más detallado y riguroso se presentará posteriormente en el apartado dedicado a la metodología. Todo de lo que se ha hablado se puede encontrar en el libro \cite{allen2008mathematical}.
 
 \subsubsection*{Modelo SI}
 El primero modelo determinista clásico que se puede considerar, representa la forma más simple de modelar una enfermedad infecciosa. A pesar de su sencillez, resulta útil para comprender los principios básicos de la dinámica de contagio en casos dende no existe recuperación ni inmunidad.
@@ -191,43 +185,13 @@ El modelo SEIR es especialmente relevante cuando se necesita considerar el impac
 
 A pesar de ser una simplificación de la realidad, el modelo SEIR ofrece una aproximación más ajustada que el modelo SIR para muchas infecciones reales, permitiendo a epidemiólogos y responsables sanitarios diseñar estrategias más eficaces de intervención y prevención.
 
-\subsubsection*{Principales diferencias entre modelos}
-En la tabla \ref{tab:diferencias_modelos} se observan las principales diferencias entre los modelos descritos.
-\begin{table}[H]
-\centering
-\caption{Diferencias entre los modelos epidemiológicos SI, SIS, SIR y SEIR}
-\label{tab:diferencias_modelos}
-\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
-\hline
-\textbf{Característica} & \textbf{SI} & \textbf{SIS} & \textbf{SIR} & \textbf{SEIR} \\
-\hline
-\textbf{Número de estados} & 2 (S, I) & 2 (S, I) & 3 (S, I, R) & 4 (S, E, I, R) \\
-\hline
-\textbf{Recuperación} & No hay recuperación & Recuperación sin inmunidad & Recuperación con inmunidad permanente & Recuperación con inmunidad, tras periodo de incubación \\
-\hline
-\textbf{Reinfección posible} & No aplica & Sí & No & No \\
-\hline
-\textbf{Periodo de incubación} & No & No & No & Sí (estado E) \\
-\hline
-\textbf{Estado final típico} & Toda la población infectada & Ciclos de infección continuos & Epidemia se extingue o estabiliza & Igual que SIR, con retardo por incubación \\
-\hline
-\textbf{Aplicaciones típicas} &  Enfermedades crónicas & Infecciones recurrentes & Enfermedades con inmunidad & Enfermedades con latencia \\
-\hline
-\end{tabularx}
-\end{table}
+
 
 
 
 \section{Vacunación}
 \subsection{Importancia}
-La vacunación, figura, constituye una de las intervenciones más eficaces y trascendentales en la historia de la salud pública. Ha permitido prevenir la propagación de enfermedades infecciosas, reducir de forma significativa la morbilidad y la mortalidad asociadas, y, a veces, erradicar por completo determinadas patologías.
-
-
-Según estimaciones de la OMS\footnote{Organización Muncial de la Salud} \cite{oms_vacunas}, la vacunación previene entre 3 y 5 millones de muertes anuales causadas por enfermedades. Gracias a los programas de inmunización masiva, millones de vidas se salvan cada año, y muchas enfermedades han sido controladas de forma notable.
-
-En el contexto de las epidemias, no solo protege a los individuos vacunados, sino que también contribuye a la inmunidad colectiva o de grupo, lo cual reduce la transmisión comunitaria y protege a las personas que no pueden vacunarse, como los inmunocomprometidos o niños demasiado pequeños.
-
-Además de los beneficios en salud, la vacunación genera impactos económicos y sociales significativos según \cite{nandi2020vaccines}: reduce los costes médicos, disminuye la carga sobre los sistemas sanitarios y mejora la productividad al minimizar las pérdidas. La vacunación universal, tanto rutinaria como de recuperación, es un componente crítico de la atención médica de calidad.
+La vacunación, figura, constituye una de las intervenciones más eficaces y trascendentales en la historia de la salud pública. Ha permitido prevenir la propagación de enfermedades infecciosas, reducir de forma significativa la morbilidad y la mortalidad asociadas, y, a veces, erradicar por completo determinadas patologías. Según estimaciones de la OMS\footnote{Organización Muncial de la Salud} \cite{oms_vacunas}, la vacunación previene entre 3 y 5 millones de muertes anuales causadas por enfermedades. Gracias a los programas de inmunización masiva, millones de vidas se salvan cada año, y muchas enfermedades han sido controladas de forma notable. En el contexto de las epidemias, no solo protege a los individuos vacunados, sino que también contribuye a la inmunidad colectiva o de grupo, lo cual reduce la transmisión comunitaria y protege a las personas que no pueden vacunarse, como los inmunocomprometidos o niños demasiado pequeños. Además de los beneficios en salud, la vacunación genera impactos económicos y sociales significativos según \cite{nandi2020vaccines}: reduce los costes médicos, disminuye la carga sobre los sistemas sanitarios y mejora la productividad al minimizar las pérdidas. La vacunación universal, tanto rutinaria como de recuperación, es un componente crítico de la atención médica de calidad.
 
 
 \subsection{Tipos}
@@ -272,15 +236,7 @@ En el siglo XX, los avances en biotecnología, como el cultivo celular, posibili
 
 En la actualidad, la tecnología de ARN mensajero ha revolucionado la vacunación, facilitando el desarrollo rápido de vacunas.
 
-En la figura \ref{fig:vacunación}\footnote{Obtenida de \cite{infobae2021vacunas}} se presenta un resumen de la historia de la vacunación, desde la primera vacuna contra la viruela hasta las desarrolladas recientemente frente al COVID-19.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{img/vacunación.jpg}
-        \caption{Historia de la vacunación, desde el inicio a la actualidad}
-        \label{fig:vacunación}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-    \end{figure}
 
 
 
@@ -310,50 +266,50 @@ Según \cite{sudharshan2008introduction} el síndrome de inmunodeficiencia adqui
 \subsection{Vías de transmisión}
 El VIH se transmite a través de varias vías bien definidas, como se explica en \cite{shaw2012hiv}:
 \begin{itemize}
-    \item Contacto sexual: principal forma de transmisión. Ocurre en relaciones sexuales vaginales, anales y orales sin protección, mediante fluidos infectados.
-    \item Uso compartido de agujas: frecuente entre personas usuarias de drogas intravenosas. Vía de alto riesgo por la introducción directa del virus en la sangre.
+    \item Contacto sexual: principal forma de transmisión. Ocurre en relaciones sexuales sin protección, mediante fluidos infectados.
+    \item Uso compartido de agujas: entre personas usuarias de drogas intravenosas. Alto riesgo por la introducción directa del virus en la sangre.
     \item Transfusiones de sangre y productos sanguíneos: aunque posible, su riesgo es mínimo en países donde se realizan pruebas rigurosas en bancos de sangre.
     \item Transmisión madre-hijo: puede ocurrir durante el embarazo, parto o lactancia. El uso de TAR\footnote{Terapia Antirretroviral} y cesáreas programadas reduce el riesgo.
-    \item Trasplantes de órganos: es raro debido a los controles exhaustivos.
+    \item Trasplantes de órganos: es raro debido a los controles.
     \item Exposición ocupacional: riesgo bajo en profesionales de la salud si se siguen las precauciones adecuadas.
 \end{itemize}
 
 \subsection{Diagnóstico}
 El diagnóstico se basa en:
 \begin{enumerate}
-    \item Inmunoensayo combinado Ag/Ab: detecta anticuerpos contra VIH-1/VIH-2 y antígeno p24. Puede identificar la infección 2–3 semanas después de la exposición \cite{workowski2021sexually}.
-    \item Prueba de diferenciación de anticuerpos: permite distinguir entre VIH-1 y VIH-2.
-    \item Prueba de amplificación de ácidos nucleicos (NAAT): se emplea si hay resultados indeterminados. Confirma infecciones agudas por VIH-1 \cite{saag2021hiv}.
+    \item Inmunoensayo combinado Ag/Ab: detecta anticuerpos contra VIH y antígeno p24. Puede identificar la infección 2–3 semanas después de la exposición \cite{workowski2021sexually}.
+    \item Prueba de diferenciación de anticuerpos.
+    \item Prueba de amplificación de ácidos nucleicos (NAAT): se emplea si hay resultados indeterminados. \cite{saag2021hiv}.
     \item Pruebas rápidas: Ofrecen resultados preliminares en menos de 20 minutos. Se deben confirmar con pruebas de laboratorio.
 \end{enumerate}
 
 \subsection{Tratamiento}
 El tratamiento se basa en TAR \cite{heendeniya2019antiretroviral}, que ha convertido al VIH en una enfermedad crónica controlable.
 
-\textbf{Opciones terapéuticas}. Según \cite{sivanandy2023efficacy} los INSTI\footnote{Inhibidores de la transferencia de cadena de la integrasa} constituyen la primera línea de tratamiento, generalmente combinados con tenofovir. Además, se utilizan terapias de acción prolongada.
+\textbf{Opciones terapéuticas}. Según \cite{sivanandy2023efficacy} los INSTI\footnote{Inhibidores de la transferencia de cadena de la integrasa} constituyen la primera línea de tratamiento. Además, se utilizan terapias de acción prolongada.
 
-\textbf{Consideraciones clínicas}. Según \cite{saag2021hiv} Entre los efectos secundarios se incluyen náuseas, cefaleas, acidosis láctica y hepatomegalia con esteatosis. Es fundamental ajustar el tratamiento considerando la función renal y hepática del paciente, así como posibles interacciones medicamentosas.
+\textbf{Consideraciones clínicas}. Según \cite{saag2021hiv} entre los efectos secundarios se incluyen náuseas, cefaleas, acidosis láctica y hepatomegalia con esteatosis. Es fundamental ajustar el tratamiento considerando la función renal y hepática del paciente, así como posibles interacciones medicamentosas.
 
-\textbf{Impacto psicosocial}. El estigma asociado al VIH puede afectar negativamente la adherencia al tratamiento y la calidad de vida de los pacientes. El apoyo psicológico y social resulta esencial para mejorar su bienestar general \cite{cihlar2016current}.
+\textbf{Impacto psicosocial}. El estigma asociado puede afectar negativamente la adherencia al tratamiento y la calidad de vida de los pacientes. El apoyo psicológico y social resulta esencial para mejorar su bienestar  \cite{cihlar2016current}.
 
 \subsection{Estrategias de prevención}
-La prevención del VIH/SIDA \cite{chan2012biomedical} combina medidas farmacológicas, no farmacológicas y de salud pública, como se observa .
+Su prevención \cite{chan2012biomedical} combina medidas farmacológicas, no farmacológicas y de salud pública.
 
 \textbf{Enfoques farmacológicos}.
 La PrEP\footnote{Profilaxis preexposición} consiste en el uso diario de antirretrovirales en personas con alto riesgo de contraer el virus. La PEP\footnote{Profilaxis postexposición} implica la administración inmediata de antirretrovirales tras una posible exposición. Además, el TasP\footnote{Tratamiento como prevención} se basa en que las personas con carga viral indetectable no transmiten el virus (indetectable = intransmisible).
 
 \textbf{Enfoques no farmacológicos}.
-Se encuentra el uso de preservativos como barrera física, la circuncisión masculina que reduce el riesgo de infección, la educación para promover prácticas sexuales seguras, y los programas de intercambio de agujas que disminuyen la transmisión entre usuarios de drogas intravenosas.
+Se encuentra el uso de preservativos, circuncisión masculina, educación para promover prácticas sexuales seguras, y programas de intercambio de agujas que disminuyen la transmisión entre usuarios de drogas intravenosas.
 
 \textbf{Medidas de salud pública}.
-Incluyen el diagnóstico temprano del VIH para iniciar el tratamiento oportuno, la prevención de la transmisión de madre a hijo mediante intervenciones médicas, y las intervenciones estructurales destinadas a reducir desigualdades sociales.
+Incluyen el diagnóstico temprano para iniciar el tratamiento oportuno, la prevención de la transmisión de madre a hijo mediante intervenciones médicas, e intervenciones para reducir desigualdades sociales.
 
 \subsection{Progresión clínica}
 Tras la infección inicial, se observan tres fases:
 \begin{enumerate}
     \item \textbf{Fase aguda}: síntomas similares a los de una gripe.
     \item \textbf{Fase de latencia clínica}: puede durar años; el paciente es asintomático mientras el virus se replica en niveles bajos.
-    \item \textbf{Progresión a SIDA}: ocurre como se explica en \cite{okoye2013cd}cuando el recuento de CD4+ cae por debajo de 200 células/µL o aparecen infecciones oportunistas como sarcoma de Kaposi o candidiasis esofágica.
+    \item \textbf{Progresión a SIDA}: ocurre como se explica en \cite{okoye2013cd} cuando el recuento de CD4+ cae por debajo de 200 células/µL o aparecen infecciones oportunistas como sarcoma de Kaposi o candidiasis esofágica.
 \end{enumerate}
 La media del tiempo entre la infección y el desarrollo de SIDA en ausencia de tratamiento es de 8 a 10 años. Factores como la carga viral, coinfecciones o la respuesta inmune individual influyen en la progresión \cite{hoover1992progression}.
 
@@ -370,37 +326,29 @@ En la figura \ref{fig:evolución vih}\footnote{Obtenido en \cite{madrid_salud_po
 \end{figure}
 
 \section{Gonorrea}
-La gonorrea según \cite{unemo2019gonorrhoea} es una infección o enfermedad de transmisión sexual causada por la bacteria \textit{Neisseria gonorrhoeae}, se puede observar en la figura \ref{fig:Neisseria gonorrhoeae}\footnote{Obtenida de \cite{vircell_gonorrhoeae}}. Puede afectar el tracto urogenital, recto o faringe. De las más comunes a nivel mundial, con una incidencia anual estimada de 86.9 millones de casos en adultos.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/NeisseriaGonorrhoeae.jpg}
-    \caption{Forma de la bacetria Neisseria gonorrhoeae}
-    \label{fig:Neisseria gonorrhoeae}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
+La gonorrea según \cite{unemo2019gonorrhoea} es una infección o enfermedad de transmisión sexual causada por la bacteria \textit{Neisseria gonorrhoeae}. De las más comunes a nivel mundial, con una incidencia anual estimada de 86.9 millones de casos en adultos.
 
 
 \subsection{Vías de transmisión}
 Se transmite principalmente a través del contacto sexual sin protección \cite{workowski2021sexually}. Durante las relaciones sexuales vaginales, puede infectar el tracto genital tanto en hombres como en mujeres. En las relaciones anales, la infección puede afectar el recto. Asimismo, durante el sexo oral sin protección, puede colonizar la faringe.
 
-Otra vía de transmisión es la perinatal, en la cual una madre infectada puede transmitir la bacteria a su bebé durante el parto. También se ha documentado la posibilidad de transmisión al utilizar saliva como lubricante, especialmente entre hombres que tienen sexo con hombres. Además, aunque de forma menos común, existe evidencia limitada que sugiere que la gonorrea orofaríngea podría transmitirse a través del beso profundo.
+Otra vía, la perinatal, en la cual una madre infectada puede transmitir la bacteria a su bebé durante el parto. Posibilidad de transmisión al utilizar saliva como lubricante, especialmente entre hombres que tienen sexo con hombres. 
 
 \subsection{Diagnóstico}
-El diagnóstico de la gonorrea debe considerar las posibles infecciones en el tracto urogenital, recto y faringe. Los métodos principales incluyen  NAAT\footnote{Pruebas de amplificación de ácidos nucleicos}, cultivo bacteriano y tinción de Gram incluidos en \cite{adamson2022diagnostic}.
+Debe considerar las posibles infecciones en el tracto urogenital, recto y faringe. Los métodos principales incluyen  NAAT\footnote{Pruebas de amplificación de ácidos nucleicos}, cultivo bacteriano y tinción de Gram incluidos en \cite{adamson2022diagnostic}.
 
-Las NAAT son el estándar de oro (gold standard) debido a su alta sensibilidad y especificidad. Permiten el uso de diferentes tipos de muestras. Además, ofrecen la ventaja de facilitar el autodiagnóstico mediante muestras autocolectadas por los pacientes.
+Las NAAT son el estándar de oro (gold standard) debido a su alta sensibilidad y especificidad. Permiten el uso de diferentes tipos de muestras. Ventaja de facilitar el autodiagnóstico mediante muestras autocolectadas por los pacientes.
 
-El cultivo bacteriano, aunque menos sensible que las NAAT, sigue siendo fundamental para la detección de cepas resistentes a los antimicrobianos. Requiere muestras como las uretrales, endocervicales, rectales, faríngeas o conjuntivales, y es útil para realizar pruebas de susceptibilidad en casos de fracaso del tratamiento.
+El cultivo bacteriano, aunque menos sensible, es fundamental para la detección de cepas resistentes a los antimicrobianos. Requiere muestras como las uretrales, endocervicales, rectales, faríngeas o conjuntivales, y es útil para realizar pruebas de susceptibilidad en casos de fracaso del tratamiento.
 
 La tinción de Gram puede ser diagnóstica en hombres sintomáticos cuando se observan diplococos gramnegativos intracelulares en secreciones uretrales. Sin embargo, su sensibilidad es menor en mujeres y en sitios extragenitales, por lo que no se recomienda como única prueba diagnóstica en estos casos.
 
 La combinación de estos métodos permite un diagnóstico oportuno y efectivo, lo que es clave para el tratamiento adecuado y la prevención de complicaciones y nuevas transmisiones.
 
 \subsection{Tratamiento}
-La gonorrea ha desarrollado resistencia a múltiples antibióticos a lo largo del tiempo. Actualmente, el tratamiento recomendado según \cite{cyr2020update} es una dosis única de ceftriaxona, con la posible adición de doxiciclina si no se ha descartado coinfección por Chlamydia trachomatis.
+La gonorrea ha desarrollado resistencia a múltiples antibióticos. Actualmente, el tratamiento recomendado según \cite{cyr2020update} es una dosis única de ceftriaxona, con la posible adición de doxiciclina si no se ha descartado coinfección por Chlamydia trachomatis.
 
-Debido al aumento de la resistencia a medicamentos como la azitromicina \cite{unemo2019antimicrobial}, es fundamental la vigilancia continua de la eficacia de los tratamientos. En caso de sospecha de fallo terapéutico, se recomienda realizar pruebas de susceptibilidad y confirmar la curación, especialmente en infecciones faríngeas. La investigación actual se centra en el desarrollo de nuevos antimicrobianos y vacunas para combatir la resistencia emergente.
+Debido al aumento de la resistencia a medicamentos \cite{unemo2019antimicrobial}, es fundamental la vigilancia continua de la eficacia de los tratamientos. En caso de sospecha de fallo terapéutico, se recomienda realizar pruebas de susceptibilidad, especialmente en infecciones faríngeas. La investigación actual se centra en el desarrollo de nuevos antimicrobianos y vacunas para combatir la resistencia emergente.
 
 \subsection{Prevención}
 Estrategias recomendadas incluidas en \cite{mayor2012diagnosis} son:
@@ -413,20 +361,16 @@ Estrategias recomendadas incluidas en \cite{mayor2012diagnosis} son:
 \end{itemize}
 
 \subsection{Clínica y complicaciones}
-Los síntomas de la gonorrea varían según el sexo \cite{unemo2019gonorrhoea}. En los hombres, se manifiesta comúnmente como uretritis con disuria y secreción purulenta. En las mujeres, muchas veces es asintomática, aunque puede presentarse como cervicitis con secreción mucopurulenta y dolor pélvico.
+Los síntomas varían según el sexo \cite{unemo2019gonorrhoea}. En los hombres, se manifiesta como uretritis con disuria y secreción purulenta. En las mujeres, muchas veces asintomática, aunque puede presentarse como cervicitis con secreción mucopurulenta y dolor pélvico.
 
-Las complicaciones también difieren. En las mujeres, puede derivar en enfermedad inflamatoria pélvica, infertilidad, embarazo ectópico y dolor crónico. En los hombres, la principal complicación es la epididimitis, que también puede conllevar infertilidad. En ambos sexos, existe el riesgo de desarrollar una infección gonocócica diseminada.
-
-Las infecciones extragenitales incluyen proctitis, faringitis que suele ser asintomática y conjuntivitis neonatal cuando ocurre transmisión perinatal.
+Las complicaciones también difieren. En las mujeres, puede derivar en enfermedad inflamatoria pélvica, infertilidad, embarazo ectópico y dolor crónico. En los hombres, la principal complicación es la epididimitis, que también puede conllevar infertilidad. En ambos sexos, existe el riesgo de desarrollar una infección gonocócica diseminada. Las infecciones extragenitales incluyen proctitis, faringitis que suele ser asintomática y conjuntivitis neonatal cuando ocurre transmisión perinatal.
 
 Desde el punto de vista de la salud pública, la gonorrea incrementa el riesgo de transmisión del VIH. Además, la creciente resistencia a los antimicrobianos representa un desafío significativo para su control y tratamiento.
 
 \subsection{Historia y evolución}
-La gonorrea ha sido una infección de transmisión sexual prevalente durante miles de años. Desde la introducción de los antibióticos, \textit{Neisseria gonorrhoeae} ha desarrollado resistencia progresiva a cada clase utilizada. Primero se observó con las sulfonamidas y penicilinas en las décadas de 1940 y 1950. Posteriormente, surgió resistencia a las tetraciclinas y macrólidos, y más tarde a las fluoroquinolonas durante las décadas de 1980 y 1990.
+La gonorrea ha sido una infección de transmisión sexual prevalente durante miles de años. Desde la introducción de los antibióticos, ha desarrollado resistencia progresiva. Primero se observó con las sulfonamidas y penicilinas en las décadas de 1940 y 1950. Posteriormente, surgió resistencia a las tetraciclinas y macrólidos, y más tarde a las fluoroquinolonas durante las décadas de 1980 y 1990. En la actualidad, la terapia recomendada que anteriormente incluía el uso dual de ceftriaxona y azitromicina también enfrenta un aumento preocupante en la resistencia, con casos reportados de cepas resistentes a ambos antibióticos. \cite{golparian2020genomic}.
 
-En la actualidad, la terapia recomendada que anteriormente incluía el uso dual de ceftriaxona y azitromicina también enfrenta un aumento preocupante en la resistencia, con casos reportados de cepas resistentes a ambos antibióticos. Un ejemplo de ello es el clon FC428, resistente a la ceftriaxona, que se ha diseminado a nivel mundial desde 2017 \cite{golparian2020genomic}.
-
-Esta evolución subraya la necesidad urgente de desarrollar nuevas estrategias terapéuticas y medidas efectivas de prevención para controlar la propagación de esta infección \cite{lin2021epidemiology}.
+Esta evolución subraya la necesidad de desarrollar nuevas estrategias y medidas de prevención para controlar la propagación de esta infección \cite{lin2021epidemiology}.
 En la figura \ref{fig:evolución gonorrea} obtenida de \cite{isanidad2023}, se observa como ha evolucionado la gonorrea en España, donde se ve que los casos han aumentado, una causa puede ser la resitencia a los antibióticos.
 
 \begin{figure}[H]
@@ -450,35 +394,35 @@ El sarampión según \cite{workowski2021sexually}es una enfermedad vírica altam
 \end{figure}
 
 \subsection{Vías de transmisión}
-El sarampión se transmite de persona a persona a través de gotitas respiratorias y por vía aérea mediante núcleos de gotitas aerosolizadas. Las personas infectadas son contagiosas desde cuatro días antes hasta cuatro días después de la aparición del exantema. Es una de las enfermedades víricas más contagiosas conocidas, con tasas de ataque iguales o superiores al 90\% entre contactos susceptibles. Los seres humanos son el único huésped natural del virus del sarampión, lo que hace factible su erradicación a nivel global \cite{moss2017measles}.
+Se transmite a través de gotitas respiratorias y por vía aérea mediante núcleos de gotas aerosolizadas. Las personas infectadas son contagiosas desde cuatro días antes hasta cuatro días después de la aparición del exantema. Es una de las enfermedades víricas más contagiosas conocidas. Los seres humanos son el único huésped natural del virus del sarampión, lo que hace factible su erradicación a nivel global \cite{moss2017measles}.
 
 \subsection{Diagnóstico}
 El diagnóstico se basa \cite{baeten2012antiretroviral} en una combinación de criterios clínicos y confirmación mediante pruebas de laboratorio.
 
-\textbf{Presentación clínica}: el sarampión se caracteriza por fiebre, exantema maculopapular y al menos uno de los tres signos clásicos: tos, coriza y conjuntivitis. Un hallazgo clínico distintivo son las manchas de Koplik, pequeñas lesiones blanquecinas en la mucosa bucal que suelen aparecer antes del exantema.
+\textbf{Presentación clínica}: el sarampión se caracteriza por fiebre, exantema maculopapular y al menos uno de los tres signos clásicos: tos, coriza y conjuntivitis. Un hallazgo clínico Las manchas de Koplik, pequeñas lesiones blanquecinas en la mucosa bucal que aparecen antes del exantema.
 
 \textbf{Confirmación de laboratorio}:
 \begin{enumerate}
-    \item Detección de anticuerpos IgM específicos contra el virus del sarampión: método más común y se realiza mediante ELISA\footnote{Ensayo de inmunoadsorción ligado a enzima}. Tiene una sensibilidad del 83–89\% y una especificidad del 95–99\%. No obstante, los anticuerpos IgM pueden no ser detectables en alrededor del 25\% de los casos durante las primeras 72 horas tras la aparición del exantema, aunque casi siempre están presentes después de 4 días.
-    \item RT-PCR\footnote{PCR de transcripción inversa} para la detección de ARN del virus del sarampión: permite identificar material genético del virus en muestras de orina, sangre, secreciones nasofaríngeas o fluidos orales. Presenta una sensibilidad del 94\% y una especificidad del 99\%. La RT-PCR es útil en las etapas tempranas de la enfermedad, antes de que se desarrollen los anticuerpos IgM. Además, permite la genotipificación del virus, lo que facilita el seguimiento epidemiológico de su propagación.
-    \item Seroconversión de IgG: la confirmación mediante seroconversión o un incremento de cuatro veces en los títulos de IgG entre la fase aguda y la fase convaleciente también es válida, aunque se utiliza con menor frecuencia debido a la disponibilidad limitada de pruebas cuantitativas de IgG en muchos laboratorios clínicos locales.
+    \item Detección de anticuerpos IgM específicos contra el virus del sarampión: método más común y se realiza mediante ELISA\footnote{Ensayo de inmunoadsorción ligado a enzima}. Los anticuerpos IgM pueden no ser detectables en las primeras 72 horas tras la aparición del exantema, aunque casi siempre están presentes después de 4 días.
+    \item RT-PCR\footnote{PCR de transcripción inversa}: identificar material genético del virus en diferentes muestras. Útil en las etapas tempranas, antes de que se desarrollen los anticuerpos IgM. Permite la genotipificación del virus, que facilita el seguimiento epidemiológico de su propagación.
+    \item Seroconversión de IgG:  se utiliza con menor frecuencia debido a la disponibilidad limitada de pruebas cuantitativas de IgG en muchos laboratorios clínicos locales.
 \end{enumerate}
 
 \subsection{Tratamiento}
 Las intervenciones terapéuticas clave en el artúclo \cite{graber2020update} son las siguientes.
 
 \textbf{Terapia de soporte}.
-Incluye una adecuada hidratación y el control de los síntomas como la fiebre y la tos, a través del uso de antipiréticos y otros cuidados generales.
+Hidratación y control de los síntomas, a través del uso de antipiréticos y otros cuidados generales.
 
 \textbf{Suplementación con vitamina A}.
-La OMS recomienda la administración de vitamina A en todos los casos de sarampión agudo en niños, independientemente del país de residencia, con el objetivo de reducir el riesgo de complicaciones graves.
-Consiste en dosis orales administradas una vez al día durante dos días. En casos de deficiencia clínica de vitamina A, se recomienda una tercera dosis.
+La OMS recomienda su administración en todos los casos agudos en niños, con el objetivo de reducir el riesgo de complicaciones.
+Dosis orales administradas una vez al día durante dos días. En casos de deficiencia clínica de vitamina A, se recomienda una tercera dosis.
 
 \textbf{Tratamiento de infecciones bacterianas secundarias}.
-El sarampión puede predisponer a infecciones bacterianas como la neumonía o la otitis media. Se deben administrar antibióticos adecuados, según la infección y la susceptibilidad del paciente.
+Puede predisponer a infecciones bacterianas como la neumonía. Administrar antibióticos adecuados, según la infección y la susceptibilidad del paciente.
 
 \textbf{Aislamiento y prevención de la transmisión}.
-Los pacientes deben ser aislados para evitar la transmisión del virus. Se deben implementar medidas de control de infecciones, como el uso de mascarillas.
+Los pacientes deben ser aislados para evitar la transmisión del virus. Implementar medidas de control, como uso de mascarillas.
 
 \subsection{Prevención}
 Puede prevenirse mediante la vacunación. Se administra en formulaciones combinadas, como la SRP (sarampión, paperas y rubéola) se muestra en la figura \ref{fig:vacuna sarampión}\footnote{Obtenida de \cite{aarp_sarampion_2019}} o la SRPV (que también incluye varicela), ha demostrado ser segura y efectiva.
@@ -491,32 +435,24 @@ Puede prevenirse mediante la vacunación. Se administra en formulaciones combina
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
 \end{figure}
 
-Se recomienda la administración de dos dosis de la vacuna SRP: la primera entre los 12 y 15 meses de edad y la segunda entre los 4 y 6 años \cite{gastanaduy2021measles}. 
-
-Debe priorizarse la vacunación en grupos con mayor riesgo de exposición, como estudiantes, personal sanitario o viajeros internacionales.
-
-En personas susceptibles, la administración de la vacuna dentro de las 72 horas tras la exposición puede prevenir o reducir la gravedad del sarampión. Alternativamente, la inmunoglobulina humana puede administrarse hasta 6 días después, especialmente en lactantes, embarazadas no inmunizadas y personas inmunodeprimidas.
-
-Dado que la inmunoglobulina proporciona una inmunidad temporal, se recomienda completar la vacunación con SRP tras un intervalo mínimo de 6 meses (intramuscular) u 8 meses (intravenosa). Mantener una cobertura vacunal igual o superior a 95\% es fundamental para evitar brotes y avanzar hacia la eliminación del sarampión.
+Se recomienda la administración de dos dosis de la vacuna SRP: la primera entre los 12 y 15 meses de edad y la segunda entre los 4 y 6 años \cite{gastanaduy2021measles}. Debe priorizarse la vacunación en grupos con mayor riesgo de exposición, como estudiantes, personal sanitario o viajeros internacionales.
+En personas susceptibles, la administración de la vacuna dentro de las 72 horas tras la exposición puede prevenir. Alternativamente, la inmunoglobulina humana puede administrarse hasta 6 días después, especialmente en lactantes, embarazadas no inmunizadas y personas inmunodeprimidas. Dado que la inmunoglobulina proporciona una inmunidad temporal, se recomienda completar la vacunación con SRP.
 
 \subsection{Progeresión clínica y complicaciones}
-Sigue una evolución clínica característica, dividida en varias fases como se explica en \cite{cdc_measles}:
+Evolución clínica característica, dividida en varias fases como se explica en \cite{cdc_measles}:
 \begin{enumerate}
-    \item \textbf{Fase prodrómica}: dura de 2 a 4 días e incluye fiebre alta, tos, coriza y conjuntivitis. Son típicas las manchas de Koplik en la mucosa bucal.
-    \item \textbf{Fase exantemática}: alrededor de 14 días tras la exposición, aparece un exantema maculopapular que comienza en la cara y se extiende al tronco y extremidades, persistiendo entre 4 y 7 días.
+    \item \textbf{Fase prodrómica}: dura de 2 a 4 días, incluye fiebre, tos, coriza y conjuntivitis. Manchas de Koplik.
+    \item \textbf{Fase exantemática}: alrededor de 14 días tras la exposición, exantema maculopapular que comienza en la cara y se extiende, persistiendo entre 4 y 7 días.
     \item \textbf{Recuperación}: en casos no complicados, el exantema desaparece en orden inverso a su aparición y la recuperación completa se da en torno a una semana después.
 \end{enumerate}
 
 Puede ocasionar complicaciones graves, especialmente en niños pequeños, adultos mayores, embarazadas, personas desnutridas o inmunocomprometidas. Las más frecuentes son: otitis media, neumonía, diarrea, encefalitis o SSPE \footnote{Panencefalitis esclerosante subaguda}.
 
 \subsection{Impacto histórico y situación actual}
-El sarampión ha tenido un impacto significativo en la salud pública mundial. Antes de la introducción de la vacuna, era una enfermedad endémica que afectaba a la mayoría de los niños y causaba millones de muertes al año. Las epidemias eran frecuentes.
+Ha tenido un impacto significativo en la salud pública mundial. Antes de la introducción de la vacuna, era una enfermedad endémica que afectaba a la mayoría de los niños y causaba millones de muertes al año. Con la llegada de la vacunación, su incidencia disminuyó. Entre 2000 y 2017, los casos a nivel global se redujeron en un 83\%, y las muertes anuales pasaron de 545 mil a 109 mil como se destaca en \cite{shanks2014measles}. 
+Sigue siendo una causa importante de mortalidad infantil en regiones con baja cobertura vacunal y sistemas de salud frágiles. La reaparición de brotes se ha asociado a la desinformación y la disminución de las tasas de vacunación \cite{fischer2016zinc}.
 
-Con la llegada de la vacunación, la incidencia del sarampión disminuyó de forma drástica. Entre 2000 y 2017, los casos a nivel global se redujeron en un 83\%, y las muertes anuales pasaron de 545 mil a 109 mil como se destaca en \cite{shanks2014measles}. 
-
-No obstante, sigue siendo una causa importante de mortalidad infantil en regiones con baja cobertura vacunal y sistemas de salud frágiles. Además, la reaparición de brotes en algunos países se ha asociado a la desinformación sobre la vacuna y la disminución en las tasas de vacunación. La interrupción de las campañas de inmunización durante la pandemia de COVID-19 ha agravado este riesgo \cite{fischer2016zinc}.
-
-En la figura \ref{fig:evolución sarampión}, tomada de \cite{ahumada2015modelos}, se muestra un ejemplo del caso de Chile, donde se observa la evolución del sarampión entre los años 1939 y 2014. La figura evidencia una notable disminución en la incidencia de la enfermedad a partir de la introducción de la vacuna, con una caída aún más significativa tras la implementación de campañas de vacunación, hasta alcanzar la eliminación de casos reportados.
+En la figura \ref{fig:evolución sarampión}\footnote{Obtenida de \cite{ahumada2015modelos}}, se muestra un ejemplo del caso de Chile, evolución del sarampión entre los años 1939 y 2014. Notable disminución de la enfermedad a partir de la introducción de la vacuna, con una caída aún más significativa tras la implementación de campañas de vacunación, hasta alcanzar su eliminación.
 
 \begin{figure}[H]
         \centering
@@ -538,7 +474,7 @@ El COVID-19\footnote{Enfermedad por coronavirus} es causada por el virus SARS-Co
 \end{figure}
 
 \subsection{Vías de transmsión}
-Se transmite principalmente mediante partículas respiratorias emitidas al toser, estornudar, hablar o respirar. Según \cite{wiersinga2020covid19}existen varios mecanismos de transmisión:
+Según \cite{wiersinga2020covid19}existen varios mecanismos de transmisión:
 \begin{itemize}
     \item Gotas respiratorias: partículas de mayor tamaño que se depositan rápidamente, facilitando la transmisión a corta distancia.
     \item Aerosoles: partículas más pequeñas que pueden permanecer suspendidas en el aire, en espacios cerrados y mal ventilados, permitiendo la transmisión a mayor distancia.
@@ -549,34 +485,14 @@ Se transmite principalmente mediante partículas respiratorias emitidas al toser
 \subsection{Diagnóstico}
 Se fundamenta principalmente \cite{ko2022covid} en la detección del ARN del SARS-CoV-2 mediante pruebas moleculares, especialmente la RT-PCR, considerada el método de referencia por su alta sensibilidad y especificidad.
 
-\textbf{RT-PCR}: se realiza sobre muestras respiratorias y permite detectar el virus en fases tempranas, se observa en la figura \ref{fig:PCR}\footnote{\cite{comunidadmadrid2020pcr}}.
+\textbf{RT-PCR}: se realiza sobre muestras respiratorias y permite detectar el virus en fases tempranas.
 
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{img/pcr.png}
-        \caption{Toma de muestra nasofaríngea para la realización de una prueba PCR con el fin de detectar la presencia del virus SARS-CoV-2 (COVID-19).}
-        \label{fig:PCR}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
-
-\textbf{Pruebas de antígenos}: aunque menos sensibles, ofrecen resultados rápidos y son útiles en entornos donde se requiere diagnóstico inmediato, se muestra en la figura \ref{fig:antigenos}\footnote{Obtenida de \cite{ceydes_antigeno}}.
-
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{img/prueba antigenos.png}
-        \caption{Test de antígenos para SARS-CoV-2. Resultado positivo (se observan líneas en la zonas de control (C) y test (T)) y negativo (se observa solo línea en control (C)).}
-        \label{fig:antigenos}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
+\textbf{Pruebas de antígenos}: aunque menos sensibles, ofrecen resultados rápidos y son útiles en entornos donde se requiere diagnóstico inmediato.
 
 \textbf{Pruebas serológicas}: detectan anticuerpos y son útiles para estudios epidemiológicos, pero no para el diagnóstico en fases agudas.
 
 \subsection{Tratamiento}
-Varía según la gravedad del cuadro clínico.
-
-En casos leves o moderados, se basa en medidas como el reposo, la hidratación, el control de la fiebre y el dolor, y el seguimiento domiciliario. En pacientes con factores de riesgo, se recomienda un monitoreo más estrecho para detectar complicaciones \cite{qaseem2023outpatient}.
-
-En casos graves, requieren hospitalización y soporte respiratorio, incluyendo oxigenoterapia. Se emplean tratamientos específicos para reducir la inflamación, prevenir complicaciones como la trombosis, y mejorar la respuesta inmunitaria. En algunos casos, es necesario el ingreso en UCI y el uso de ventilación mecánica \cite{wiersinga2020pathophysiology}.
+Varía según la gravedad del cuadro clínico. En casos leves o moderados, se basa en medidas como el reposo, la hidratación, el control de la fiebre y el dolor, y el seguimiento domiciliario. En pacientes con factores de riesgo, se recomienda un monitoreo más estrecho para detectar complicaciones \cite{qaseem2023outpatient}. En casos graves, requieren hospitalización y soporte respiratorio, incluyendo oxigenoterapia. Se emplean tratamientos específicos para reducir la inflamación, prevenir complicaciones como la trombosis, y mejorar la respuesta inmunitaria. En algunos casos, es necesario el ingreso en UCI y el uso de ventilación mecánica \cite{wiersinga2020pathophysiology}.
 
 \subsection{Medidas de prevención}
 Las principales medidas para prevenir el COVID-19 incluidas en \cite{hutchins2020covid}:
@@ -593,21 +509,19 @@ Estas estrategias, combinadas, son clave para reducir la transmisión y proteger
 La evolución varía desde formas asintomáticas hasta cuadros críticos. Generalmente se explica en \cite{cdc_covid19_yellowbook} que sigue estas fases:
 
 \begin{enumerate}
-    \item Incubación e inicio: el periodo de incubación es de 2 a 14 días. Los síntomas iniciales incluyen fiebre, tos, malestar, dolor de garganta, mialgias, y en algunos casos síntomas gastrointestinales. La pérdida del olfato y gusto es frecuente.
-    \item Fase prodrómica (1ª semana): aparecen síntomas respiratorios leves o moderados. Puede observarse neumonía incipiente y alteraciones leves en marcadores inflamatorios.
-    \item Fase aguda (2ª semana): se intensifican los síntomas, especialmente la disnea. Pueden aparecer complicaciones como neumonía grave, daño cardíaco o trastornos de coagulación. Los marcadores inflamatorios y hematológicos alcanzan sus niveles más alterados.
+    \item Incubación e inicio: el periodo de 2 a 14 días. Los síntomas iniciales incluyen fiebre, tos, malestar, dolor de garganta. La pérdida del olfato y gusto es frecuente.
+    \item Fase prodrómica (1ª semana): síntomas respiratorios leves o moderados. Neumonía incipiente y alteraciones leves en marcadores inflamatorios.
+    \item Fase aguda (2ª semana): se intensifican los síntomas. Complicaciones como neumonía grave, daño cardíaco o trastornos de coagulación. Los marcadores inflamatorios y hematológicos alcanzan sus niveles más alterados.
     \item Fase de remisión (3ª semana): los síntomas comienzan a mejorar, aunque la inflamación puede persistir.
     \item Convalecencia, la recuperación puede tardar semanas, dependiendo de la gravedad del cuadro.
 \end{enumerate}
 
-Factores de riesgo: edad avanzada, enfermedades crónicas (cardiovasculares, pulmonares, diabetes, obesidad) y alteraciones inmunológicas aumentan el riesgo de enfermedad grave.
-
-Hallazgos clínicos, en casos graves, se observan linfopenia y elevación de marcadores como dímero D, PCR y ferritina. Las imágenes pulmonares suelen mostrar opacidades en vidrio esmerilado.
+Factores de riesgo: edad avanzada, enfermedades crónicas y alteraciones inmunológicas aumentan el riesgo de enfermedad grave. Hallazgos clínicos, en casos graves, se observan linfopenia y elevación de marcadores como dímero D, PCR y ferritina. Las imágenes pulmonares suelen mostrar opacidades en vidrio esmerilado.
 
 \subsection{Impacto de la pandemia del COVID-19}
 Ha tenido consecuencias profundas a nivel global, afectando múltiples aspectos de la sociedad. 
-
-Salud pública. Con más de 774 millones de casos y 7 millones de muertes hasta febrero de 2024, la incidencia se puede observar en la figura \ref{fig:muertes covid}\footnote{Obtenida de \cite{elpais_covidmap}}, la pandemia desbordó los sistemas de salud, generando escasez de recursos y personal médico, especialmente en poblaciones vulnerables.
+\begin{itemize}
+\item Salud pública. Con más de 774 millones de casos y 7 millones de muertes hasta febrero de 2024, la incidencia se puede observar en la figura \ref{fig:muertes covid}\footnote{Obtenida de \cite{elpais_covidmap}}, la pandemia desbordó los sistemas de salud, generando escasez de recursos y personal médico, especialmente en poblaciones vulnerables.
 \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\textwidth]{img/covid_muertes.png}
@@ -615,31 +529,36 @@ Salud pública. Con más de 774 millones de casos y 7 millones de muertes hasta 
         \label{fig:muertes covid}
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
 \end{figure}
-\begin{itemize}
-    \item Economía. Las medidas de confinamiento y el cierre de actividades causaron una fuerte recesión global, afectando gravemente sectores como el turismo, la hostelería y el comercio, y acentuando las desigualdades económicas.
-    \item Vida social y salud mental. El aislamiento y la incertidumbre aumentaron los niveles de ansiedad, depresión y otros trastornos mentales, al tiempo que se intensificaron el estigma y la discriminación hacia ciertos grupos.
-    \item Educación. El cierre de centros educativos forzó una transición abrupta a la educación en línea, revelando y ampliando las brechas digitales, especialmente en estudiantes de bajos recursos.
+
+    \item Economía. El confinamiento y cierre de actividades afectaron gravemente sectores como el turismo, la hostelería y el comercio, y acentuando las desigualdades económicas.
+    \item Vida social y salud mental. El aislamiento y la incertidumbre aumentaron niveles de ansiedad, depresión y otros trastornos mentales, al tiempo que se intensificaron el estigma y la discriminación hacia ciertos grupos.
+    \item Educación. El cierre de centros educativos forzó una transición abrupta a la educación en línea, revelando y ampliando las brechas digitales.
     \item Medio ambiente. La reducción de la actividad humana durante los confinamientos produjo efectos positivos temporales, como la disminución de emisiones contaminantes y la mejora en la calidad del aire.
 \end{itemize}
 
 La pandemia evidenció vulnerabilidades globales y la necesidad de fortalecer sistemas sanitarios, reducir desigualdades y prepararse mejor para futuras emergencias \cite{miyah2022covid}.
 
 \section{Ingeniería de control}
-La ingeniería de control es una disciplina de la ingeniería que se encarga del análisis y diseño de sistemas capaces de autorregularse para alcanzar un comportamiento deseado. Su objetivo es influir sobre el comportamiento dinámico de un sistema, de modo que, ante ciertas entradas o perturbaciones, se obtenga una respuesta predefinida, deseable o estable \cite{tme_ingenieria_control}.
+La ingeniería de control es una disciplina de la ingeniería que se encarga del análisis y diseño de sistemas capaces de autorregularse para alcanzar comportamientos deseados. Su objetivo es influir sobre el comportamiento dinámico de un sistema, ante ciertas entradas o perturbaciones, se obtenga una respuesta predefinida, deseable o estable \cite{tme_ingenieria_control}. Se apoya en la teoría de control, que proporciona las herramientas para analizar cómo los sistemas responden a estímulos y cómo diseñar mecanismos para modificar esa respuesta. Los sistemas controlados pueden ser físicos, químicos, biológicos o sociales, y todos ellos comparten una estructura común, poseen entradas, salidas, variables de estado y, en muchos casos, un mecanismo de retroalimentación.
 
-Esta rama se apoya en la teoría de control, parte fundamental de las matemáticas aplicadas que proporciona las herramientas para analizar cómo los sistemas responden a estímulos y cómo diseñar mecanismos para modificar esa respuesta. Los sistemas controlados pueden ser físicos, químicos, biológicos o sociales, y todos ellos comparten una estructura común, poseen entradas, salidas, variables de estado y, en muchos casos, un mecanismo de retroalimentación.
+El concepto de \textbf{retroalimentación} es central en esta disciplina. Un sistema con retroalimentación mide continuamente su salida y la compara con un valor deseado (referencia). Realiza ajustes automáticos en sus entradas para minimizar el error. Otro de los principios clave es la \textbf{estabilidad del sistema}. Un sistema es estable si, ante una perturbación o cambio en las condiciones iniciales, tiende a volver a su estado de equilibrio o comportamiento deseado sin intervención externa constante. Mientras que un sistema inestable puede presentar comportamientos no deseados, como respuestas crecientes o caóticas, que requieren intervención activa o rediseño del sistema de control \cite{ait_ingenieria_control}.
 
-El concepto de \textbf{retroalimentación} es central en esta disciplina. Un sistema con retroalimentación mide continuamente su salida y la compara con un valor deseado (referencia). Con base en esta comparación, realiza ajustes automáticos en sus entradas para minimizar el error. Uno de los principios clave de la ingeniería de control es la \textbf{estabilidad del sistema}. Un sistema es estable si, ante una perturbación o cambio en las condiciones iniciales, tiende a volver a su estado de equilibrio o comportamiento deseado sin intervención externa constante. Mientras que un sistema inestable puede presentar comportamientos no deseados, como respuestas crecientes o caóticas, que requieren intervención activa o rediseño del sistema de control \cite{ait_ingenieria_control}.
+
+\textbf{La regulación mediante PID\footnote{Proporcional-Integral-Derivativo}} es una técnica ampliamente utilizada en el control automático de sistemas para mantener una variable de proceso, como la temperatura, velocidad o presión, en un valor deseado o setpoint. Un controlador PID ajusta la señal de control basándose en tres acciones \cite{mazzone2002controladores}:
+\begin{itemize}
+    \item Proporcional (P): corrige el error actual multiplicándolo por una ganancia proporcional.
+    \item Integral (I): considera la acumulación del error pasado para eliminar el error constante a largo plazo.
+    \item Derivativa (D): anticipa la tendencia futura del error, basándose en su tasa de cambio, para mejorar la estabilidad y respuesta del sistema.
+\end{itemize}
+
+Combinando estas tres acciones, el controlador PID puede responder rápidamente a cambios, reducir errores y minimizar oscilaciones, logrando un control eficiente y preciso en múltiples aplicaciones industriales y tecnológicas.
+
 
 \subsection{Relación con los modelos epidemiologicos deterministas}
-La ingeniería de control, aunque más utilizada en campos como la ingeniería mecánica o eléctrica, ha encontrado aplicaciones cada vez más relevantes en áreas como la biomedicina, la salud pública y la epidemiología. En este sentido, el estudio y la gestión de enfermedades infecciosas pueden abordarse desde una perspectiva de sistemas dinámicos, donde se aplican conceptos de la teoría de control para modelar, analizar y diseñar estrategias de intervención.
-
-En el contexto de enfermedades como el sarampión o el COVID-19, la población afectada y las tasas de contagio, recuperación o vacunación pueden representarse mediante modelos matemáticos dinámicos como SIR o SEIR. Estos modelos funcionan como sistemas que evolucionan en el tiempo, respondiendo a entradas externas como campañas de vacunación, cambios de comportamiento social o aparición de nuevas variantes del virus.
+La ingeniería de control, aunque más utilizada en campos como la ingeniería mecánica o eléctrica, ha encontrado aplicaciones cada vez más relevantes en áreas como la biomedicina, la salud pública y la epidemiología. En este sentido, el estudio y la gestión de enfermedades infecciosas pueden abordarse desde una perspectiva de sistemas dinámicos, donde se aplican conceptos de la teoría de control para modelar, analizar y diseñar estrategias de intervención. En el contexto de enfermedades como el sarampión o el COVID-19, la población afectada y las tasas de contagio, recuperación o vacunación pueden representarse mediante modelos matemáticos dinámicos como SIR o SEIR. Estos modelos funcionan como sistemas que evolucionan en el tiempo, respondiendo a entradas externas como campañas de vacunación, cambios de comportamiento social o aparición de nuevas variantes del virus.
 
 Desde la ingeniería de control, las estrategias de \textbf{vacunación masiva} pueden interpretarse como acciones de control diseñadas para modificar el comportamiento del sistema (epidemia) y llevarlo hacia un estado deseado (como una incidencia cercana a cero). En este caso, el sistema de salud actúa como el controlador que mide la evolución de la epidemia (salida) y ajusta las intervenciones (entrada) en función de los resultados observados.
-
 Además, el concepto de \textbf{retroalimentación} se refleja en la toma de decisiones basadas en datos epidemiológicos. Por ejemplo, si se observa un aumento en el número de contagios, el sistema sanitario puede responder con un aumento de las medidas preventivas como más vacunación o confinamientos. Este lazo de control permite estabilizar la situación sanitaria y evitar comportamientos incontrolables en la propagación de la enfermedad.
-
 También se puede hablar de \textbf{estabilidad epidemiológica}: un sistema sanitario bien diseñado busca que, incluso ante perturbaciones como la llegada de nuevos brotes, la incidencia no se dispare, sino que el sistema sea capaz de amortiguar el impacto y regresar a una situación de control. Aquí es donde la ingeniería de control y la salud pública convergen en una visión interdisciplinaria y estratégica.
 
 Incluir el enfoque de la ingeniería de control en el estudio de enfermedades infecciosas no solo permite describir su comportamiento dinámico, sino también diseñar y evaluar políticas de intervención eficaces y sostenibles. La modelización y control de epidemias ofrece terreno para la aplicación de herramientas de ingeniería con impacto directo en la salud pública.
@@ -647,19 +566,18 @@ Incluir el enfoque de la ingeniería de control en el estudio de enfermedades in
 \section{Estado del arte y trabajos relacionados}
 En esta sección se presenta una revisión actualizada sobre el uso de modelos deterministas en el estudio de la propagación de enfermedades infecciosas, con especial atención a los modelos SIS, SIR y SEIR, así como sus variantes que incorporan estrategias de vacunación. La revisión se estructura de forma cronológica y temática, destacando los enfoques teóricos, las aportaciones aplicadas y los trabajos que han influido directamente en el desarrollo del presente proyecto. Para cada estudio se identifican los elementos técnicos más relevantes y su aplicabilidad a esta investigación, que incluye además la implementación de los modelos mediante la herramienta Simulink.
 
-Uno de los modelos más clásicos y ampliamente difundidos es el modelo SIR, introducido por Kermack y McKendrick en 1927, que divide la población en tres compartimentos: susceptibles, infectados y recuperados. A partir de este modelo, se han desarrollado múltiples variantes que permiten adaptarse mejor a las características de distintas enfermedades. Por ejemplo, el modelo SEIR introduce una fase de exposición previa a la infección, lo cual resulta más realista para enfermedades con un periodo de incubación definido.
+\textbf{Los modelos compartimentales deterministas}, como SI, SIR, SIS y SEIR, han sido fundamentales en la comprensión de la propagación de enfermedades infecciosas. Introducidos por Kermack y McKendrick en 1927 \cite{brauer2005kermack}, estos modelos dividen la población en compartimentos según el estado de la enfermedad y describen las transiciones entre ellos mediante EDO\footnote{Ecuaciones diferenciales ordinarias}. Por ejemplo, el modelo SIR considera tres compartimentos: Susceptibles (S), Infectados (I) y Recuperados (R), y ha sido ampliamente utilizado para enfermedades como el sarampión y la gripe \cite{carcione2020simulation}.
 
-En trabajos más recientes, como el de Ahumada et al. (2015), se utiliza un modelo SIR para estudiar la evolución del sarampión en Chile entre 1939 y 2014. El estudio muestra cómo la introducción de campañas de vacunación modificó de forma significativa la incidencia de la enfermedad, llegando incluso a eliminar los casos en algunos años. Este tipo de análisis demuestra el valor de los modelos deterministas no solo como herramienta predictiva, sino también como soporte para la toma de decisiones en salud pública.
+Estudios recientes han extendido estos modelos para incluir dinámicas más complejas. Se han incorporado nacimientos y muertes, inmunidad temporal, vacunación y heterogeneidad poblacional. Un ejemplo de ello es el modelo SEIRS, que añade un compartimento de Expuestos (E) y considera la pérdida de inmunidad, permitiendo que los individuos recuperados vuelvan a ser susceptibles \cite{trawicki2017deterministic}. Estos modelos han sido aplicados para estudiar enfermedades como el VIH y el Ébola, proporcionando información valiosa sobre la dinámica de transmisión y el impacto de las intervenciones.
 
-A nivel metodológico, muchos autores han propuesto extender los modelos básicos para incluir la vacunación como un flujo adicional que transfiere directamente a parte de la población susceptible hacia el grupo de recuperados o inmunes. Esta incorporación permite simular campañas de vacunación continuas o puntuales y analizar su impacto sobre el equilibrio del sistema.
+Sin embargo, es importante reconocer las limitaciones de estos modelos. La suposición de una población homogénea y la omisión de factores estocásticos pueden llevar a sobreestimaciones del número básico de reproducción $R_0$ y a una representación simplificada de la realidad \cite{ali2024deterministic}. Por ello, se han desarrollado modelos estocásticos y enfoques basados en redes para capturar la variabilidad y complejidad de las epidemias reales \cite{islam2020integer}.
 
-Una aportación específica de este trabajo es la implementación de los modelos en el entorno Simulink, que permite representar las ecuaciones diferenciales mediante bloques funcionales. Esta herramienta facilita la comprensión visual del comportamiento dinámico del sistema, así como la posibilidad de ajustar parámetros en tiempo real, simular diferentes escenarios y observar sus efectos sobre la población. El uso de Simulink como herramienta de modelado contribuye a una representación clara e interactiva del sistema epidemiológico, permitiendo realizar comparaciones directas entre modelos con y sin vacunación.
 
-Además, como complemento a la simulación, este proyecto incluye el desarrollo de una aplicación interactiva que permite a cualquier usuario —con o sin conocimientos técnicos— visualizar el comportamiento dinámico de una epidemia bajo diferentes condiciones. Esta herramienta está diseñada con el objetivo de democratizar el acceso a la simulación epidemiológica, permitiendo modificar parámetros como la tasa de infección, recuperación o vacunación, y observar de forma inmediata cómo afectan a la evolución del sistema.
+\textbf{Simulink}, se ha utilizado para implementar modelos epidemiológicos debido a su capacidad para representar sistemas dinámicos mediante EDO. Su interfaz gráfica facilita la construcción y comprensión de modelos compartimentales, permitiendo a los usuarios simular la evolución temporal de epidemias bajo diferentes escenarios y parámetros.
 
-La interfaz gráfica ofrece una representación clara e intuitiva del número de individuos en cada compartimento a lo largo del tiempo. Esto no solo facilita la comprensión del modelo por parte del usuario, sino que también sirve como herramienta pedagógica en contextos educativos o divulgativos. La aplicación se ha desarrollado integrando Simulink con interfaces creadas en App Designer de MATLAB, lo que permite ejecutar simulaciones desde la interfaz, visualizar resultados dinámicos e incluso exportar datos para su posterior análisis.
+Existen diversos recursos y ejemplos de implementación de modelos SIR y SEIR en Simulink. Por ejemplo, el proyecto SimCOVID disponible en MATLAB Central proporciona una plataforma para simular la propagación de COVID-19 utilizando modelos compartimentales, permitiendo ajustar parámetros como la tasa de transmisión y la de recuperación para analizar diferentes escenarios \cite{abdulrahman_simcovid_2020}. Asimismo, otros estudios han utilizado Simulink para explorar el impacto de intervenciones como la vacunación y el distanciamiento social en la dinámica de las epidemias \cite{valentini2020sir}.
 
-En resumen, el uso de modelos deterministas para simular epidemias se encuentra ampliamente respaldado por la literatura. La integración de estrategias de vacunación y el uso de herramientas gráficas como Simulink refuerzan su aplicabilidad. La aportación de una herramienta interactiva accesible para el público general representa un valor añadido del presente trabajo, al acercar la epidemiología computacional a nuevos entornos de aprendizaje y toma de decisiones.
+La implementación en Simulink ofrece ventajas como la facilidad para realizar análisis de sensibilidad, probar diferentes estrategias de control y visualizar los resultados de manera intuitiva. Sin embargo, también presenta desafíos, como la necesidad de una comprensión sólida de las EDO y la correcta parametrización del modelo para reflejar adecuadamente la realidad epidemiológica \cite{wang2020global}.
 
 
 

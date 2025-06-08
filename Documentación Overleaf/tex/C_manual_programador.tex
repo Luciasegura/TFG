@@ -1,5 +1,119 @@
 \apendice{Manual del investigador}
 
-\section{Diagramas de bloques}
+\section{Estructura de directorios}
+A continuación se describe la estructura del proyecto, así como el contenido y propósito de cada carpeta y archivo relevante, todo está en el repositorio de GitHub. El proyecto está organizado en una estructura de carpetas que separa claramente los distintos componentes como se describe a continuación.
+
+\begin{itemize}
+    \item \textbf{Carpeta aplicación} \\
+    Contiene el archivo de la aplicación desarrollada en App Designer:
+    \begin{itemize}
+        \item \texttt{aplicacion\_modelos.mlapp}: interfaz principal para ejecutar simulaciones.
+    \end{itemize}
+
+    \item \textbf{Carpeta bibliografía} \\
+    Documentos y artículos científicos en .pdf utilizados para entender y fundamentar los modelos epidemiológicos.
+
+    \item \textbf{Carpeta documentación overleaf} \\
+    Carpeta que contiene los archivos fuente del TFG escritos en LaTeX:
+    \begin{itemize}
+        \item \texttt{Carpeta img}: imágenes utilizadas en la memoria y anexos.
+        \item \texttt{Carpeta tex}: secciones y capítulos del TFG, tanto memoria como anexos.
+        \item \texttt{anexos.tex, memoria.tex}: documentos principales del trabajo.
+        \item \texttt{bibliografia.bib, bibliografiaAnexos.bib}: bases de datos bibliográficas en formato BibTeX.
+    \end{itemize}
+
+    \item \textbf{Carpeta informes entrega} \\
+    Archivos PDF del trabajo final entregado:
+    \begin{itemize}
+        \item \texttt{anexos\_Lucía\_Segura.pdf}: anexos en formato .pdf.
+        \item \texttt{memoria\_Lucía\_Segura.pdf}: memoria en formato .pdf.
+    \end{itemize}
+
+    \item \textbf{Carpeta MATLAB} \\
+    Archivos y resultados de las simulaciones en entorno MATLAB:
+    \begin{itemize}
+        \item \texttt{/resultados/} \hfill Gráficas generadas desde scripts.
+        \item \texttt{modelo\_SIR\_PID.m} \hfill Código de simulación del modelo SIR con control PID.
+        \item Imágenes del controlador y parámetros PID.
+    \end{itemize}
+
+    \item \textbf{Carpeta Simulink} \\
+    Contiene los modelos diseñados en Simulink y sus resultados visuales:
+    \begin{itemize}
+        \item \texttt{Carpeta modelos Simulink}: archivos \texttt{.slx} de los modelos SI, SIS, SIR, SEIR, SIRV y SEIRV.
+        \item \texttt{Carpeta resultados}: imágenes de resultados (\texttt{.jpg}).
+        \item Imágenes de los diagramas (\texttt{.png}).
+    \end{itemize}
+
+    \item \texttt{README.md} \\
+    Archivo de introducción al proyecto, útil para usuarios que lo descarguen por primera vez.
+\end{itemize}
+
+Esta organización permite acceder rápidamente a cada componente del proyecto según su función: código, documentación, simulaciones o entregas finales.
+
+
+\subsection{C.2 Compilación, instalación y ejecución del proyecto}
+
+El proceso completo de instalación del entorno MATLAB y la ejecución de la aplicación se encuentra detallado en el \textbf{Apéndice B}, concretamente en el apartafo B.2. A continuación, se recogen únicamente algunas consideraciones relevantes desde el punto de vista del desarrollo:
+
+\begin{itemize}
+    \item El proyecto ha sido desarrollado en \textbf{MATLAB R2019b}. Es recomendable utilizar esta misma versión o una superior compatible con los archivos generados.
+
+    \item Se requiere disponer de los siguientes componentes:
+    \begin{itemize}
+        \item \texttt{MATLAB} (R2019b o superior)
+        \item \texttt{Simulink}
+        \item \texttt{Control System Toolbox}
+        \item \texttt{App Designer}
+    \end{itemize}
+
+    \item Los modelos se encuentran en la carpeta  \texttt{/Simulink/modelos\_Simulink/} con extensión \texttt{.slx}, y pueden abrirse directamente desde el entorno MATLAB haciendo doble clic sobre ellos.
+
+    \item Los scripts inc el controlador PID implementado sobre el modelo SIR, se encuentran en la carpeta \texttt{/MATLAB/} con extensión \texttt{.m}.
+
+    \item La aplicación se encuentra en 
+    {/aplicación/aplicacion\_modelos.mlapp}
+    
+    \item Para cualquier detalle adicional sobre configuración del entorno, instalación o estructura de archivos, se remite al Apéndice B.
+\end{itemize}
+
+\subsection{C.3 Pruebas del sistema}
+Durante el desarrollo del proyecto se llevaron a cabo diferentes pruebas para asegurar el correcto funcionamiento de los modelos implementados y de la interfaz gráfica desarrollada:
+
+\begin{itemize}
+    \item Se validó que los modelos epidemiológicos (SI, SIS, SIR, SEIR y SIR con control PID) producen resultados coherentes para diferentes combinaciones de parámetros.
+
+    \item En los modelos SIR y SEIR se añadió un componente de \textbf{vacunación}. Se realizaron pruebas con tasas de vacunación constantes, observando cómo influye en la evolución de los individuos. Como resultado, se observaron curvas más planas o reducción del pico epidémico, en línea con lo esperado teóricamente.
+
+    \item Se ejecutaron simulaciones con \textbf{datos reales de enfermedades infecciosas} contrastando los resultados generados por el modelo con los datos empíricos, para verificar la validez de la estructura matemática.
+
+    \item Se realizaron pruebas específicas con el modelo \textbf{SIR regulado mediante un controlador PID}, comprobando que el sistema responde adecuadamente a variaciones en el número de infectados y que el regulador permite mitigar oscilaciones o picos no deseados.
+
+    \item En cuanto a la aplicación gráfica (.mlapp) se verificó que cada modelo se carga correctamente, que los valores por defecto permiten una simulación directa y que la visualización gráfica es coherente con la salida del modelo.
+
+    
+\end{itemize}
+
+Estas pruebas confirman la robustez funcional del sistema, tanto desde el punto de vista técnico como de su aplicabilidad para visualizar dinámicas epidemiológicas complejas.
+
+\subsection{C.4 Instrucciones para la modificación o mejora del proyecto}
+
+El proyecto ha sido desarrollado de forma modular, por lo que resulta relativamente sencillo introducir mejoras. A continuación, se describen algunas recomendaciones para su modificación o ampliación:
+
+\begin{itemize}
+    \item \textbf{Ampliación de modelos:} Se pueden implementar nuevos modelos epidemiológicos (por ejemplo, SEIRS, modelos estocásticos o con movilidad) reutilizando la estructura existente en la aplicación.
+
+    \item \textbf{Incorporación de nuevas funcionalidades:} Sería interesante añadir funciones como el cálculo automático del número básico de reproducción \( R_0 \), análisis de sensibilidad, o exportación de resultados en CSV o PDF.
+
+    \item \textbf{Mejora de la interfaz:} La interfaz puede ampliarse con pestañas o menús desplegables para facilitar la navegación. También se podría implementar la carga de datos desde archivos externos.
+
+    \item \textbf{Uso de datos reales actualizados:} El proyecto puede conectarse con fuentes de datos abiertas (como la OMS o Our World in Data) para actualizar automáticamente los valores utilizados en las simulaciones.
+
+    \item \textbf{Portabilidad:} Para permitir su uso fuera de MATLAB, podría considerarse una migración parcial a otros lenguajes como Python o una versión web del visualizador.
+\end{itemize}
+
+Estas sugerencias pueden servir de base para futuras mejoras, tanto a nivel técnico como funcional.
+
+
 
 
