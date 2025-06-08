@@ -6,6 +6,8 @@ function sir_pid()
     beta_base = 0.3;
     gamma = 0.2;
     I_setpoint = 1000;
+    
+    
 
     % Parámetros del regulador PID
     Kp = 0.01;
