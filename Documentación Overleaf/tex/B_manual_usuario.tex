@@ -69,7 +69,7 @@ Una vez instalado MATLAB, se recomienda seguir los siguientes pasos para ejecuta
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
     \end{figure}
     Cambiar 'ruta/del/proyecto' por la ruta en la que se tenga el proyecto.
-    Sirve para añadir al path\footnote{Ruta de búsqueda, conjunto de carpetas donde MATLAB busca archivos cuando ejecutas comandos o funciones.} de MATLAB la carpeta principal del proyecto y todas sus subcarpetas, de modo que MATLAB pueda acceder a todos los archivos, funciones, scripts y modelos sin errores. No haya que estar navegando carpeta por carpeta o copiando archivos manualmente.
+    Sirve para añadir al path\footnote{Ruta de búsqueda, conjunto de carpetas donde MATLAB busca archivos cuando se ejecutan comandos o funciones.} de MATLAB la carpeta principal del proyecto y todas sus subcarpetas, de modo que MATLAB pueda acceder a todos los archivos, funciones, scripts y modelos sin errores. No hay que estar navegando carpeta por carpeta o copiando archivos manualmente.
     \item Para lanzar la aplicación con interfaz gráfica, abrir el archivo .mlapp desde o ejecutar en la ventana de comandos de MATLAB lo que se ve en la figura \ref{fig:app abrir}
     \begin{figure}[H]
         \centering
@@ -79,9 +79,17 @@ Una vez instalado MATLAB, se recomienda seguir los siguientes pasos para ejecuta
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
     \end{figure}
     \item Los modelos desarrollados en Simulink se encuentran organizados dentro de la carpeta Simulink/Modelos Simulink, con extensión .slx. Para abrir cualquiera de ellos, basta con hacer doble clic sobre el archivo correspondiente.
+   
     Por otro lado, los scripts de MATLAB se localizan en la carpeta matlab y tienen extensión .m. Al igual que los modelos, estos pueden abrirse directamente haciendo doble clic sobre el archivo. 
-    Una vez abiertos en el entorno, la ejecución se realiza pulsando el botón Run.
-    
+    Una vez abiertos en el entorno, la ejecución se realiza pulsando el botón Run, que se puede observar en la figura \ref{fig:app run} donde se encuentra.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{img/run.png}
+        \caption{Interfaz inicial de la aplicación}
+        \label{fig:app run}
+        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    \end{figure}
 \end{enumerate}
 
 
@@ -149,11 +157,6 @@ A continuación, se presentan dos ejemplos prácticos de uso de la aplicación, 
 \textbf{Pasos:}
 \begin{enumerate}
     \item Seleccionar el modelo \textbf{SIR} en el menú desplegable \ref{fig:eleccion sir}.
-     \item Verificar que los valores por defecto se han cargado correctamente (se pueden modificar si se desea)\ref{fig:datos defecto}.
-      \item Pulsar el botón \textbf{Simular}.
-
-     
-    \item Observar la evolución temporal de las tres poblaciones en la gráfica \ref{fig:simulacion sir ap}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\textwidth]{img/eleccion modelo SIR.png}
@@ -161,15 +164,25 @@ A continuación, se presentan dos ejemplos prácticos de uso de la aplicación, 
         \label{fig:eleccion sir}
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
     \end{figure}
-   
+    
+     \item Verificar que los valores por defecto se han cargado correctamente (se pueden modificar si se desea)\ref{fig:datos defecto}.
 
-    \begin{figure}[H]
+\begin{figure}[H]
         \centering
         \includegraphics[width=0.7\textwidth]{img/modelo sir datos.png}
         \caption{Comprobación de que salen los datos por defecto}
         \label{fig:datos defecto}
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
     \end{figure}
+     
+      \item Pulsar el botón \textbf{Simular}.
+
+     
+    \item Observar la evolución temporal de las tres poblaciones en la gráfica \ref{fig:simulacion sir ap}
+    
+   
+
+    
    
    
     \begin{figure}[H]
@@ -189,18 +202,20 @@ Este ejemplo permite visualizar cómo aumenta inicialmente el número de infecta
 \textbf{Se siguien los mismos pasos que antes:}
 \begin{enumerate}
     \item Seleccionar el modelo \textbf{SEIR} \ref{fig:eleccion seirv}.
-    \item Comprobar que los valores se han precargado automáticamente, se pueden cambiar si se desea.
-    \item Hacer clic en \textbf{Simular}.
-    \item Observar el efecto del regulador PID: el número de infectados se mantiene bajo control y disminuye más rápidamente \ref{fig:eseeir}.
-\end{enumerate}
 
-\begin{figure}[H]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\textwidth]{img/eleccion SEIR.png}
         \caption{Elección del modelo, en este caso SEIRV}
         \label{fig:eleccion seirv}
         \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
     \end{figure}
+    \item Comprobar que los valores se han precargado automáticamente, se pueden cambiar si se desea.
+    \item Hacer clic en \textbf{Simular}.
+    \item Observar el efecto del regulador PID: el número de infectados se mantiene bajo control y disminuye más rápidamente \ref{fig:eseeir}.
+\end{enumerate}
+
+
 
 
 \begin{figure}[H]
