@@ -259,78 +259,8 @@ Este valor de $R_0$ es muy elevado, indica que cada personas infectada contagia,
 
 Finalmente, al tratarse de un modelo SIR, los individuos que se recuperan no pueden volver a infectarse, a diferencia del modelo SIS, donde los recuperados retornan al grupo de susceptibles. Esta diferencia es clave para entender por qué, en este caso, la epidemia se extingue completamente una vez que se alcanza la in munidad de grupo, dejando a toda la población en el compartimento de recuperados.
 
-\subsection{Mejora del modelo SIR}
-Mejorar el modelo SIR como medida de control, incorporando explícitamente el efecto de la vacunación. Esta adaptación se conoce como modelo \textbf{SIRV} (Susceptibles – Infectados – Recuperados – Vacunados) y permite representar de forma más precisa la evolución de enfermedades infecciosas en poblaciones donde existen campañas de inmunización.
-
-En el modelo SIRV, las personas susceptibles pueden infectarse al entrar en contacto con individuos contagiados, pero también tienen la opción de vacunarse como medida preventiva. Se asume que la vacunación confiere inmunidad completa y permanente, lo que implica que los individuos vacunados no pueden contraer la enfermedad ni transmitirla, y permanecen en ese estado de forma indefinida. De este modo, el grupo de vacunados actúa como una barrera adicional a la propagación del virus, reduciendo la proporción de personas susceptibles en la población y limitando la posibilidad de nuevos brotes.
-
-Esta mejora del modelo permite analizar el impacto de diferentes tasas de vacunación sobre la evolución de la enfermedad y estudiar posibles estrategias de control. Además, ofrece una visión más ajustada a la situación actual, en la que la vacunación juega un papel fundamental en la protección individual y colectiva frente a enfermedades.
-
-\textbf{Supuestos del modelo}. Es importante señalar que se mantienen los mismos supuestos básicos que en el modelo SIR. La única diferencia es la incorporación de la vacunación como medida de control de la enfermedad. En este modelo, se asume que las personas susceptibles que reciben la vacuna adquieren una inmunidad equivalente a la de quienes se han recuperado de la infección. Por ello, se considera que los individuos vacunados pasan directamente del compartimento de susceptibles al de recuperados, sin transitar por el estado de infectados.
-
-Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:ejemplo SIRV}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SIRV.png}
-    \caption{Diagrma de flujo modelo SIRV}
-    \label{fig:ejemplo SIRV}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
-
-También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:ec1SIRV}\eqref{eq:ec2SIRV}\eqref{eq:ec3SIRV}.
-\begin{align}
-\frac{dS}{dt} &= -\beta SI - \nu S \label{eq:ec1SIRV} \\
-\frac{dI}{dt} &= \beta SI - \gamma I \label{eq:ec2SIRV} \\
-\frac{dR}{dt} &= \gamma I + \nu S \label{eq:ec3SIRV}
-\end{align}
-
-Donde:
-\begin{itemize}
-    \item 	La ecuación ds⁄dt \eqref{eq:ec1SIRV}, representa la disminución del número de personas susceptibles con el tiempo. Se reduce el número por dos mecanismos contagio y vacunación. Cuando los susceptibles entran en contacto con infectados, se contagian y dejan de ser susceptibles. Cuando los susceptibles se vacunan, también abandonan este estado. El signo negativo indica que la población susceptible disminuye con el tiempo.
-    \item 	La ecuación dI⁄dt \eqref{eq:ec2SIRV}, describe la evolución del número de infectados. Aumenta por nuevos contagios y disminuye por recuperación. La diferencia entre los dos términos determina si el número de infectados crece generando un brote epidémico o decrece produciéndose un control de la enfermedad.
-    \item 	La ecuación dR⁄dt \eqref{eq:ec3SIRV}, muestra como aumenta el número de personas inmunizadas. Se incluyen tanto a las personas recuperadas de la enfermedad como a los vacunados que pasan directamente al estado inmune. El crecimiento del comportamiento recuperado refleja la inmunidad de la población.
-    \item 	Beta ($\beta$): tasa de transmisión o contagio, ya explicada anteriormente.
-    \item 	Gamma ($\gamma$): tasa de recuperación, explicada anteriormente.
-    \item	Nu ($\nu$): tasa de vacunación. Nuevo parámetro incluido que va a representar la fracción de la población susceptible que se vacuna por unidad de tiempo. Permite estudiar distintos escenarios de intervención sanitaria mediante campañas de vacunación. Sus unidades son
-\[
-[\text{tiempo}]^{-1}
-\]
-Se calcula como en la ecuación \eqref{eq:nu}
-\begin{equation}
-\nu = \frac{1}{\text{tiempo}}
-\label{eq:nu}
-\end{equation}
-Es importante señalar, que normalmente lo que se encuentra es la cobertura de vacunación, por lo que hay que calcular la tasa de vacunación, para ello se utiliza la ecuación\eqref{eq:nu_log}.
-\begin{equation}
-\nu = \frac{-\ln(1 - \text{cobertura})}{\text{tiempo}}
-\label{eq:nu_log}
-\end{equation}
 
 
-\end{itemize}
-
-En este modelo no se ha incluido un compartimento explícito para los vacunados, ya que se asume que la vacunación proporciona una inmunidad equivalente a la adquirida tras pasar la enfermedad. Por lo tanto, las personas vacunadas son incorporadas de manera directa al compartimento de recuperados, simplificando así el modelo sin perder su capacidad explicativa. También dejar claro que no se añade la población total de forma explícita para su simplificación. Se redefine el parámetro beta como ya se ha visto anteriormente.
-
-Es importante señalar que la tasa de transmisión ($\beta$) no varía directamente como consecuencia de la vacunación, ya que se trata de un parámetro biológico y social que describe la probabilidad de contagio efectivo entre un individuo susceptible y uno infectado por unidad de tiempo. Esta tasa depende de factores como la contagiosidad del virus, el número medio de contactos diarios entre personas y las medidas de comportamiento social.
-
-Por tanto, $\beta$ se mantiene constante en el modelo si no cambian ni el virus ni las condiciones sociales de la población. Lo que sí se ve directamente afectado por la vacunación es el número de susceptibles. Al disminuir el tamaño del grupo susceptible mediante la inmunización, también se reduce la probabilidad de que se produzcan nuevos contagios, incluso si $\beta$ permanece constante. Aunque el virus mantenga su capacidad de contagio, al haber menos personas expuestas, disminuye el número efectivo de nuevas infecciones.
-
-Además, se está utilizando la $\beta$ efectiva o ajustada, que es el valor de $\beta$ dividido entre la población total. En este caso, si la población total cambia, el valor de $\beta$ ajustada también cambiará, incluso si $\beta$ se mantiene constante. Esto se debe a que el tamaño poblacional afecta directamente al cálculo del número esperado de contactos efectivos entre susceptibles e infectados.
-
-\subsection{Control PID para modelo SIR}
-Con el objetivo de limitar la cantidad de personas infectadas, se incorporó un mecanismo de control basado en un regulador PID. Este controlador actúa modificando el parámetro $\beta$, lo que equivale a simular la implementación de medidas como el distanciamiento social, el confinamiento o el uso de mascarillas. El propósito del controlador es mantener el número de infectados cerca de un valor deseado, también llamado setpoint.
-
-Las simulaciones se realizaron directamente en MATLAB, utilizando código para resolver numéricamente el sistema de ecuaciones diferenciales mediante el método de Euler. El controlador PID también se programó en MATLAB, permitiendo ajustar sus parámetros y analizar la respuesta del sistema en distintos escenarios, variando los valores de $\beta$ y $\gamma$. Esto permite observar el comportamiento de la epidemia y la capacidad del controlador para mantenerla bajo control.
-
-En la figura \ref{fig:simu3pid} se muestra un ejemplo de la introducción de un regulador en el modelo. Se puede observar que el pico de infectados no alcanza un valor muy elevado, ya que el número de personas infectadas se mantiene aproximadamente en torno al valor de referencia (setpoint). A medida que la epidemia avanza y disminuye la cantidad de personas susceptibles, el número de infectados tiende a cero.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/modeloSIR_PID3.png}
-    \caption{Simulación 1 para modelo SIR con PID}
-    \label{fig:simu3pid}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
 
 \section{Modelo SEIR}
 El modelo SEIR añade un estado de exposición (E) al SIR, para representar enfermedades con periodo de incubación. Los individuos pasan de susceptibles a expuestos, luego a infectados y finalmente a recuperados con inmunidad. Es útil para modelar infecciones con retraso en la transmisibilidad.
@@ -428,6 +358,119 @@ R_0 = \frac{\beta}{\gamma} = \frac{0.5}{0.071} \approx 7
 \end{equation}
 $R_0$ es 7, con lo que es mayor que 1, por lo tanto la enfermedad tiende a crecer, se ve que en la gráfica \ref{fig:eje SEIR} se cumple este comportamiento.
 
+
+
+
+
+
+\section{Medidas de control}
+
+Se han incorporado dos medidas principales de control epidemiológico con el objetivo de reducir el impacto de la propagación de la enfermedad
+\begin{itemize}
+    \item \textbf{Vacunación preventiva}. Se ha añadido un término de vacunación a los modelos SIR y SEIR, permitiendo que la población susceptible adquiera inmunidad sin necesidad de haber pasado por la enfermedad. Esta estrategia representa una intervención sanitaria proactiva, donde una fracción de la población susceptible pasa directamente al compartimento de los inmunizados o recuperados. De este modo, se reduce la cantidad de personas expuestas al virus y, en consecuencia, el número total de infectados a lo largo del tiempo.
+    \item \textbf{Control dinámico mediante regulador PID}. En el modelo SIR, se ha implementado un regulador PID que actúa sobre el parámetro $\beta$, correspondiente a la tasa de transmisión de la enfermedad. El objetivo del controlador es mantener el número de individuos infectados cercano a un valor de referencia o setpoint, evitando así un pico epidémico elevado que pueda sobrecargar el sistema sanitario.
+   Este control simula políticas dinámicas como cuarentenas, distanciamiento social, o uso de mascarillas, cuya intensidad se ajusta automáticamente en función de la evolución de los casos activos. Cuanto más se desvían los infectados del valor deseado, mayor es la intervención del regulador para reducir la transmisión, modificando $\beta$ en tiempo real.
+\end{itemize}
+
+\subsection{Mejora del modelo SIR}
+Mejorar el modelo SIR como medida de control, incorporando explícitamente el efecto de la vacunación. Esta adaptación se conoce como modelo \textbf{SIRV} (Susceptibles – Infectados – Recuperados – Vacunados) y permite representar de forma más precisa la evolución de enfermedades infecciosas en poblaciones donde existen campañas de inmunización.
+
+En el modelo SIRV, las personas susceptibles pueden infectarse al entrar en contacto con individuos contagiados, pero también tienen la opción de vacunarse como medida preventiva. Se asume que la vacunación confiere inmunidad completa y permanente, lo que implica que los individuos vacunados no pueden contraer la enfermedad ni transmitirla, y permanecen en ese estado de forma indefinida. De este modo, el grupo de vacunados actúa como una barrera adicional a la propagación del virus, reduciendo la proporción de personas susceptibles en la población y limitando la posibilidad de nuevos brotes.
+
+Esta mejora del modelo permite analizar el impacto de diferentes tasas de vacunación sobre la evolución de la enfermedad y estudiar posibles estrategias de control. Además, ofrece una visión más ajustada a la situación actual, en la que la vacunación juega un papel fundamental en la protección individual y colectiva frente a enfermedades.
+
+\textbf{Supuestos del modelo}. Es importante señalar que se mantienen los mismos supuestos básicos que en el modelo SIR. La única diferencia es la incorporación de la vacunación como medida de control de la enfermedad. En este modelo, se asume que las personas susceptibles que reciben la vacuna adquieren una inmunidad equivalente a la de quienes se han recuperado de la infección. Por ello, se considera que los individuos vacunados pasan directamente del compartimento de susceptibles al de recuperados, sin transitar por el estado de infectados.
+
+Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:ejemplo SIRV}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/diagrama_SIRV.png}
+    \caption{Diagrma de flujo modelo SIRV}
+    \label{fig:ejemplo SIRV}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:ec1SIRV}\eqref{eq:ec2SIRV}\eqref{eq:ec3SIRV}.
+\begin{align}
+\frac{dS}{dt} &= -\beta SI - \nu S \label{eq:ec1SIRV} \\
+\frac{dI}{dt} &= \beta SI - \gamma I \label{eq:ec2SIRV} \\
+\frac{dR}{dt} &= \gamma I + \nu S \label{eq:ec3SIRV}
+\end{align}
+
+Donde:
+\begin{itemize}
+    \item 	La ecuación ds⁄dt \eqref{eq:ec1SIRV}, representa la disminución del número de personas susceptibles con el tiempo. Se reduce el número por dos mecanismos contagio y vacunación. Cuando los susceptibles entran en contacto con infectados, se contagian y dejan de ser susceptibles. Cuando los susceptibles se vacunan, también abandonan este estado. El signo negativo indica que la población susceptible disminuye con el tiempo.
+    \item 	La ecuación dI⁄dt \eqref{eq:ec2SIRV}, describe la evolución del número de infectados. Aumenta por nuevos contagios y disminuye por recuperación. La diferencia entre los dos términos determina si el número de infectados crece generando un brote epidémico o decrece produciéndose un control de la enfermedad.
+    \item 	La ecuación dR⁄dt \eqref{eq:ec3SIRV}, muestra como aumenta el número de personas inmunizadas. Se incluyen tanto a las personas recuperadas de la enfermedad como a los vacunados que pasan directamente al estado inmune. El crecimiento del comportamiento recuperado refleja la inmunidad de la población.
+    \item 	Beta ($\beta$): tasa de transmisión o contagio, ya explicada anteriormente.
+    \item 	Gamma ($\gamma$): tasa de recuperación, explicada anteriormente.
+    \item	Nu ($\nu$): tasa de vacunación. Nuevo parámetro incluido que va a representar la fracción de la población susceptible que se vacuna por unidad de tiempo. Permite estudiar distintos escenarios de intervención sanitaria mediante campañas de vacunación. Sus unidades son
+\[
+[\text{tiempo}]^{-1}
+\]
+Se calcula como en la ecuación \eqref{eq:nu}
+\begin{equation}
+\nu = \frac{1}{\text{tiempo}}
+\label{eq:nu}
+\end{equation}
+Es importante señalar, que normalmente lo que se encuentra es la cobertura de vacunación, por lo que hay que calcular la tasa de vacunación, para ello se utiliza la ecuación\eqref{eq:nu_log}.
+\begin{equation}
+\nu = \frac{-\ln(1 - \text{cobertura})}{\text{tiempo}}
+\label{eq:nu_log}
+\end{equation}
+
+
+\end{itemize}
+
+En este modelo no se ha incluido un compartimento explícito para los vacunados, ya que se asume que la vacunación proporciona una inmunidad equivalente a la adquirida tras pasar la enfermedad. Por lo tanto, las personas vacunadas son incorporadas de manera directa al compartimento de recuperados, simplificando así el modelo sin perder su capacidad explicativa. También dejar claro que no se añade la población total de forma explícita para su simplificación. Se redefine el parámetro beta como ya se ha visto anteriormente.
+
+Es importante señalar que la tasa de transmisión ($\beta$) no varía directamente como consecuencia de la vacunación, ya que se trata de un parámetro biológico y social que describe la probabilidad de contagio efectivo entre un individuo susceptible y uno infectado por unidad de tiempo. Esta tasa depende de factores como la contagiosidad del virus, el número medio de contactos diarios entre personas y las medidas de comportamiento social.
+
+Por tanto, $\beta$ se mantiene constante en el modelo si no cambian ni el virus ni las condiciones sociales de la población. Lo que sí se ve directamente afectado por la vacunación es el número de susceptibles. Al disminuir el tamaño del grupo susceptible mediante la inmunización, también se reduce la probabilidad de que se produzcan nuevos contagios, incluso si $\beta$ permanece constante. Aunque el virus mantenga su capacidad de contagio, al haber menos personas expuestas, disminuye el número efectivo de nuevas infecciones.
+
+Además, se está utilizando la $\beta$ efectiva o ajustada, que es el valor de $\beta$ dividido entre la población total. En este caso, si la población total cambia, el valor de $\beta$ ajustada también cambiará, incluso si $\beta$ se mantiene constante. Esto se debe a que el tamaño poblacional afecta directamente al cálculo del número esperado de contactos efectivos entre susceptibles e infectados.
+
+
+\subsection{Control PID para modelo SIR}
+Con el objetivo de limitar la cantidad de personas infectadas, se incorporó un mecanismo de control basado en un regulador PID. Este controlador actúa modificando el parámetro $\beta$, lo que equivale a simular la implementación de medidas como el distanciamiento social, el confinamiento o el uso de mascarillas. El propósito del controlador es mantener el número de infectados cerca de un valor deseado\footnote{setpoint}.
+
+El sistema fue resuelto numéricamente mediante el método de Euler en MATLAB. Tanto las ecuaciones del modelo SIR como el regulador PID se programaron en código, lo que permitió ajustar fácilmente los parámetros del controlador y analizar su impacto en distintos escenarios.
+
+Los parámetros del controlador PID utilizados:
+\begin{itemize}
+    \item $K_p$ = 0.01
+
+    Término proporcional: reacciona al error actual entre el número de infectados y el setpoint.
+    Un valor moderado como este permite responder al brote sin reacciones bruscas.
+    \item $K_i$ = 0.001
+
+    Término integral: tiene en cuenta la acumulación del error en el tiempo.
+    Un valor bajo como este evita que el controlador se vuelva inestable por acumulaciones prolongadas.
+    \item $K_d$ = 0.01
+
+    Término derivativo: responde a la velocidad de cambio del error (si el brote está creciendo rápido).
+Con este valor se suaviza la respuesta del sistema ante cambios bruscos.
+\end{itemize}
+Seleccionados mediante ajuste manual, buscando una respuesta estable del sistema que redujera el pico de infectados sin generar oscilaciones no realistas. Esta elección permite aplicar medidas graduales, representando un equilibrio entre reacción rápida y control suave del brote.
+
+Además, el valor inicial del error fue error\_prev = 0 y la componente integral acumulada comenzó en error\_int = 0. El PID calcula en cada instante de tiempo una corrección sobre $\beta$, en función del error entre el número actual de infectados y el valor objetivo (setpoint), utilizando la expresión \eqref{eq:beta_PID}.
+\begin{equation}
+\beta(t) = \beta_0 - K_p \cdot e(t) - K_i \cdot \sum_{i=0}^{t} e(i) \cdot \Delta t - K_d \cdot \frac{e(t) - e(t - 1)}{\Delta t}
+\label{eq:beta_PID}
+\end{equation}
+Donde $e(t) = I(t) - I_{\text{setpoint}}$ es el error en cada paso temporal. Esta corrección permite simular una intervención proporcional a la gravedad del brote en cada momento, activando medidas más o menos estrictas según sea necesario.
+
+En la figura \ref{fig:simu3pid} se muestra un ejemplo de la introducción de un regulador en el modelo. Se puede observar que el pico de infectados no alcanza un valor muy elevado, ya que el número de personas infectadas se mantiene aproximadamente en torno al valor de referencia (setpoint). A medida que la epidemia avanza y disminuye la cantidad de personas susceptibles, el número de infectados tiende a cero.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/modeloSIR_PID3.png}
+    \caption{Simulación 1 para modelo SIR con PID}
+    \label{fig:simu3pid}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+
 \subsection{Mejora modelo SEIR}
 Mejorar el modelo SEIR como medida de control, incorporando el explícitamente el efecto de la vacunación. Esta adaptación del modelo clásico SEIR se conoce como modelo \textbf{SEIRV} (Susceptibles – Expuestos – Infectados – Recuperados – Vacunados), en el cual se añade un nuevo compartimento denominado V (Vacunados), que permite representar a las personas que, siendo inicialmente susceptibles, reciben una vacuna eficaz y desarrollan inmunidad contra el virus.
 
@@ -468,6 +511,7 @@ Es importante señalar que la tasa de transmisión ($\beta$) no varía directame
 Por tanto, $\beta$ se mantiene constante en el modelo si no cambian ni el virus ni las condiciones sociales de la población. Lo que sí se ve directamente afectado por la vacunación es el número de susceptibles. Al disminuir el tamaño del grupo susceptible mediante la inmunización, también se reduce la probabilidad de que se produzcan nuevos contagios, incluso si $\beta$ permanece constante. Aunque el virus mantenga su capacidad de contagio, al haber menos personas expuestas, disminuye el número efectivo de nuevas infecciones.
 
 Además, se está utilizando la $\beta$ efectiva o ajustada, que es el valor de $\beta$ dividido entre la población total. En este caso, si la población total cambia, el valor de $\beta$ ajustada también cambiará, incluso si $\beta$ se mantiene constante. Esto se debe a que el tamaño poblacional afecta directamente al cálculo del número esperado de contactos efectivos entre susceptibles e infectados.
+
 
 
 

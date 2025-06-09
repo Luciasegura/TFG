@@ -195,40 +195,6 @@ En la figura \ref{fig:Simulación 1 SIR}, la enfermedad se propaga lentamente pe
 Para la figura \ref{fig:Simulación 3 SIR}, la enfermedad apenas se propaga, los infectados iniciales se recuperan rápidamente sin generar nuevos contagios significativos. La mayoría de la población permanece susceptible. El número básico de reproducción es 0,5, lo que indica que cada infectado contagia de media a menos de una persona. Esto provoca que el brote se extinga de forma rápida sin alcanzar una propagación masiva.
 EN la última figura \ref{fig:Simulación 3 SIR} los susceptibles disminuyen lentamente y se estabilizan alrededor de 4000, lo que indica que una gran parte de la población no se infecta. El número de infectados crece levemente al inicio pero desciende rápidamente, y los recuperados aumentan hasta estabilizarse. La enfermedad se propaga de forma moderada, aunque el número básico de reproducción es 1,5, suficiente para permitir propagación, la epidemia no alcanza a toda la población y acaba desapareciendo con un brote limitado.
 
-\subsection{Comportamiento epidemia sarampión}
-Se simula el comportamiento de la enfermedad del sarampión, utilizando los datos definidos anteriormente en el apartado de descripción de los datos. La figura \ref{fig:simusara} muestra la evolución del sarampión.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/modelo_SIR.jpg}
-    \caption{Resultado modelo SIR con datos reales para el sarampión}
-    \label{fig:simusara}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
-
-En la gráfica (\ref{fig:simusara}) obtenida se refleja claramente el comportamiento típico de una enfermedad infecciosa altamente contagiosa, y más si no hay medidas de control como la vacuna.
-Al principio, la mayor parte de la población se encuentra en el grupo de susceptibles. Sin embargo, debido al gran valor de $R_0$, la enfermedad se propaga con rapidez. Como consecuencia los susceptibles descienden bruscamente en los primero días, un gran número de personas contrae la enfermedad en un corto periodo de tiempo. Posteriormente, la curva llega a cero, que refleja que toda la población se ha infectado.
-En cuanto a los infectados, la curva presenta un crecimiento rápido al principio de la epidemia, alcanzando un pico endémico sobre el día 12. En este punto se registra el número máximo de personas infectadas de forma simultánea. Tras este pico, los infectados empiezan a disminuir progresivamente. Esto es debido a que las personas se recuperan y pasan al compartimento de los recuperados, y además quedan muy pocos susceptibles, por lo que la transmisión se ralentiza hasta que se detiene.
-Por otro lado, los recuperados van creciendo sostenidamente en el tiempo, empezando en cero y creciendo de forma acelerada en un principio. A medida que los infectados se recuperan, la curva sube hasta que toda la población ha superado la enfermedad y ha adquirido inmunidad permanente. Cuando la curva de los recuperados se estabiliza indica que la epidemia ha llegado a su fin, porque no quedan personas susceptibles que puedan volver a infectarse.
-
-\subsection{Comportamiento del sarampión tras la vacunación}
-Para este modelo, los datos también se han explicado en el apartado de descripción de los datos. Son los mismos que para sin vacunación, lo que pasa que se añade la tasa de vacunación ahora. La figura \ref{fig:simu saramp vacuna} muestra la evolución del sarampión pero contando que ahora se ha introducido como medida de control la vacunación.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/modelo_SIRV_inicio.jpg}
-    \caption{Resultado modelo SIRV con datos reales para el sarampión, con medida de control de vacunación}
-    \label{fig:simu saramp vacuna}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
-\end{figure}
-
-En la gráfica \ref{fig:simu saramp vacuna} las personas susceptibles descienden muy rápido en los primero días, más pronunciado que la simulación sin vacunación. Se debe a que gran parte de los susceptibles son vacunados directamente, lo que reduce la cantidad de personas expuestas al contagio. Prácticamente en los primeros días desaparece el grupo de susceptibles, lo que limita la propagación del virus.
-En cuanto a los infectados, aunque se alcanza un pico de infecciones, es más bajo que en la simulación sin vacunación. Se sitúa en torno a 11 millones de infectados, además se produce más temprano, que indica que el brote es más contenido y se disipa más rápido por la inmunidad inducida por la vacunación.
-Mientras que el número de recuperados crece rápidamente desde los primeros días. A diferencia del modelo sin vacunación, donde el crecimiento del grupo recuperado dependía únicamente de las personas que superaban la enfermedad, en esta simulación también se incluyen los vacunados, que pasan directamente a este compartimento. Por ello, la curva de recuperados comienza a crecer antes y con mayor pendiente, alcanzando valores más altos en menos tiempo y reflejando una inmunidad colectiva mucho más rápida.
-
-La comparación entre ambas simulaciones muestra claramente que la intorducción de la vacunación masiva es altamente efectiva para contener la propagación del sarampión. Reduce significativamente el número de casos, la duración del brote y la exposición de la población susceptible. Esto evidencia la importancia de las campañas de vacunación como herramienta clave de salud pública, especialmente frente a enfermedades con un número básico de reproducción elevado como el sarampión.
-
-
 \subsection{Comportamiento modelo SIR con regulador PID}
 Con el objetivo de mejorar el control sobre lo representado por el modelo SIR, se propone la implementación de un controlador PID. Este controlador permitirá ajustar dinámicamente una variable de control, la tasa de transmisión, en función del error entre el número actual de individuos infectados y un valor deseado (setpoint), que en este caso será de 1000 infectados. Para el diseño y ajuste del PID, se utilizarán los datos obtenidos previamente a partir de las simulaciones realizadas con el modelo SIR estándar, sin control. Estos datos permitirán identificar el comportamiento del sistema y evaluar la efectividad del controlador en mantener el número de infectados cercano al valor establecido.
 
@@ -260,6 +226,49 @@ En la figuras (\ref{fig:simu1pid})(\ref{fig:simu2pid})(\ref{fig:simu3pid}) se ob
 
 En la figura \ref{fig:simu1pid}, la enfermedad se propaga lentamente ya que el número de infectados crece de forma moderada y luego disminuye suavemente. En cuanto a los susceptibles bajan poco a poco, mientras que los recuperados aumentan gradualmente. El brote es controlado y no hay un pico muy alto. En la figura \ref{fig:simu2pid}, la infección se propaga más rápidamente, pero también hay una recuperación rápida. Se alcanza un pico alto de infectados en poco tiempo, luego desciende rápidamente.
 Gran parte de la población termina recuperada en un tiempo corto. El proceso es más brusco, pero de corta duración. Y por últmo en cuanto a la figura\ref{fig:simu3pid}, se propaga muy rápido y con fuerza. El número de infectados crece rápidamente a un valor alto y tarda más en bajar, mientras que el número de susceptibles cae de manera abrupta. Se observa una epidemia fuerte y más prolongada.
+
+
+\subsection{Comparación modelo SIR clásico y modelo SIR con regulador PID}
+Para analizar el impacto del control sobre la evolución de una epidemia, se han comparado los resultados de simulaciones del modelo SIR con y sin la incorporación de un controlador PID. En ambos casos, se utilizaron los mismos valores para los parámetros $\beta$ y $\gamma$, permitiendo evaluar directamente el efecto del regulador sobre la dinámica del sistema.
+
+Para la primera simulación con beta = 0.07 y gamma = 0.01, se observa que la propagación de la enfermedad es lenta debido a un valor muy bajo de $\beta$. En la figura \ref{fig:Simulación 1 SIR} sin PID, se observa que el número de infectados crece paulatinamente hasta alcanzar un pico considerable, y luego desciende lentamente a medida que más personas se recuperan. El sistema evoluciona de forma natural, sin intervención, y se aprecia un brote prolongado en el tiempo. En cambio, en la figura \ref{fig:simu1pid} con PID, el número de infectados se mantiene más contenido durante todo el proceso. El controlador actúa corrigiendo la tasa de contagio de forma dinámica, evitando que el pico de infectados sea muy alto. Además, la epidemia se resuelve en menos tiempo. Este caso demuestra que incluso en escenarios con transmisión lenta, el PID puede mejorar la respuesta del sistema al acelerar el descenso de los infectados y reducir la duración total del brote.
+
+En cuanto a la segunda simulación con beta = 0.2 y gamma = 0.4, se plantea una tasa de recuperación elevada, lo que en teoría debería limitar la duración de la infección. En la simulación sin PID figura \ref{fig:Simulación 2 SIR}, el número de infectados aumenta inicialmente, pero se estabiliza en un valor constante. Este comportamiento sugiere que la enfermedad se vuelve endémica, manteniéndose presente en la población a lo largo del tiempo sin llegar a desaparecer del todo. Con el regulador PID activo figura \ref{fig:simu2pid}, el comportamiento cambia drásticamente. El número de infectados alcanza un valor cercano al setpoint y posteriormente disminuye hasta llegar prácticamente a cero. El controlador, al actuar sobre la tasa de contagio, permite reducir el número de infectados de manera más eficaz, eliminando la posibilidad de una infección sostenida en el tiempo. Esto pone en evidencia la capacidad del PID para forzar al sistema hacia un estado libre de infección, incluso cuando la dinámica natural tiende al equilibrio.
+
+\subsection{Comportamiento epidemia sarampión}
+Se simula el comportamiento de la enfermedad del sarampión, utilizando los datos definidos anteriormente en el apartado de descripción de los datos. La figura \ref{fig:simusara} muestra la evolución del sarampión.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/modelo_SIR.jpg}
+    \caption{Resultado modelo SIR con datos reales para el sarampión}
+    \label{fig:simusara}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+En la gráfica (\ref{fig:simusara}) obtenida se refleja claramente el comportamiento típico de una enfermedad infecciosa altamente contagiosa, y más si no hay medidas de control como la vacuna.
+Al principio, la mayor parte de la población se encuentra en el grupo de susceptibles. Sin embargo, debido al gran valor de $R_0$, la enfermedad se propaga con rapidez. Como consecuencia los susceptibles descienden bruscamente en los primero días, un gran número de personas contrae la enfermedad en un corto periodo de tiempo. Posteriormente, la curva llega a cero, que refleja que toda la población se ha infectado.
+En cuanto a los infectados, la curva presenta un crecimiento rápido al principio de la epidemia, alcanzando un pico endémico sobre el día 12. En este punto se registra el número máximo de personas infectadas de forma simultánea. Tras este pico, los infectados empiezan a disminuir progresivamente. Esto es debido a que las personas se recuperan y pasan al compartimento de los recuperados, y además quedan muy pocos susceptibles, por lo que la transmisión se ralentiza hasta que se detiene.
+Por otro lado, los recuperados van creciendo sostenidamente en el tiempo, empezando en cero y creciendo de forma acelerada en un principio. A medida que los infectados se recuperan, la curva sube hasta que toda la población ha superado la enfermedad y ha adquirido inmunidad permanente. Cuando la curva de los recuperados se estabiliza indica que la epidemia ha llegado a su fin, porque no quedan personas susceptibles que puedan volver a infectarse.
+
+\subsection{Comportamiento del sarampión tras la vacunación}
+Para este modelo, los datos también se han explicado en el apartado de descripción de los datos. Son los mismos que para sin vacunación, lo que pasa que se añade la tasa de vacunación ahora. La figura \ref{fig:simu saramp vacuna} muestra la evolución del sarampión pero contando que ahora se ha introducido como medida de control la vacunación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/modelo_SIRV_inicio.jpg}
+    \caption{Resultado modelo SIRV con datos reales para el sarampión, con medida de control de vacunación}
+    \label{fig:simu saramp vacuna}
+    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+\end{figure}
+
+En la gráfica \ref{fig:simu saramp vacuna} las personas susceptibles descienden muy rápido en los primero días, más pronunciado que la simulación sin vacunación. Se debe a que gran parte de los susceptibles son vacunados directamente, lo que reduce la cantidad de personas expuestas al contagio. Prácticamente en los primeros días desaparece el grupo de susceptibles, lo que limita la propagación del virus.
+En cuanto a los infectados, aunque se alcanza un pico de infecciones, es más bajo que en la simulación sin vacunación. Se sitúa en torno a 11 millones de infectados, además se produce más temprano, que indica que el brote es más contenido y se disipa más rápido por la inmunidad inducida por la vacunación.
+Mientras que el número de recuperados crece rápidamente desde los primeros días. A diferencia del modelo sin vacunación, donde el crecimiento del grupo recuperado dependía únicamente de las personas que superaban la enfermedad, en esta simulación también se incluyen los vacunados, que pasan directamente a este compartimento. Por ello, la curva de recuperados comienza a crecer antes y con mayor pendiente, alcanzando valores más altos en menos tiempo y reflejando una inmunidad colectiva mucho más rápida.
+
+La comparación entre ambas simulaciones muestra claramente que la introducción de la vacunación masiva es altamente efectiva para contener la propagación del sarampión. Reduce significativamente el número de casos, la duración del brote y la exposición de la población susceptible. Esto evidencia la importancia de las campañas de vacunación como herramienta clave de salud pública, especialmente frente a enfermedades con un número básico de reproducción elevado como el sarampión.
+
+
 
 
 \section{Comportamiento modelo SEIR}
@@ -320,12 +329,7 @@ En la primera gráfica \ref{fig:Simulación 1 SEIR} el número de personas expue
 La mayoría de la población pasa a la categoría de recuperados.
 Los susceptibles caen bruscamente, mostrando que la infección se ha propagado de forma extensa.
 
-\subsection{Comparación modelo SIR y modelo SIR con regulador PID}
-Para analizar el impacto del control sobre la evolución de una epidemia, se han comparado los resultados de simulaciones del modelo SIR con y sin la incorporación de un controlador PID. En ambos casos, se utilizaron los mismos valores para los parámetros $\beta$ y $\gamma$, permitiendo evaluar directamente el efecto del regulador sobre la dinámica del sistema.
 
-Para la primera simulación con beta = 0.07 y gamma = 0.01, se observa que la propagación de la enfermedad es lenta debido a un valor muy bajo de $\beta$. En la figura \ref{fig:Simulación 1 SIR} sin PID, se observa que el número de infectados crece paulatinamente hasta alcanzar un pico considerable, y luego desciende lentamente a medida que más personas se recuperan. El sistema evoluciona de forma natural, sin intervención, y se aprecia un brote prolongado en el tiempo. En cambio, en la figura \ref{fig:simu1pid} con PID, el número de infectados se mantiene más contenido durante todo el proceso. El controlador actúa corrigiendo la tasa de contagio de forma dinámica, evitando que el pico de infectados sea muy alto. Además, la epidemia se resuelve en menos tiempo. Este caso demuestra que incluso en escenarios con transmisión lenta, el PID puede mejorar la respuesta del sistema al acelerar el descenso de los infectados y reducir la duración total del brote.
-
-En cuanto a la segunda simulación con beta = 0.2 y gamma = 0.4, se plantea una tasa de recuperación elevada, lo que en teoría debería limitar la duración de la infección. En la simulación sin PID figura \ref{fig:Simulación 2 SIR}, el número de infectados aumenta inicialmente, pero se estabiliza en un valor constante. Este comportamiento sugiere que la enfermedad se vuelve endémica, manteniéndose presente en la población a lo largo del tiempo sin llegar a desaparecer del todo. Con el regulador PID activo figura \ref{fig:simu2pid}, el comportamiento cambia drásticamente. El número de infectados alcanza un valor cercano al setpoint y posteriormente disminuye hasta llegar prácticamente a cero. El controlador, al actuar sobre la tasa de contagio, permite reducir el número de infectados de manera más eficaz, eliminando la posibilidad de una infección sostenida en el tiempo. Esto pone en evidencia la capacidad del PID para forzar al sistema hacia un estado libre de infección, incluso cuando la dinámica natural tiende al equilibrio.
 
 
 
