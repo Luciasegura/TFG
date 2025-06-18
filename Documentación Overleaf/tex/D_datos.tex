@@ -55,6 +55,124 @@ También es importante hacer una descripción clínica de las principales tasas 
 
 Esta descripción clínica de las variables y parámetros permite entender cómo se traduce la información epidemiológica en las ecuaciones del modelo, y facilita la interpretación de los resultados para la toma de decisiones sanitarias.
 
+\section{Datos utilizados}
+A continuación, se describen los datos utilizados para cada modelo, incluyendo su origen, características y el procedimiento seguido para su obtención y tratamiento.
+
+\subsection{Modelo SI}
+Se va a estudiar la enfermedad en la región MENA\footnote{Oriente Medio y Norte de África.}, cuya población total se estima en aproximadamente 400 millones de personas. En cuanto a las personas infectadas con VIH es de alrededor de 240000 personas \cite{Khorrami2023}.
+
+La tasa de transmisión es de 0,105 \cite{shakiba2021epidemiological} para esta enfermedad. Sin embargo, para utilizarlo correctamente es necesario ajustar la beta, para facilitar las ecuaciones no se ha metido la población total, por eso hay que ajustar beta como se muestra en la ecuación \eqref{eq:beta_efectiva2}.
+\begin{equation}
+\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0.105}{400\,000\,000} = 2.625 \times 10^{-10}
+\label{eq:beta_efectiva2}
+\end{equation}
+
+\subsection{Modelo SIS}
+Se ha tomado como referencia la situación epidemiológica en Estados Unidos durante el 2019. En ese año, la población total del país era aproximadamente 328 millones de personas, en cuanto a los casos de personas infectadas ascendía a 1603473 personas \cite{pollock2023estimated}.
+
+La tasa de la enfermedad pude variar en función del comportamiento social, el uso de métodos de protección y otros factores. Pero para este estudio se ha estimado una tasa de 0.25, hay que calcular la beta efectiva \eqref{eq:beta_efectiva}.
+\begin{equation}
+\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0.25}{328\,000\,000} = 7 \times 10^{-10}
+\label{eq:beta_efectiva}
+\end{equation}
+
+
+Respecto a la tasa de recuperación, se considera que, en un país con un sistema sanitario desarrollado como Estados Unidos, los individuos infectados reciben tratamiento de forma relativamente rápida. Aunque sin tratamiento la infección puede durar semanas o incluso meses, con tratamiento, el tiempo medio de recuperación se estima en unos 7 días. Por lo tanto, la tasa de recuperación se calcula como se oberva en \eqref{eq:gamma}.
+
+\begin{equation}
+\gamma = \frac{1}{\text{tiempo de recuperación}} = \frac{1}{7}
+\label{eq:gamma}
+\end{equation}
+
+
+\subsection{Modelo SIR}
+Se ha elegido analizar la propagación del sarampión en Estados Unidos antes de la introducción de la vacuna en 1963. El país contaba con una población de aproximadamente 189 millones de personas \cite{datosmacro_usa_1963}, mientras que se registraban alrededor de 500 mil casos anuales. Datos que reflejan la alta incidencia del sarampión.
+Uno de los parámetros más relevantes para modelar esta enfermedad es el número básico de reproducción, que representa el número medio de personas susceptibles que puede llegar a contagiar un solo individuo infectado en una población completamente susceptible. En el caso del sarampión, este valor es excepcionalmente alto, estimándose en torno a $R_0$ = 12 \cite{solomon2019peter}. Significa que, en ausencia de medidas de control, cada persona infectada podría contagiar a doce individuos, lo que explica su elevada transmisibilidad y su capacidad para provocar grandes brotes epidémicos.
+
+Además, se conoce que el tiempo de recuperación de la enfermedad es de 14 días \cite{ops_sarampion}. Esto implica que la tasa de recuperación (~$\gamma$) se calcula en la ecuación \eqref{eq:gamma_14}
+\begin{equation}
+\gamma = \frac{1}{\text{tiempo medio de recuperación}} = \frac{1}{14} = 0{,}071 \,\text{días}^{-1}
+\label{eq:gamma_14}
+\end{equation}
+
+Dado que la relación entre $R_0$, beta y gamma viene dada por la fórmula \eqref{eq:R0}
+\begin{equation}
+R_0 = \frac{\beta}{\gamma}
+\label{eq:R0}
+\end{equation}
+
+Se despeja beta para poder calcular la tasa de transmisión \eqref{eq:beta_calculo}
+\begin{equation}
+\beta = R_0 \times \gamma = 12 \times 0{,}071 = 0{,}852
+\label{eq:beta_calculo}
+\end{equation}
+
+Una vez se ha calculado beta\eqref{eq:beta_calculo}, hay que calcular la beta ajustada para este modelo, es decir, la beta efectiva \eqref{eq:beta_efectiva2}
+\begin{equation}
+\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0{,}852}{189\,000\,000} = 4{,}5 \times 10^{-9}
+\label{eq:beta_efectiva2}
+\end{equation}
+
+\subsection{Modelo SIRV}
+La única diferencia introducida es la incorporación de una tasa de vacunación correspondiente a una cobertura del 92,7\% de la población en un periodo de seis meses, lo cual se ajusta a datos reales observados en campañas de vacunación contra el sarampión. Este porcentaje se ha convertido en un valor de tasa ($\nu$) para integrarlo dentro del sistema de ecuaciones del modelo SIRV, y así simular cómo evolucionaría la epidemia bajo una estrategia de inmunización masiva \cite{cdc_measles_cases_2025}.
+
+De esta manera, se busca evaluar cuantitativamente cómo la vacunación modifica la evolución del brote, en particular en términos de reducción de contagios y aceleración de la inmunidad colectiva, y contrastar estos resultados con los obtenidos previamente en ausencia de intervenciones.
+Se tiene la cobertura de vacunación, pero hay que calcular la tasa de vacunación con los datos que se han obtenido. Se calcula a partir de la siguiente fórmula \eqref{eq:nu_vacunacion}. 
+\begin{equation}
+\nu = \frac{-\ln(1 - 0{,}927)}{183} \approx 0{,}014
+\label{eq:nu_vacunacion}
+\end{equation}
+Esto significa que aproximadamente el 1,4\% de la población susceptible se vacuna cada día durante ese periodo, adquiriendo inmunidad y pasando directamente al compartimento de recuperados. Esta tasa se incorpora en el modelo como un nuevo flujo desde susceptibles a recuperados, simulando el efecto de la vacunación masiva sobre la dinámica de propagación del sarampión.
+
+
+
+
+
+
+\subsection{Modelo SEIR}
+Se ha elegido como caso de estudio la evolución de la COVID-19 en España, desde la aparición del primer caso confirmado, registrado el 31 de enero de 2020 \cite{primer_caso_covid_espana}. Desde esa fecha hasta el 28 de diciembre de 2020 a las 14:00 horas, se notificaron oficialmente un total de 1879413 casos acumulados de personas infectadas por SARS-CoV-2 \cite{sanidad_covid_situacion}. En ese mismo año, la población total de España era de aproximadamente 47370000 habitantes \cite{datacommons_espana_demografia}.
+
+En las primeras fases de la pandemia, el número básico de reproducción del virus SARS-CoV-2 se situaba, según estimaciones epidemiológicas, entre 2 y 3 \cite{garcia_r0_desescalada}. Esto indica que cada persona infectada transmitía el virus entre 2 y 3 personas, lo que implica una tendencia clara al crecimiento exponencial del brote en ausencia de medidas de control o inmunidad previa en la población.
+
+En cuanto a los parámetros clínicos de la enfermedad, el periodo de incubación, entendido como el intervalo desde la exposición al virus hasta el momento en que el individuo se vuelve contagioso, se estima con una media de 5.4 días \cite{lauer2020incubation}. Hay que calcular la tasa de incubación ($\sigma$)\eqref{eq:sigma}
+\begin{equation}
+\sigma = \frac{1}{\text{tiempo de incubación}} = \frac{1}{5{,}4} = 0{,}185
+\label{eq:sigma}
+\end{equation}
+
+Por otro lado, el tiempo medio de recuperación depende de la gravedad del cuadro clínico. En los casos leves, suele rondar las 2 semanas, mientras que en los casos moderados o graves puede extenderse entre 3 y 6 semanas. Para simplificar el análisis y mantener la coherencia en el modelo, se considerará un tiempo medio de recuperación de 14 días \cite{ada_duracion_covid}. Hay que calcular la tasa de recuperación \eqref{eq:gamma_7}
+\begin{equation}
+\gamma = \frac{1}{\text{tiempo medio de recuperación}} = \frac{1}{14} = 0{,}071 \,\text{días}^{-1}
+\label{eq:gamma_7}
+\end{equation}
+
+Para finalizar, hay que calcular la tasa de transmisión, para ello utilizamos el $R_0$, ya que relaciona la gamma y beta. Se aplica la fórmula del $R_0$. Se va a optar por utilizar el valor de $R_0$ = 3, ya que es un escenario más desfavorable y representativo, es más contagioso. La ecuacion \eqref{eq:R0} se utiliza para calcular beta.\eqref{eq:beta_R0_gamma}
+\begin{equation}
+\beta = R_0 \times \gamma = 3 \times 0{,}071 = 0{,}213
+\label{eq:beta_R0_gamma}
+\end{equation}
+
+Una vez se ha calculado la beta, hay que calcular la beta efectiva\eqref{eq:beta_efectiva_final}.
+\begin{equation}
+\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0{,}213}{47\,370\,000} \approx 4{,}5 \times 10^{-9}
+\label{eq:beta_efectiva_final}
+\end{equation}
+
+
+
+\subsection{Modelo SEIRV}
+Con el fin de ampliar el análisis realizado sobre el COVID-19 mediante el modelo SEIR, se ha decidido incorporar la vacunación en la simulación a través del modelo SEIRV. Permite estudiar cómo una campaña de vacunación influye en la dinámica de propagación del virus, proporcionando una visión más realista del contexto epidemiológico vivido en España durante la pandemia.
+Para mantener la coherencia entre escenarios, se han conservado los mismos parámetros epidemiológicos utilizados en el modelo SEIR básico: la tasa de transmisión, el tiempo de incubación y la tasa de recuperación. La diferencia es la inclusión de un parámetro, la tasa de vacunación, que representa el efecto de la inmunización masiva iniciada en España a finales de 2020.
+Según los datos oficiales, la campaña de vacunación comenzó el 27 de diciembre de 2020, y hasta el 15 de enero de 2021 se habían administrado 768.950 dosis \cite{sanidad_giv_20210115}. Posteriormente, la cobertura vacunal alcanzó el 92,6\% de la población en un año \cite{sanidad_historico_covid}. Para incorporar esta información en el modelo, es necesario calcular la tasa diaria de vacunación, lo cual se realiza con la siguiente fórmula \eqref{eq:nu_926}.
+\begin{equation}
+\nu = \frac{-\ln(1 - 0{,}926)}{365} \approx 0{,}0071
+\label{eq:nu_926}
+\end{equation}
+
+Este valor indica que aproximadamente el 0,71\% de la población susceptible se vacuna cada día durante ese periodo. En el modelo, estas personas abandonan directamente el compartimento de susceptibles y pasan al de recuperados, ya que se considera que la vacunación confiere una inmunidad funcional equivalente a la adquirida tras superar la infección.
+Se mantiene, la misma estructura conceptual del modelo SEIR. La única diferencia es la inclusión del flujo adicional introducido por la vacunación. Así, el modelo SEIRV permite simular con mayor precisión cómo las campañas de inmunización modifican la evolución de la pandemia, en particular reduciendo el número de contagios y acelerando el logro de la inmunidad colectiva.
+
+
 
 \section{Información relevante de los simulaciones}
 
