@@ -1,10 +1,10 @@
 function sir_pid()
     % --- Condiciones iniciales ---
-    S = 9900;
-    I = 100;
+    S = 8000;
+    I = 2000;
     R = 0;
-    beta_base = 0.3;
-    gamma = 0.2;
+    beta_base = 0.07;
+    gamma = 0.01;
     I_setpoint = 1000;
     
     
@@ -18,7 +18,7 @@ function sir_pid()
 
     % Simulación
     dt = 0.1;
-    T = 90;
+    T = 50;
     tspan = 0:dt:T;
     N = S + I + R;
 
@@ -64,14 +64,14 @@ function sir_pid()
     figure;
     plot(tspan, S_list, 'b', tspan, I_list, 'r', tspan, R_list, 'g', 'LineWidth', 2);
     yline(I_setpoint, 'k--', 'LineWidth', 1.2, 'Label', 'Setpoint');
-    xlabel('Días'); ylabel('Población');
+    xlabel('Días'); ylabel('Personas');
     title('Modelo SIR con PID');
     legend('Susceptibles', 'Infectados', 'Recuperados', 'Setpoint');
     grid on;
 
     figure;
     plot(tspan, beta_list, 'm', 'LineWidth', 2);
-    xlabel('Días'); ylabel('\beta');
+    xlabel('Días'); ylabel('Beta (\beta)');
     title('Tasa de transmisión ajustada por PID');
     grid on;
 end
