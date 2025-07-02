@@ -61,18 +61,18 @@ A continuación, se describen los datos utilizados para cada modelo, incluyendo 
 \subsection{Modelo SI}
 Se va a estudiar la enfermedad en la región MENA\footnote{Oriente Medio y Norte de África.}, cuya población total se estima en aproximadamente 400 millones de personas. En cuanto a las personas infectadas con VIH es de alrededor de 240000 personas \cite{Khorrami2023}.
 
-La tasa de transmisión es de 0,105 \cite{shakiba2021epidemiological} para esta enfermedad. Sin embargo, para utilizarlo correctamente es necesario ajustar la beta, para facilitar las ecuaciones no se ha metido la población total, por eso hay que ajustar beta como se muestra en la ecuación \eqref{eq:beta_efectiva2}.
+La tasa de transmisión ($\beta_f$) es de 0,105 \cite{shakiba2021epidemiological} para esta enfermedad. Sin embargo, para utilizarlo correctamente es necesario calcular beta,  como se muestra en la ecuación \eqref{eq:beta_efectiva2}.
 \begin{equation}
-\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0.105}{400\,000\,000} = 2.625 \times 10^{-10}
+\beta = \frac{\beta_f}{N} = \frac{0.105}{400\,000\,000} = 2.625 \times 10^{-10}
 \label{eq:beta_efectiva2}
 \end{equation}
 
 \subsection{Modelo SIS}
 Se ha tomado como referencia la situación epidemiológica en Estados Unidos durante el 2019. En ese año, la población total del país era aproximadamente 328 millones de personas, en cuanto a los casos de personas infectadas ascendía a 1603473 personas \cite{pollock2023estimated}.
 
-La tasa de la enfermedad pude variar en función del comportamiento social, el uso de métodos de protección y otros factores. Pero para este estudio se ha estimado una tasa de 0.25, hay que calcular la beta efectiva \eqref{eq:beta_efectiva}.
+La tasa de la enfermedad pude variar en función del comportamiento social, el uso de métodos de protección y otros factores. Pero para este estudio se ha estimado una tasa de 0.25, hay que calcular la beta \eqref{eq:beta_efectiva}.
 \begin{equation}
-\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0.25}{328\,000\,000} = 7 \times 10^{-10}
+\beta_ = \frac{\beta_f}{N} = \frac{0.25}{328\,000\,000} = 7 \times 10^{-10}
 \label{eq:beta_efectiva}
 \end{equation}
 
@@ -97,7 +97,7 @@ Además, se conoce que el tiempo de recuperación de la enfermedad es de 14 día
 
 Dado que la relación entre $R_0$, beta y gamma viene dada por la fórmula \eqref{eq:R0}
 \begin{equation}
-R_0 = \frac{\beta}{\gamma}
+R_0 = \frac{\beta_f}{\gamma}
 \label{eq:R0}
 \end{equation}
 
@@ -107,9 +107,9 @@ Se despeja beta para poder calcular la tasa de transmisión \eqref{eq:beta_calcu
 \label{eq:beta_calculo}
 \end{equation}
 
-Una vez se ha calculado beta\eqref{eq:beta_calculo}, hay que calcular la beta ajustada para este modelo, es decir, la beta efectiva \eqref{eq:beta_efectiva2}
+Una vez se ha calculado beta ($\beta_f$) \eqref{eq:beta_calculo}, hay que calcular la beta para este modelo \eqref{eq:beta_efectiva2}
 \begin{equation}
-\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0{,}852}{189\,000\,000} = 4{,}5 \times 10^{-9}
+\beta = \frac{\beta_f}{N} = \frac{0{,}852}{189\,000\,000} = 4{,}5 \times 10^{-9}
 \label{eq:beta_efectiva2}
 \end{equation}
 
@@ -152,9 +152,9 @@ Para finalizar, hay que calcular la tasa de transmisión, para ello utilizamos e
 \label{eq:beta_R0_gamma}
 \end{equation}
 
-Una vez se ha calculado la beta, hay que calcular la beta efectiva\eqref{eq:beta_efectiva_final}.
+Una vez se ha calculado la beta ($\beta_f$), hay que calcular la beta \eqref{eq:beta_efectiva_final}.
 \begin{equation}
-\beta_{\text{efectiva}} = \frac{\beta}{N} = \frac{0{,}213}{47\,370\,000} \approx 4{,}5 \times 10^{-9}
+\beta = \frac{\beta_f}{N} = \frac{0{,}213}{47\,370\,000} \approx 4{,}5 \times 10^{-9}
 \label{eq:beta_efectiva_final}
 \end{equation}
 
@@ -192,5 +192,8 @@ No obstante, es importante tener en cuenta que el modelo se basa en una serie de
     \item Las medidas de control (como el uso de mascarillas, confinamientos o distanciamiento social) se consideran constantes o se reflejan mediante ajustes en parámetros como \(\beta\).
 \end{itemize}
 
+Además, se ha implementado un modelo SIR con control PID en Simulink, lo que permite estudiar la aplicación de estrategias automáticas de regulación sobre la tasa de transmisión. Este enfoque simula la implementación dinámica de medidas de control (como confinamientos o campañas de prevención) en función del número de infectados, actuando como una retroalimentación negativa. Las simulaciones muestran cómo el uso de un regulador PID permite reducir el pico de infecciones y estabilizar el sistema en torno a un nivel deseado de contagios. Esta metodología resulta especialmente útil para analizar escenarios de respuesta adaptativa, donde las medidas se ajustan de forma continua según la evolución de la epidemia. La herramienta Simulink proporciona una interfaz visual intuitiva para modelar estos sistemas dinámicos, facilitando tanto la comprensión del comportamiento del modelo como su modificación para distintos casos prácticos.
+
 Estas condiciones permiten obtener resultados consistentes y comparables entre escenarios, pero también limitan la capacidad del modelo para reflejar situaciones más complejas o variables. Por ello, los resultados deben interpretarse en el contexto de estas hipótesis, y siempre en combinación con datos reales y conocimiento clínico-epidemiológico actualizado.
+
 

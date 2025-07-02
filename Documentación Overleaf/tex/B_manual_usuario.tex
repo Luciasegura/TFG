@@ -1,7 +1,7 @@
 \apendice{Documentación}
 
 \section{Requisitos software y hardware para ejecutar el proyecto}
-Todo esto se encuentra en la referencia \cite{mathworks_system_requirements_matlab}
+Todo esto se encuentra en la referencia \cite{mathworks_system_requirements_matlab}.
 \subsection{Requisitos de software}
 Sistema operativo compatible: Windows 10 (64 bits) o superior. También compatible con macOS Mojave o superior y algunas distribuciones Linux (Ubuntu 18.04+)
 
@@ -19,11 +19,11 @@ Todas las herramientas fueron utilizadas bajo licencia académica, válida para 
 
 \subsection{Requisitos hardware}
 En la tabla \ref{tab:requisitos}\footnote{las simulaciones complejas en Simulink con controladores PID y grandes datos pueden requerir mayor capacidad de RAM.} se encuentran los requisitos mínimos y recomendados para el hardware.
+
 \begin{table}[H]
 \small
 \centering
-\caption{Requisitos mínimos y recomendados para la ejecución del proyecto}
-\label{tab:requisitos}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{Recurso}         & \textbf{Mínimo}                      & \textbf{Recomendado}                    \\
@@ -39,7 +39,11 @@ GPU (opcional)           & No requerida                         & Compatible con
 Resolución de pantalla   & 1366$\times$768                      & 1920$\times$1080                        \\
 \hline
 \end{tabular}
+} % Fin del resizebox
+\caption{Requisitos mínimos y recomendados para la ejecución del proyecto.}
+\label{tab:requisitos}
 \end{table}
+
 
 
 \section{Instalación / Puesta en marcha}
@@ -63,20 +67,19 @@ Una vez instalado MATLAB, se recomienda seguir los siguientes pasos para ejecuta
     \item Añadir la carpeta raíz al path de MATLAB, como se ve en la imagen \ref{fig:instruccion}, escribir en la ventana de comandos
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/puesta en marcha.png}
-        \caption{Instrucción de MATLAB para el paso 3}
+        \includegraphics[width=0.9\textwidth]{img/puesta en marcha.png}
+        \caption{Instrucción de MATLAB para el paso 3.}
         \label{fig:instruccion}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+        
     \end{figure}
     Cambiar 'ruta/del/proyecto' por la ruta en la que se tenga el proyecto.
     Sirve para añadir al path\footnote{Ruta de búsqueda, conjunto de carpetas donde MATLAB busca archivos cuando se ejecutan comandos o funciones.} de MATLAB la carpeta principal del proyecto y todas sus subcarpetas, de modo que MATLAB pueda acceder a todos los archivos, funciones, scripts y modelos sin errores. No hay que estar navegando carpeta por carpeta o copiando archivos manualmente.
     \item Para lanzar la aplicación con interfaz gráfica, abrir el archivo .mlapp desde o ejecutar en la ventana de comandos de MATLAB lo que se ve en la figura \ref{fig:app abrir}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/abrir app.png}
-        \caption{Instrucción de MATLAB para abrir la aplicación}
+        \includegraphics[width=0.9\textwidth]{img/abrir app.png}
+        \caption{Instrucción de MATLAB para abrir la aplicación.}
         \label{fig:app abrir}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
     \end{figure}
     \item Los modelos desarrollados en Simulink se encuentran organizados dentro de la carpeta Simulink/Modelos Simulink, con extensión .slx. Para abrir cualquiera de ellos, basta con hacer doble clic sobre el archivo correspondiente.
    
@@ -85,10 +88,10 @@ Una vez instalado MATLAB, se recomienda seguir los siguientes pasos para ejecuta
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/run.png}
-        \caption{Interfaz inicial de la aplicación}
+        \includegraphics[width=0.9\textwidth]{img/run.png}
+        \caption{Botón de Run de MATLAB.}
         \label{fig:app run}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+        
     \end{figure}
 \end{enumerate}
 
@@ -101,10 +104,10 @@ La interfaz principal de la aplicación, desarrollada con App Designer de MATLAB
 
 \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/inicio app.png}
-        \caption{Interfaz inicial de la aplicación}
+        \includegraphics[width=0.9\textwidth]{img/inicio app.png}
+        \caption{Interfaz inicial de la aplicación.}
         \label{fig:app inicio}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+        
     \end{figure}
 
 Desde el menú desplegable superior se puede seleccionar el modelo deseado entre SI, SIS, SIR, SEIR. A continuación, el usuario puede introducir los valores iniciales para cada grupo de población:
@@ -159,20 +162,20 @@ A continuación, se presentan dos ejemplos prácticos de uso de la aplicación, 
     \item Seleccionar el modelo \textbf{SIR} en el menú desplegable \ref{fig:eleccion sir}.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/eleccion modelo SIR.png}
-        \caption{Elección del modelo, en est caso SIR}
+        \includegraphics[width=0.9\textwidth]{img/eleccion modelo SIR.png}
+        \caption{Elección del modelo, en este caso SIR.}
         \label{fig:eleccion sir}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+        
     \end{figure}
     
      \item Verificar que los valores por defecto se han cargado correctamente (se pueden modificar si se desea)\ref{fig:datos defecto}.
 
 \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/modelo sir datos.png}
-        \caption{Comprobación de que salen los datos por defecto}
+        \includegraphics[width=0.9\textwidth]{img/modelo sir datos.png}
+        \caption{Comprobación de que salen los datos por defecto.}
         \label{fig:datos defecto}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+       
     \end{figure}
      
       \item Pulsar el botón \textbf{Simular}.
@@ -187,10 +190,10 @@ A continuación, se presentan dos ejemplos prácticos de uso de la aplicación, 
    
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/simulacion sir app.png}
-        \caption{Simulación del modelo SIR en la aplicación}
+        \includegraphics[width=0.9\textwidth]{img/simulacion sir app.png}
+        \caption{Simulación del modelo SIR en la aplicación.}
         \label{fig:simulacion sir ap}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+        
     \end{figure}
 \end{enumerate}
 
@@ -205,10 +208,10 @@ Este ejemplo permite visualizar cómo aumenta inicialmente el número de infecta
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/eleccion SEIR.png}
-        \caption{Elección del modelo, en este caso SEIRV}
+        \includegraphics[width=0.9\textwidth]{img/eleccion SEIR.png}
+        \caption{Elección del modelo, en este caso SEIRV.}
         \label{fig:eleccion seirv}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+        
     \end{figure}
     \item Comprobar que los valores se han precargado automáticamente, se pueden cambiar si se desea.
     \item Hacer clic en \textbf{Simular}.
@@ -220,10 +223,10 @@ Este ejemplo permite visualizar cómo aumenta inicialmente el número de infecta
 
 \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/simulacion.png}
-        \caption{Simulación del modelo SEIRV en la aplicación con los datos predefinidos}
+        \includegraphics[width=0.9\textwidth]{img/simulacion.png}
+        \caption{Simulación del modelo SEIRV en la aplicación con los datos predefinidos.}
         \label{fig:eseeir}
-        \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+       
     \end{figure}
 
 

@@ -4,11 +4,22 @@
 A continuación se describe la estructura del proyecto, así como el contenido y propósito de cada carpeta y archivo relevante, todo está en el repositorio de GitHub. El proyecto está organizado en una estructura de carpetas que separa claramente los distintos componentes como se describe a continuación.
 
 \begin{itemize}
-    \item \textbf{Carpeta aplicación} \\
-    Contiene el archivo de la aplicación desarrollada en App Designer:
-    \begin{itemize}
-        \item \texttt{aplicacion\_modelos.mlapp}: interfaz principal para ejecutar simulaciones.
-    \end{itemize}
+    \item \textbf{Carpeta \texttt{aplicación}} \\
+
+Contiene los archivos necesarios para la ejecución y distribución de la aplicación desarrollada en \textit{App Designer} de MATLAB. A continuación, se describen los elementos incluidos:
+
+\begin{itemize}
+    \item \texttt{aplicacion\_modelos.mlapp}: archivo principal de la aplicación, editable y ejecutable desde MATLAB con App Designer.
+    
+    \item \texttt{aplicacion\_modelos.exe}: versión compilada de la aplicación para ejecutarse de forma autónoma sin necesidad de abrir MATLAB.
+    
+    \item \texttt{MyAppInstaller\_web.exe}: instalador web proporcionado por MATLAB que permite instalar las dependencias necesarias para ejecutar la aplicación si el usuario no dispone de una instalación completa de MATLAB.
+    
+    \item Carpeta \texttt{aplicacion\_modelos}: contiene los archivos auxiliares generados tras la compilación de la aplicación. Son necesarios para su correcto funcionamiento sin entorno MATLAB.
+    
+    \item \texttt{README.txt}: archivo de texto que actúa como guía de usuario. Describe los componentes anteriores y cómo instalar y ejecutar la aplicación.
+\end{itemize}
+
 
     \item \textbf{Carpeta bibliografía} \\
     Documentos y artículos científicos en .pdf utilizados para entender y fundamentar los modelos epidemiológicos.
@@ -32,8 +43,8 @@ A continuación se describe la estructura del proyecto, así como el contenido y
     \item \textbf{Carpeta MATLAB} \\
     Archivos y resultados de las simulaciones en entorno MATLAB:
     \begin{itemize}
-        \item \texttt{/resultados/} \hfill Gráficas generadas desde scripts.
-        \item \texttt{modelo\_SIR\_PID.m} \hfill Código de simulación del modelo SIR con control PID.
+        \item \texttt{/resultados/}: gráficas generadas desde scripts.
+        \item \texttt{modelo\_SIR\_PID.m}: código de simulación del modelo SIR con control PID.
         \item Imágenes del controlador y parámetros PID.
     \end{itemize}
 
@@ -41,11 +52,12 @@ A continuación se describe la estructura del proyecto, así como el contenido y
     Contiene los modelos diseñados en Simulink y sus resultados visuales:
     \begin{itemize}
         \item \texttt{Carpeta modelos Simulink}: archivos \texttt{.slx} de los modelos SI, SIS, SIR, SEIR, SIRV y SEIRV.
+        \item \texttt{carpeta Otras simulaciones}: contiene capturas de pantalla y gráficos generados al modificar distintos parámetros en los modelos matemáticos. Estas simulaciones adicionales permiten realizar un análisis comparativo entre diferentes escenarios y evaluar la sensibilidad del modelo ante variaciones en sus condiciones iniciales o parámetros clave.
         \item \texttt{Carpeta resultados}: imágenes de resultados (\texttt{.jpg}).
         \item Imágenes de los diagramas (\texttt{.png}).
     \end{itemize}
 
-    \item \texttt{README.md} \\
+    \item README.md \\
     Archivo de introducción al proyecto, útil para usuarios que lo descarguen por primera vez.
 \end{itemize}
 
@@ -54,28 +66,102 @@ Esta organización permite acceder rápidamente a cada componente del proyecto s
 
 \section{Compilación, instalación y ejecución del proyecto}
 
-El proceso completo de instalación del entorno MATLAB y la ejecución de la aplicación se encuentra detallado en el \textbf{Apéndice B}, concretamente en el apartafo B.2. A continuación, se recogen únicamente algunas consideraciones relevantes desde el punto de vista del desarrollo:
+El proceso completo de instalación del entorno \textit{MATLAB} y la ejecución de la aplicación se encuentra detallado en el Apéndice B, concretamente en el apartado B.2. A continuación, se resumen las consideraciones técnicas más relevantes desde el punto de vista del desarrollo y la distribución del software.
+
+El proyecto ha sido desarrollado en \textbf{MATLAB R2019b}, por lo que se recomienda utilizar esta misma versión o una superior compatible con los archivos generados.
+
+\subsection*{Requisitos del entorno de desarrollo}
+Para ejecutar los modelos y la aplicación, se requiere disponer de los siguientes componentes instalados:
 
 \begin{itemize}
-    \item El proyecto ha sido desarrollado en \textbf{MATLAB R2019b}. Es recomendable utilizar esta misma versión o una superior compatible con los archivos generados.
+    \item \textbf{MATLAB} (versión R2019b o superior)
+    \item \textbf{Simulink}
+    \item \textbf{Control System Toolbox}
+    \item \textbf{App Designer}
+\end{itemize}
 
-    \item Se requiere disponer de los siguientes componentes:
+Los modelos matemáticos implementados en Simulink se encuentran en la carpeta \texttt{/Simulink/modelos\_Simulink/} con extensión \texttt{.slx}, y pueden abrirse directamente desde el entorno MATLAB. Por su parte, los scripts, incluyendo el controlador PID desarrollado sobre el modelo SIR, están ubicados en la carpeta \texttt{/MATLAB/} con extensión \texttt{.m}.
+
+La aplicación desarrollada con App Designer se encuentra en la carpeta \texttt{/aplicación/}, dentro del archivo \texttt{aplicacion\_modelos.mlapp}.
+
+\subsection*{Ejecución de la aplicación}
+
+La carpeta \texttt{aplicación} contiene todos los archivos necesarios para ejecutar la \textbf{Aplicación de Modelos Epidemiológicos}. Existen dos modos de ejecución, en función de si el usuario dispone de MATLAB instalado o no:
+
+\begin{enumerate}
+    \item \textbf{Con MATLAB instalado}: utilizando directamente el archivo \texttt{.mlapp}.
+    \item \textbf{Sin MATLAB instalado}: mediante el ejecutable compilado \texttt{.exe} y el instalador de runtimes de MATLAB.
+\end{enumerate}
+
+\subsection*{Archivos incluidos en la carpeta \texttt{aplicación}}
+
+\begin{itemize}
+    \item \texttt{aplicacion\_modelos.mlapp}: interfaz gráfica de usuario desarrollada con App Designer. Ejecutable desde MATLAB.
+    
+    \item \texttt{aplicacion\_modelos.exe}: versión compilada de la aplicación para sistemas Windows (64 bits). Ejecutable independiente que requiere los runtimes de MATLAB.
+
+    \item \texttt{MyAppInstaller\_web.exe}: instalador automático de los \textit{MATLAB Runtime} (MCR), necesarios para ejecutar el archivo \texttt{.exe} si no se dispone de MATLAB instalado.
+
+    \item Carpeta \texttt{aplicacion\_modelos/}: contiene los archivos auxiliares generados durante la compilación de la aplicación.
+
+    \item \texttt{README.txt}: archivo de texto con instrucciones detalladas sobre instalación, ejecución y requisitos del sistema.
+\end{itemize}
+
+\subsection*{Requisitos del sistema}
+
+\begin{itemize}
+    \item \textbf{Con MATLAB instalado:}
     \begin{itemize}
-        \item \texttt{MATLAB} (R2019b o superior)
-        \item \texttt{Simulink}
-        \item \texttt{Control System Toolbox}
-        \item \texttt{App Designer}
+        \item MATLAB R2019b (o superior)
+        \item App Designer
+        \item No requiere instalar runtimes adicionales
     \end{itemize}
 
-    \item Los modelos se encuentran en la carpeta  \texttt{/Simulink/modelos\_Simulink/} con extensión \texttt{.slx}, y pueden abrirse directamente desde el entorno MATLAB haciendo doble clic sobre ellos.
-
-    \item Los scripts inc el controlador PID implementado sobre el modelo SIR, se encuentran en la carpeta \texttt{/MATLAB/} con extensión \texttt{.m}.
-
-    \item La aplicación se encuentra en 
-    {/aplicación/aplicacion\_modelos.mlapp}
-    
-    \item Para cualquier detalle adicional sobre configuración del entorno, instalación o estructura de archivos, se remite al Apéndice B.
+    \item \textbf{Sin MATLAB instalado:}
+    \begin{itemize}
+        \item Sistema operativo Windows 64 bits
+        \item Espacio libre en disco: mínimo 500 MB
+        \item Instalación de runtimes mediante \texttt{MyAppInstaller\_web.exe}
+    \end{itemize}
 \end{itemize}
+
+\subsection*{Instrucciones de instalación y ejecución}
+
+\begin{itemize}
+    \item \textbf{Opción 1: Ejecución con MATLAB}
+    \begin{enumerate}
+        \raggedright
+        \item Abrir MATLAB.
+        \item Acceder al directorio donde se encuentra el archivo \texttt{aplicacion\_modelos.mlapp}.
+        \item En la línea de comandos de MATLAB, ejecutar: \texttt{\textgreater{}\textgreater{} open('aplicacion\_modelos.mlapp')}.
+        \item Pulsar en el botón “Run” dentro de App Designer.
+        \item La aplicación se iniciará y permitirá interactuar con los modelos epidemiológicos.
+    \end{enumerate}
+
+    \item \textbf{Opción 2: Ejecución sin MATLAB}
+    \begin{enumerate}
+        \item Instalar los runtimes de MATLAB:
+        \begin{itemize}
+            \item Ejecutar \texttt{MyAppInstaller\_web.exe}.
+            \item Seguir los pasos del asistente de instalación.
+        \end{itemize}
+        \item Ejecutar la aplicación compilada:
+        \begin{itemize}
+            \item Hacer doble clic en \texttt{aplicacion\_modelos.exe}.
+            \item La aplicación se iniciará automáticamente.
+        \end{itemize}
+    \end{enumerate}
+\end{itemize}
+
+\subsection*{Notas adicionales}
+
+\begin{itemize}
+    \item Si ya se dispone de MATLAB instalado, no es necesario ejecutar \texttt{MyAppInstaller\_web.exe} ni utilizar la versión compilada.
+    \item La instalación de los runtimes puede tardar varios minutos dependiendo de la velocidad de conexión y del sistema.
+    \item La desinstalación de los MATLAB Runtime puede realizarse desde el Panel de control de Windows → “Programas y características” → “MATLAB Runtime”.
+\end{itemize}
+
+
 
 \section{Pruebas del sistema}
 Durante el desarrollo del proyecto se llevaron a cabo diferentes pruebas para asegurar el correcto funcionamiento de los modelos implementados y de la interfaz gráfica desarrollada:
@@ -109,7 +195,7 @@ El proyecto ha sido desarrollado de forma modular, por lo que resulta relativame
 
     \item \textbf{Uso de datos reales actualizados:} El proyecto puede conectarse con fuentes de datos abiertas (como la OMS o Our World in Data) para actualizar automáticamente los valores utilizados en las simulaciones.
 
-    \item \textbf{Portabilidad:} Para permitir su uso fuera de MATLAB, podría considerarse una migración parcial a otros lenguajes como Python o una versión web del visualizador.
+
 \end{itemize}
 
 Estas sugerencias pueden servir de base para futuras mejoras, tanto a nivel técnico como funcional.

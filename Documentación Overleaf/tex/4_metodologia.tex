@@ -69,10 +69,10 @@ Se muestra una representación esquemática del modelo SI mediante el diagrama d
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SI.png}
+    \includegraphics[width=0.9\textwidth]{img/diagrama_SI.png}
     \caption{Diagrama de flujo modelo SI.}
     \label{fig:diagrama SI}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    
 \end{figure}
 
 También se puede describir el modelo a partir del siguiente sistema de ecuaciones diferenciales \eqref{eq:ecuacion 1 Si} \eqref{eq:ecuacion 2 SI}.
@@ -103,10 +103,10 @@ El modelo se implementa en Simulink. Para mostrar su funcionamiento y lo que ser
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/modelo_SI_resultado_ejemplo.png}
+    \includegraphics[width=0.9\textwidth]{img/ejemplo modelo si.png}
     \caption{Resultado típico de un modelo SI.}
     \label{fig:ejemplo SI}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+   
 \end{figure}
 
 La figura \ref{fig:ejemplo SI} muestra una disminución en el número de personas susceptibles y un aumento en el número de infectados conforme pasa el tiempo. Inicialmente, casi toda la población es susceptible, lo que permite una propagación acelerada de la enfermedad, especialmente en las primeras etapas, debido a la alta probabilidad de contacto entre infectados y susceptibles.
@@ -118,10 +118,10 @@ La enfermedad se propaga hasta que toda la población es infectada. Los infectad
 En los modelos compartimentales, analizados a continuación, resulta fundamental el papel del número básico de reproducción, $R_0$, un parámetro clave en epidemiología que permite anticipar el comportamiento de un brote epidémico.
 
 Este parámetro se define como el número medio de infecciones secundarias que un solo individuo infectado es capaz de generar durante todo su periodo de infecciosidad, en una población compuesta exclusivamente por individuos susceptibles. Mide el potencial de propagación de la enfermedad en sus primeras etapas, antes de que otros factores como la inmunidad o la intervención sanitaria influyan en su dinámica.
-El número básico de reproducción puede expresarse mediante la relación entre la tasa de transmisión y la de recuperación como se ve en la ecuación \ref{eq:ecR0}.
+El número básico de reproducción puede expresarse mediante la relación entre la tasa de transmisión y la de recuperación como se ve en la ecuación \ref{eq:ecR0}. En este caso entra en la ecuación la población total por como se ha definido los modelos.
 
 \begin{equation}
-R_0 = \frac{\beta}{\gamma}
+R_0 = \frac{\beta N}{\gamma}
 \label{eq:ecR0}
 \end{equation}
 
@@ -147,10 +147,10 @@ El modelo SIS representa enfermedades donde no se adquiere inmunidad tras la rec
 Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:diagrama SIS}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SIS.png}
+    \includegraphics[width=0.9\textwidth]{img/diagrama_SIS.png}
     \caption{Diagrama de flujo modelo SIS.}
     \label{fig:diagrama SIS}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+  
 \end{figure}
 
 También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:ec1SIS} \eqref{eq:ec2SIS}.
@@ -180,10 +180,10 @@ Y la tasa de recuperación es de 0,1.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/modelo_SIS_resultado_ejemplo.png}
+    \includegraphics[width=0.9\textwidth]{img/ejemplo SIS.png}
     \caption{Resultado típico de un modelo SIS.}
     \label{fig:ejeSIS}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    
 \end{figure}
 
 
@@ -208,10 +208,10 @@ Aunque es un modelo idealizado, proporciona una herramienta para comprender y pr
 Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:diagrama SIR}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SIR.png}
+    \includegraphics[width=0.9\textwidth]{img/diagrama_SIR.png}
     \caption{Diagrama de flujo modelo SIR.}
     \label{fig:diagrama SIR}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+   
 \end{figure}
 
 También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:ec1SIR}\eqref{eq:ec2SIR}\eqref{eq:ec3SIR}.
@@ -236,16 +236,16 @@ Donde:
 
 
 El modelo se implementa en Simulink. Para mostrar su funcionamiento y lo que sería un resultado típico de este modelo, se realiza una simulación utilizando datos aleatorios, con el objetivo de observar el comportamiento del modelo SIR en un caso práctico, se oberva en la figura \ref{fig:ejemplo SIR}. La población total es de 10000, siendo susceptibles iniciales 9900 individuos, 100 individuos iniciales infectados y 0 individuos recuperados.
-La tasa de transmisión es $\beta$ = 0,00003 y la tasa de recuperación es $\gamma$ 0.2
+La tasa de transmisión es $\beta$ = 0,00005 y la tasa de recuperación es $\gamma$ 0.02
 
 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/modelo_SIR_resultado_ejemplo_.png}
+    \includegraphics[width=0.9\textwidth]{img/ejemplo sir.png}
     \caption{Resultado típico de un modelo SIR.}
     \label{fig:ejemplo SIR}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    
 \end{figure}
 
 
@@ -256,7 +256,7 @@ El número de infectados crece de forma acelerada, alcanzando un máximo en el q
 
 La curva de recuperados comienza en cero y aumenta progresivamente, hasta que toda la población termina en este compartimento. Todos los individuos se recuperan de la enfermedad y adquieren inmunidad, lo que impide que la infección vuelva a propagarse. La inmunidad permanente es la que permite que la epidemia desaparezca de manera definitiva.
 
-El número básico de reproducción con estos parámetros es $R_0$ = 15, indica que cada personas infectada contagia, de media a 15 individuos. La combinación de alta tasa de transmisión y tasa de recuperación relativamente baja favorece una propagación muy rápida, alcanzando una alta proporción de infectados al mismo tiempo. Esto lo se ve en el resultado de la figura \ref{fig:ejemplo SIR}.
+El número básico de reproducción con estos parámetros es $R_0$ = 25, indica que cada personas infectada contagia, de media a 15 individuos. La combinación de alta tasa de transmisión y tasa de recuperación relativamente baja favorece una propagación muy rápida, alcanzando una alta proporción de infectados al mismo tiempo. Esto lo se ve en el resultado de la figura \ref{fig:ejemplo SIR}.
 
 Al ser un modelo SIR, los individuos que se recuperan no pueden volver a infectarse, a diferencia del modelo SIS, donde los recuperados vuelven al grupo de susceptibles. Esta diferencia es clave para entender por qué, en este caso, la epidemia se extingue completamente una vez que se alcanza la inmunidad de grupo, dejando a toda la población en el compartimento de recuperados.
 
@@ -273,10 +273,10 @@ El modelo SEIR añade un estado de exposición al SIR, para representar enfermed
 Se muestra una representación esquemática del modelo SIS mediante el diagrama de flujo, representado en la figura \ref{fig:diagrama SEIR}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SEIR.png}
+    \includegraphics[width=0.9\textwidth]{img/diagrama_SEIR.png}
     \caption{Diagrma de flujo modelo SEIR.}
     \label{fig:diagrama SEIR}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    
 \end{figure}
 
 También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:dS_SEIR}\eqref{eq:dE_SEIR}\eqref{eq:dI_SEIR}\eqref{eq:dR_SEIR}. 
@@ -316,10 +316,10 @@ La tasa de transmisión es $\beta$ = 0,0005, la tasa de recuperación es $\gamma
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/modelo_SEIR_resultado_ejemplo.png}
+    \includegraphics[width=0.9\textwidth]{img/ejemplo SEIR.png}
     \caption{Resultado típico de un modelo SEIR.}
     \label{fig:eje SEIR}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    
 \end{figure}
 
 Como se observa en la figura \ref{fig:eje SEIR} al inicio, casi toda la población es susceptible, existe alto riesgo de contagio. A medida que los susceptibles se infectan pasan al compartimento de expuestos, lo que hace que el número de susceptibles disminuya rápido en las fases iniciales del brote.
@@ -357,10 +357,10 @@ Se muestra una representación esquemática del modelo SIS mediante el diagrama 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SIRV.png}
+    \includegraphics[width=0.9\textwidth]{img/diagrama_SIRV.png}
     \caption{Diagrma de flujo modelo SIRV.}
     \label{fig:ejemplo SIRV}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+    
 \end{figure}
 
 También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:ec1SIRV}\eqref{eq:ec2SIRV}\eqref{eq:ec3SIRV}.
@@ -382,7 +382,7 @@ Donde:
 [\text{tiempo}]^{-1}
 \]
 
-Es importante señalar que, normalmente, lo que se encuentra en los datos disponibles es la \textbf{cobertura de vacunación}, entendida como la proporción de la población objetivo que ha sido vacunada. Sin embargo, para parametrizar modelos como el SIRV, se requiere la \textbf{tasa de vacunación} ($\nu$), es decir, la velocidad a la que se vacunan los individuos susceptibles.
+Es importante señalar que, normalmente, lo que se encuentra en los datos disponibles es la \textbf{cobertura de vacunación}, entendida como la proporción de la población objetivo que ha sido vacunada. Sin embargo, para parametrizar modelos como el SIRV, se requiere la \textbf{tasa de vacunación} ($\nu$), es decir, la velocidad a la que se vacunan los individuos susceptibles \cite{keeling2008modeling}.
 
 Suponiendo que la vacunación actúa de forma continua y a una tasa constante sobre los susceptibles, se puede modelar la evolución del compartimento $S$ mediante la siguiente ecuación diferencial \eqref{ecudifer}:
 
@@ -413,7 +413,7 @@ Despejando la tasa de vacunación $\nu$, se obtiene:
 \label{vacu}
 \end{equation}
 
-Esta fórmula \eqref{vacu} permite estimar una tasa de vacunación promedio constante, a partir del tiempo transcurrido y la cobertura alcanzada. Es útil para parametrizar modelos SIRV en contextos donde se dispone de datos agregados de vacunación.
+Esta fórmula \eqref{vacu} permite estimar una tasa de vacunación promedio constante, a partir del tiempo transcurrido y la cobertura alcanzada. Es útil para parametrizar modelos SIRV en contextos donde se dispone de datos agregados de vacunación \cite{anderson1991infectious}.
 
 
 
@@ -449,7 +449,7 @@ Con este valor se suaviza la respuesta del sistema ante cambios bruscos.
 \end{itemize}
 Seleccionados mediante ajuste manual, buscando una respuesta estable del sistema que redujera el pico de infectados sin generar oscilaciones no realistas. Esta elección permite aplicar medidas graduales, representando un equilibrio entre reacción rápida y control suave del brote.
 
-Además, el valor inicial del error fue error\_prev = 0 y la componente integral acumulada comenzó en error\_int = 0. El PID calcula en cada instante de tiempo una corrección sobre $\beta$, en función del error entre el número actual de infectados y el valor objetivo (setpoint), utilizando la expresión \eqref{eq:beta_PID}.
+Además, el valor inicial del error fue error\_prev = 0 y la componente integral acumulada comenzó en error\_int = 0. El PID calcula en cada instante de tiempo una corrección sobre $\beta$, en función del error entre el número actual de infectados y el valor objetivo (setpoint), utilizando la expresión \eqref{eq:beta_PID}\footnote{Ecuación de un regulador PID \cite{franklin2010feedback}.}.
 \begin{equation}
 \beta(t) = \beta_0 - K_p \cdot e(t) - K_i \cdot \sum_{i=0}^{t} e(i) \cdot \Delta t - K_d \cdot \frac{e(t) - e(t - 1)}{\Delta t}
 \label{eq:beta_PID}
@@ -459,10 +459,10 @@ Donde $e(t) = I(t) - I_{\text{setpoint}}$ es el error en cada paso temporal. Est
 En la figura \ref{fig:simu3pid} se muestra un ejemplo de la introducción de un regulador en el modelo. Se puede observar que el pico de infectados no alcanza un valor muy elevado, ya que el número de personas infectadas se mantiene aproximadamente en torno al valor de referencia (setpoint). A medida que la epidemia avanza y disminuye la cantidad de personas susceptibles, el número de infectados tiende a cero.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/modeloSIR_PID3.png}
+    \includegraphics[width=0.9\textwidth]{img/modeloSIR_PID3.png}
     \caption{Simulación 1 para modelo SIR con PID.}
     \label{fig:simu3pid}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+   
 \end{figure}
 
 
@@ -475,10 +475,10 @@ Se muestra una representación esquemática del modelo SIS mediante el diagrama 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_SEIRV.png}
+    \includegraphics[width=0.9\textwidth]{img/diagrama_SEIRV.png}
     \caption{Diagrama de flujo del modelo SEIRV.}
     \label{fig:eje SEIRV}
-    \vspace{0.5cm} % Ajusta el espacio vertical entre la imagen y el texto
+   
 \end{figure}
 También se puede representar el modelo mediante el siguiente sistema de ecuaciones diferenciales \eqref{eq:dS_vacunacion}\eqref{eq:dE_SEIRV}\eqref{eq:dI_SEIRV}\eqref{eq:dR_vacunacion}.
 \begin{align}
@@ -512,10 +512,25 @@ El modelo SI es apropiado para representar enfermedades infecciosas crónicas co
 
 En el modelo, la población se divide en dos grupos: S e I. Dado que el VIH no permite volver al estado susceptible ni alcanzar una recuperación definitiva, este enfoque resulta útil para analizar su propagación y estudiar la evolución de la enfermedad en función de parámetros clave como la tasa de transmisión ($\beta$).
 
+Los datos utilizados son de la región MENA\footnote{Medio Oriente y norte de África.}, de los cuales:
+\begin{itemize}
+    \item Personas susceptibles: 400 millones.
+    \item Personas infectadas: 240000.
+    \item Tasa de transmisión ($\beta$): $2.625 \times 10^{-10}$
+\end{itemize}
+
 \subsection{Datos modelo SIS}
 La gonorrea es un ejemplo representativo de enfermedad que se ajusta al modelo SIS. En este modelo, los individuos pueden recuperarse, pero no adquieren inmunidad permanente, por lo que pueden reinfectarse. Esto refleja la dinámica de la gonorrea, ya que, tras el tratamiento, los pacientes pueden volver a contagiarse si se exponen de nuevo a la bacteria \textit{Neisseria gonorrhoeae}.
 Este mecanismo de reinfección continua permite que la enfermedad persista en la población y alcance un equilibrio endémico. Por ello, el modelo SIS es una herramienta útil para estudiar su evolución y diseñar estrategias de control. 
 
+Los datos son de Estados Unidos en 2019:
+\begin{itemize}
+    \item Personas susceptibles: 328 millones .
+    \item Personas infectadas: 1603473.
+    \item Tasa de transmisión ($\beta$): $7 \times 10^{-10}$.
+    \item Tasa de recuperación ($\gamma$): 0,14.
+    
+\end{itemize}
 
 
 \subsection{Datos modelo SIR}
@@ -524,11 +539,25 @@ Presenta una transmisión muy eficiente, con un número básico de reproducción
 
 Históricamente, el sarampión causaba epidemias recurrentes, especialmente antes de la vacunación. Incluso hoy, cuando bajan las tasas de inmunización, pueden observarse rebrotes cuya dinámica encaja bien con las predicciones del modelo SIR. Por todo ello, el sarampión es un ejemplo claro de enfermedad modelable mediante este enfoque.
 
+Los datos son de Estados Unidos antes de que hubiera vacuna en 1963:
+\begin{itemize}
+    \item Personas susceptibles: 189 millones .
+    \item Personas infectadas: 500 mil.
+    \item Tasa de transmisión ($\beta$): $4,5 \times 10^{-9}$.
+    \item Tasa de recuperación ($\gamma$): 0,071.  
+\end{itemize}
 
 
 \vspace{2em}
 \textbf{Modelo SIRV}. 
-
+Los datos son de Estados Unidos después de la vacuna:
+\begin{itemize}
+    \item Personas susceptibles: 189 millones .
+    \item Personas infectadas: 500 mil.
+    \item Tasa de transmisión ($\beta$): $4,5 \times 10^{-9}$.
+    \item Tasa de recuperación ($\gamma$): 0,071. 
+    \item Tasa de vacunación ($\nu$): 0.014.
+\end{itemize}
 
 
 
@@ -539,12 +568,30 @@ El COVID-19 es una enfermedad que se ajusta bien al modelo SEIR, debido a la pre
 Tras la incubación, los individuos pasan a ser infectados, con o sin síntomas, y pueden transmitir el virus. Posteriormente, se recuperan y desarrollan cierta inmunidad, al menos temporalmente. Aunque esta inmunidad no siempre es permanente, el modelo SEIR básico permite representar de forma realista la dinámica de transmisión.
 Gracias a esta correspondencia con las fases clínicas de la enfermedad, el modelo SEIR ha sido ampliamente utilizado para analizar la evolución del COVID-19, evaluar medidas de control y estimar la carga sanitaria en distintos escenarios.
 
+Losa datos son en España desde su aparición:
+\begin{itemize}
+    \item Personas susceptibles: 47370000.
+    \item Personas infectadas: 879413 .
+    \item Tasa de transmisión ($\beta$): $4,5 \times 10^{-9}$.
+    \item Tasa de incubación ($\sigma$): 0,185.
+    \item Tasa de recuperación ($\gamma$): 0,071.  
+\end{itemize}
 
 \vspace{2em}
 
 
-\textbf{Modelo SEIRV}. 
+\textbf{Modelo SEIRV}.
+Losa datos son en España desde su aparición:
 
+\begin{itemize}
+    \item Personas susceptibles: 47370000.
+    \item Personas infectadas: 879413.
+    \item Personas recuperadas: 768950.
+    \item Tasa de transmisión ($\beta$): $4,5 \times 10^{-9}$.
+    \item Tasa de incubación ($\sigma$): 0,185.
+    \item Tasa de recuperación ($\gamma$): 0,071. 
+    \item Tasa de vacunación ($\nu$): 0.0071.
+\end{itemize}
 
 
 

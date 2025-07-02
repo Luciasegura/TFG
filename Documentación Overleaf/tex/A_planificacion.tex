@@ -22,8 +22,7 @@ Durante el desarrollo del proyecto, se utilizaron distintas \textit{labels} para
 
 \begin{table}[H]
     \centering
-    
-    \begin{tabular}{|p{4cm}|p{10cm}|}
+    \begin{tabular}{|p{4cm}|p{8cm}|}
     \hline
     \textbf{Etiqueta} & \textbf{Descripción} \\
     \hline
@@ -59,8 +58,7 @@ Durante el desarrollo del proyecto, se utilizaron distintas \textit{labels} para
     \hline
     
     \end{tabular}
-
-\caption{Etiquetas temáticas (labels) utilizadas en la planificación del proyecto}
+\caption{Etiquetas temáticas (labels) utilizadas en la planificación del proyecto.}
 \label{tab:etiquetas}
 \end{table}
 Estas etiquetas ayudaron a identificar con claridad el objetivo de cada tarea, y permiten entender el enfoque multidisciplinar del trabajo: desde la teoría matemática hasta la aplicación práctica en simuladores y herramientas digitales.
@@ -120,7 +118,7 @@ En esta etapa se buscaron enfermedades reales susceptibles de ser modeladas medi
 \end{itemize}
 
 \subsection*{Milestone 4: Control}
-\textbf{Periodo:} 16 de mayo – 6 de junio
+\textbf{Periodo:} 16 de mayo – 29 de junio
 
 Se estudió el impacto de medidas de control como la vacunación y el distanciamiento social, y se implementó un controlador PID en \texttt{MATLAB} para la gestión dinámica de los infectados.
 
@@ -134,6 +132,11 @@ Se estudió el impacto de medidas de control como la vacunación y el distanciam
     \item Implementación y simulación del controlador PID. Se aplica un controlador PID en MATLAB para actuar sobre la tasa de infección o el número de infectados, simulando medidas de control automáticas sobre el sistema.
     
     \textit{(5 – 6 de junio)}
+
+    \item  Mejora regulador PID. Se implementa el modelo SIR con el PID en Simulink. A parte se han mejorado las simulaciones de los modelos en MATLAB.
+
+    \textit{(16 - 29 de junio)}
+    
 \end{itemize}
 
 \subsection*{Milestone 5: Aplicación}
@@ -148,17 +151,22 @@ Se desarrolló una interfaz interactiva en \texttt{App Designer} para facilitar 
     \item Implementación funcional de la aplicación. Se desarrolla la app que integra los modelos epidemiológicos con una interfaz usable, permitiendo simular, visualizar y analizar distintos escenarios epidémicos.
 
     \textit{(19 de mayo – 3 de junio)}
+
+    \item Ejecución de la aplicación. Se ha implementado una versión independiente de la aplicación, permitiendo su instalación y uso sin necesidad de tener MATLAB previamente instalado.
+
+    \textit{(16 - 25 de junio}
+    
 \end{itemize}
 
 \subsection*{Milestone 6: Redacción en LaTeX}
-\textbf{Periodo:} 7 de mayo – 8 de junio
+\textbf{Periodo:} 7 de mayo – 30 de junio
 
 Durante esta etapa se elaboró la memoria del proyecto y sus respectivos anexos, documentando todos los aspectos teóricos, prácticos y experimentales desarrollados.
 
 \begin{itemize}
     \item Redacción de la memoria principal del TFG. Se escribe la documentación del proyecto, incluyendo introducción, objetivos, metodología, resultados y conclusiones, utilizando LaTeX.
     
-    \textit{(7 de mayo – 6 de junio)}
+    \textit{(7 de mayo – 29 de junio)}
     \item Preparación y revisión de los anexos. Se desarrollan los anexos donde se detallan aspectos más técnicos del proyecto como diseño en Simulink, scripts de MATLAB, estructuras de la aplicación y sostenibilidad. 
     
     \textit{(16 de mayo – 8 de junio)}
@@ -171,56 +179,76 @@ Durante esta etapa se elaboró la memoria del proyecto y sus respectivos anexos,
 La planificación económica de este trabajo tiene como finalidad estimar y justificar los recursos utilizados durante su desarrollo, tanto materiales como humanos. Se han clasificado los costes en tres grandes categorías: hardware, software y mano de obra. Además, se incluye un resumen económico total que refleja el coste imputado al TFG, es decir, el valor proporcional de cada recurso directamente relacionado con el proyecto. Esta estimación proporciona una visión global del esfuerzo económico asociado y permite valorar la inversión requerida para llevar a cabo un proyecto de estas características.
 
 \subsection{Costes de hardware}
+El equipo informático utilizado para el desarrollo del TFG es un Asus Vivobook X409JB, con un valor inicial de 650 €. Para imputar un coste proporcional a su uso específico en el proyecto, se ha considerado una vida útil estimada de 3 años (36 meses), un periodo estándar para la amortización de equipos informáticos debido a la rápida evolución tecnológica.
 
-Se recoge en la Tabla \ref{hardware} el coste del equipo informático utilizado durante el desarrollo del TFG. Aunque el equipo ya estaba disponible, se ha imputado un coste proporcional en función del uso específico para el proyecto
-\begin{table}[H]
+Según \cite{minhacienda_amortizacion} la amortización mensual se calcula dividiendo el valor del equipo entre los meses de vida útil:
+\[
+\text{Amortización mensual} = \frac{650\,\text{€}}{36\, \text{meses}} \approx 18{,}06\,\text{€}
+\]
 
-\centering
-\small
-\begin{tabular}{|l|l|c|c|}
-\hline
-\textbf{Concepto} & \textbf{Descripción} & \textbf{Coste total (€)} & \textbf{Coste imputado (€)} \\
-\hline
-Portátil & Asus Vivobook X409JB & 650 & 350 \\
-\hline
-\end{tabular}
-\caption{Costes de hardware imputados al TFG}
-\label{hardware}
-\end{table}
+Dado que el tiempo de uso exclusivo para el desarrollo del TFG ha sido de 6 meses, el coste imputado correspondiente es:
+\[
+18{,}06\,\text{€} \times 6\, \text{meses} = 108{,}36\,\text{€}
+\]
+
+Por lo tanto, el coste imputado del equipo informático asignado al proyecto es de aproximadamente 108,36 €, reflejando un uso proporcional y razonable del equipo durante el periodo de trabajo en el TFG.
+
+
+
+
 
 \subsection{Costes de Software}
-Se incluyen en la Tabla \ref{software} las licencias de software necesarias para el desarrollo del TFG, como MATLAB, Simulink, Office y el sistema operativo Windows. En cada caso, se ha estimado el grado de uso del software en relación al TFG para calcular el coste imputado.
+Se incluyen en la Tabla \ref{software} las licencias de software necesarias para el desarrollo del TFG, como MATLAB, Simulink \cite{mathworks_matlab_student}, Office \cite{microsoft_windows11_get}  y el sistema operativo Windows \cite{microsoft365personal}. En cada caso, se ha estimado el grado de uso del software en relación al TFG para calcular el coste imputado.
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|c|c|c|}
+\begin{tabular}{|p{2cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}
 \hline
 \textbf{Concepto} & \textbf{Licencia} & \textbf{Coste (€)} & \textbf{Uso TFG} & \textbf{Imputado (€)} \\
 \hline
-Windows & Windows 10 Pro\footnote{Obtenido de \cite{microsoft365personal}} & 150 & 50\% & 75 \\
-Office & Office 365 (1 año)\footnote{Obtienido de \cite{microsoft_windows11_get}} & 69 & 100\% & 69 \\
-MATLAB & Educativa estudiante\footnote{Obtenido de \cite{mathworks_matlab_student}} & 150 & 100\% & 150 \\
-Simulink & Incluida en MATLAB & 0 & 100\% & 0 \\
+Windows & Windows 10 Pro & 150 & 50\% & 75 \\
+Office & Office 365 (1 año)  & 69 & 100\% & 69 \\
+MATLAB &  De estudiante  & 150 & 100\% & 150 \\
+Simulink &  En MATLAB & 0 & 100\% & 0 \\
 \hline
 \end{tabular}
-\caption{Costes de software imputados al TFG}
+\caption{Costes de software imputados al TFG.}
 \label{software}
 \end{table}
 
-\subsection{Costes de Mano de Obra}
-Este apartado refleja en la Tabla \ref{mano obra} el valor estimado del trabajo realizado por el estudiante desde una perspectiva profesional. Se ha considerado un total de 360 horas de trabajo, valoradas a razón de 20\€/hora, correspondiente a la tarifa media de un ingeniero informático junior \cite{glassdoor_junior_ing_inf}. Aunque no representa un coste real, sirve para valorar el esfuerzo implicado.
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|p{5cm}|c|c|c|}
-\hline
-\textbf{Concepto} & \textbf{Detalle} & \textbf{Horas} & \textbf{Precio/hora (€)} & \textbf{Coste total (€)} \\
-\hline
-Desarrollo app & Ingeniero & 360 & 20 & 7.200 \\
-\hline
-\end{tabular}
-\caption{Costes de mano de obra imputados al TFG}
-\label{mano obra}
-\end{table}
+\subsection{Costes de mano de obra}
+El trabajo ha sido desarrollado de forma individual por la autora, a lo largo de un período aproximado de seis meses. Las tareas realizadas incluyen:
+
+\begin{itemize}
+    \item Desarrollo de modelos matemáticos deterministas de propagación epidémica.
+    \item Implementación y simulación en MATLAB y Simulink.
+    \item Desarrollo de una aplicación gráfica mediante App Designer.
+    \item Redacción de documentación y análisis de resultados.
+\end{itemize}
+
+Dado que el trabajo ha requerido dedicación equivalente a un puesto de ingeniería en prácticas, se estima un coste mensual bruto de 1.200\,€ según \cite{ine2024etcl}. Considerando una duración de seis meses, el coste directo es:
+
+\[
+\text{Coste directo} = 6\, \text{meses} \times 1200\,\text{€} = 7200\, \text{€}
+\]
+
+A este importe se le aplica un 20\% \cite{pmi2017pmbok} adicional en concepto de cargas sociales (seguros, IRPF estimado, seguridad social, etc.) :
+
+\[
+\text{Coste total con cargas sociales} = 7200\,\text{€} \times 1{,}20 = 8640\,\text{€}
+\]
+
+Por tanto, el coste estimado de la mano de obra para la realización del proyecto asciende a:
+
+\[
+\boxed{\text{Coste total estimado: } 8640\,\text{€}}
+\]
+
+
+
+
+
+
 
 \subsection{Resumen económico total}
 En el resumen económico representado en la tabla \ref{total} se agrupan todos los costes imputados al proyecto, reflejando el coste total estimado para el desarrollo del TFG. Esta cifra proporciona una valoración económica global del proyecto teniendo en cuenta todos los recursos utilizados.
@@ -230,14 +258,14 @@ En el resumen económico representado en la tabla \ref{total} se agrupan todos l
 \hline
 \textbf{Concepto} & \textbf{Coste imputado (€)} \\
 \hline
-Hardware & 450 \\
+Hardware & 108,36 \\
 Software & 294 \\
-Mano de obra & 7.200 \\
+Mano de obra & 8640 \\
 \hline
-\textbf{Total general} & \textbf{7.944} \\
+\textbf{Total general} & \textbf{9042,36} \\
 \hline
 \end{tabular}
-\caption{Resumen económico total del TFG}
+\caption{Resumen económico total del TFG.}
 \label{total}
 \end{table}
 
@@ -270,7 +298,7 @@ Por tanto, se concluye que el uso de estos datos es legal y éticamente aceptabl
 \subsection{Normativa académica y originalidad}
 
 El trabajo ha sido realizado de forma íntegra y original por la autora del TFG, sin incurrir en plagio, copia de código sin atribución o uso indebido de materiales de terceros.
-Todo el desarrollo se ha realizado conforme a las normas establecidas por la UBU\footnote{Universidad de Burgos} en relación con la elaboración de Trabajos Fin de Grado, asegurando la autoría propia, la honestidad académica y el cumplimiento del código ético de la institución.
+Todo el desarrollo se ha realizado conforme a las normas establecidas por la UBU\footnote{Universidad de Burgos.} en relación con la elaboración de Trabajos Fin de Grado, asegurando la autoría propia, la honestidad académica y el cumplimiento del código ético de la institución.
 
 
 
