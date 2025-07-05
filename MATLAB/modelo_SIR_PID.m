@@ -18,7 +18,7 @@ function sir_pid()
 
     % Simulación
     dt = 0.1;
-    T = 50;
+    T = 1500;
     tspan = 0:dt:T;
     N = S + I + R;
 
