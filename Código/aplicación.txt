@@ -1,0 +1,351 @@
+classdef aplicacion_modelos < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                        matlab.ui.Figure
+        UIAxes                          matlab.ui.control.UIAxes
+        SusceptiblesEditFieldLabel      matlab.ui.control.Label
+        SusceptiblesEditField           matlab.ui.control.NumericEditField
+        InfectadosEditFieldLabel        matlab.ui.control.Label
+        InfectadosEditField             matlab.ui.control.NumericEditField
+        RecuperadosEditFieldLabel       matlab.ui.control.Label
+        RecuperadosEditField            matlab.ui.control.NumericEditField
+        ExpuestosEditFieldLabel         matlab.ui.control.Label
+        ExpuestosEditField              matlab.ui.control.NumericEditField
+        TasadetransmisinEditFieldLabel  matlab.ui.control.Label
+        TasadetransmisinEditField       matlab.ui.control.NumericEditField
+        TasaderecuperacinEditFieldLabel  matlab.ui.control.Label
+        TasaderecuperacinEditField      matlab.ui.control.NumericEditField
+        TasadeincubacinEditFieldLabel   matlab.ui.control.Label
+        TasadeincubacinEditField        matlab.ui.control.NumericEditField
+        TasadevacunacinEditFieldLabel   matlab.ui.control.Label
+        TasadevacunacinEditField        matlab.ui.control.NumericEditField
+        ModeloDropDownLabel             matlab.ui.control.Label
+        ModeloDropDown                  matlab.ui.control.DropDown
+        SimularButton                   matlab.ui.control.Button
+        TiempoEditFieldLabel            matlab.ui.control.Label
+        TiempoEditField                 matlab.ui.control.NumericEditField
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Value changed function: ModeloDropDown
+        function ModeloDropDownValueChanged(app, event)
+            modelo = app.ModeloDropDown.Value;
+            cla(app.UIAxes) 
+
+            % Ocultar por defecto
+            app.ExpuestosEditField.Visible = 'off';
+            app.TasadeincubacinEditField.Visible = 'off';
+            app.TasadevacunacinEditField.Visible = 'off';
+            app.RecuperadosEditField.Visible = 'off';
+            app.TasaderecuperacinEditField.Visible = 'off';
+            
+            
+            app.SusceptiblesEditField.Visible = 'on';
+            app.InfectadosEditField.Visible = 'on';
+            app.TasadetransmisinEditField.Visible = 'on';
+            app.TiempoEditField.Visible = 'on';
+            app.SusceptiblesEditField.Value = 9900;
+            app.InfectadosEditField.Value = 100;
+            app.TasadetransmisinEditField.Value = 0.5;
+            app.TiempoEditField.Value = 150;
+            
+                      
+        
+            % Ahora según el modelo, mostramos lo adicional
+            switch modelo
+                case {'SIS'}
+                    app.TasaderecuperacinEditField.Visible = 'on';
+                otherwise
+                    app.TasaderecuperacinEditField.Value = 0.1;
+            end
+            
+            switch modelo
+                case {'SIR'}
+                    app.RecuperadosEditField.Visible = 'on';
+                    app.TasaderecuperacinEditField.Visible = 'on';
+                otherwise
+                    app.RecuperadosEditField.Value = 0;
+                    app.TasaderecuperacinEditField.Value = 0.1;
+            end
+            
+            switch modelo
+                case {'SEIR', 'SEIRV'}
+                    app.ExpuestosEditField.Visible = 'on';
+                    app.TasadeincubacinEditField.Visible = 'on';
+                    app.RecuperadosEditField.Visible = 'on';
+                    app.TasaderecuperacinEditField.Visible = 'on';
+                otherwise
+                    app.ExpuestosEditField.Value = 0;
+                    app.TasadeincubacinEditField.Value = 0.2;
+                    app.RecuperadosEditField.Value = 0;
+                    app.TasaderecuperacinEditField.Value = 0.1;
+            end
+            
+        
+            switch modelo
+                case {'SIRV', 'SEIRV'}
+                    app.TasadevacunacinEditField.Visible = 'on';
+                    app.RecuperadosEditField.Visible = 'on';
+                    app.TasaderecuperacinEditField.Visible = 'on';
+                  
+                otherwise
+                    app.TasadevacunacinEditField.Value = 0.008;
+                    app.RecuperadosEditField.Value = 0;
+                    app.TasaderecuperacinEditField.Value = 0.1;
+            end
+
+        end
+
+        % Button pushed function: SimularButton
+        function SimularButtonPushed(app, event)
+            modelo = app.ModeloDropDown.Value;
+        
+            % Leer parámetros
+            S = app.SusceptiblesEditField.Value;
+            E = app.ExpuestosEditField.Value;
+            I = app.InfectadosEditField.Value;
+            R = app.RecuperadosEditField.Value;
+            beta = app.TasadetransmisinEditField.Value;
+            gamma = app.TasaderecuperacinEditField.Value;
+            sigma = app.TasadeincubacinEditField.Value;
+            nu = app.TasadevacunacinEditField.Value;
+            
+            N = S + E + I + R;
+            
+            tmax = app.TiempoEditField.Value;
+            tspan = [0 tmax];
+        
+            switch modelo
+                case 'SI'
+                    y0 = [S, I];
+                    f = @(t, y)[-beta*y(1)*y(2) / N;
+                                 beta*y(1)*y(2) / N];
+        
+                case 'SIS'
+                    y0 = [S, I];
+                    f = @(t, y)[-beta*y(1)*y(2) / N + gamma*y(2);
+                                 beta*y(1)*y(2) / N - gamma*y(2)];
+        
+                case 'SIR'
+                    y0 = [S, I, R];
+                    f = @(t, y)[-beta*y(1)*y(2) / N;
+                                 beta*y(1)*y(2) / N - gamma*y(2);
+                                 gamma*y(2)];
+        
+                case 'SEIR'
+                    y0 = [S, E, I, R];
+                    f = @(t, y)[-beta*y(1)*y(3) / N;
+                                 beta*y(1)*y(3) / N - sigma*y(2);
+                                 sigma*y(2) - gamma*y(3);
+                                 gamma*y(3)];
+        
+                case 'SIRV'
+                    y0 = [S, I, R]; 
+                    f = @(t, y)[-beta*y(1)*y(2) / N - nu*y(1);
+                                 beta*y(1)*y(2) / N - gamma*y(2);
+                                 gamma*y(2) + nu*y(1)];
+                                 
+        
+                case 'SEIRV'
+                    y0 = [S, E, I, R]; 
+                    f = @(t, y)[-beta*y(1)*y(3) / N - nu*y(1);
+                                 beta*y(1)*y(3) / N - sigma*y(2);
+                                 sigma*y(2) - gamma*y(3);
+                                 gamma*y(3) + nu*y(1)];
+                                
+            end
+        
+            [t, y] = ode45(f, tspan, y0);
+        
+            % Graficar
+            plot(app.UIAxes, t, y, 'LineWidth', 2);
+            title(app.UIAxes, ['Modelo ', modelo]);
+            xlabel(app.UIAxes, 'Tiempo');
+            ylabel(app.UIAxes, 'Personas');
+            
+            % Generar leyenda dinámica
+            legend(app.UIAxes, generar_leyenda(modelo), 'Location', 'best');
+
+            function labels = generar_leyenda(modelo)
+                switch modelo
+                    case 'SI'
+                        labels = {'S', 'I'};
+                    case 'SIS'
+                        labels = {'S', 'I'};
+                    case 'SIR'
+                        labels = {'S', 'I', 'R'};
+                    case 'SEIR'
+                        labels = {'S', 'E', 'I', 'R'};
+                    case 'SIRV'
+                        labels = {'S', 'I', 'R', 'V'};
+                    case 'SEIRV'
+                        labels = {'S', 'E', 'I', 'R', 'V'};
+                end
+            end
+
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Color = [0.9412 0.8667 0.898];
+            app.UIFigure.Position = [100 100 640 480];
+            app.UIFigure.Name = 'UI Figure';
+
+            % Create UIAxes
+            app.UIAxes = uiaxes(app.UIFigure);
+            title(app.UIAxes, 'Title')
+            xlabel(app.UIAxes, 'X')
+            ylabel(app.UIAxes, 'Y')
+            app.UIAxes.PlotBoxAspectRatio = [1.95811518324607 1 1];
+            app.UIAxes.FontSize = 13;
+            app.UIAxes.Position = [123 1 399 241];
+
+            % Create SusceptiblesEditFieldLabel
+            app.SusceptiblesEditFieldLabel = uilabel(app.UIFigure);
+            app.SusceptiblesEditFieldLabel.HorizontalAlignment = 'right';
+            app.SusceptiblesEditFieldLabel.Position = [26 399 74 22];
+            app.SusceptiblesEditFieldLabel.Text = 'Susceptibles';
+
+            % Create SusceptiblesEditField
+            app.SusceptiblesEditField = uieditfield(app.UIFigure, 'numeric');
+            app.SusceptiblesEditField.Position = [115 399 74 22];
+
+            % Create InfectadosEditFieldLabel
+            app.InfectadosEditFieldLabel = uilabel(app.UIFigure);
+            app.InfectadosEditFieldLabel.HorizontalAlignment = 'right';
+            app.InfectadosEditFieldLabel.Position = [39 362 61 22];
+            app.InfectadosEditFieldLabel.Text = 'Infectados';
+
+            % Create InfectadosEditField
+            app.InfectadosEditField = uieditfield(app.UIFigure, 'numeric');
+            app.InfectadosEditField.Position = [115 362 74 22];
+
+            % Create RecuperadosEditFieldLabel
+            app.RecuperadosEditFieldLabel = uilabel(app.UIFigure);
+            app.RecuperadosEditFieldLabel.HorizontalAlignment = 'right';
+            app.RecuperadosEditFieldLabel.Position = [23 323 77 22];
+            app.RecuperadosEditFieldLabel.Text = 'Recuperados';
+
+            % Create RecuperadosEditField
+            app.RecuperadosEditField = uieditfield(app.UIFigure, 'numeric');
+            app.RecuperadosEditField.Position = [115 323 74 22];
+
+            % Create ExpuestosEditFieldLabel
+            app.ExpuestosEditFieldLabel = uilabel(app.UIFigure);
+            app.ExpuestosEditFieldLabel.HorizontalAlignment = 'right';
+            app.ExpuestosEditFieldLabel.Position = [38 281 62 22];
+            app.ExpuestosEditFieldLabel.Text = 'Expuestos';
+
+            % Create ExpuestosEditField
+            app.ExpuestosEditField = uieditfield(app.UIFigure, 'numeric');
+            app.ExpuestosEditField.Position = [115 281 74 22];
+
+            % Create TasadetransmisinEditFieldLabel
+            app.TasadetransmisinEditFieldLabel = uilabel(app.UIFigure);
+            app.TasadetransmisinEditFieldLabel.HorizontalAlignment = 'right';
+            app.TasadetransmisinEditFieldLabel.Position = [410 399 112 22];
+            app.TasadetransmisinEditFieldLabel.Text = 'Tasa de transmisión';
+
+            % Create TasadetransmisinEditField
+            app.TasadetransmisinEditField = uieditfield(app.UIFigure, 'numeric');
+            app.TasadetransmisinEditField.Position = [533 399 67 22];
+
+            % Create TasaderecuperacinEditFieldLabel
+            app.TasaderecuperacinEditFieldLabel = uilabel(app.UIFigure);
+            app.TasaderecuperacinEditFieldLabel.HorizontalAlignment = 'right';
+            app.TasaderecuperacinEditFieldLabel.Position = [402 362 120 22];
+            app.TasaderecuperacinEditFieldLabel.Text = 'Tasa de recuperación';
+
+            % Create TasaderecuperacinEditField
+            app.TasaderecuperacinEditField = uieditfield(app.UIFigure, 'numeric');
+            app.TasaderecuperacinEditField.Position = [533 362 67 22];
+
+            % Create TasadeincubacinEditFieldLabel
+            app.TasadeincubacinEditFieldLabel = uilabel(app.UIFigure);
+            app.TasadeincubacinEditFieldLabel.HorizontalAlignment = 'right';
+            app.TasadeincubacinEditFieldLabel.Position = [414 323 108 22];
+            app.TasadeincubacinEditFieldLabel.Text = 'Tasa de incubación';
+
+            % Create TasadeincubacinEditField
+            app.TasadeincubacinEditField = uieditfield(app.UIFigure, 'numeric');
+            app.TasadeincubacinEditField.Position = [533 323 67 22];
+
+            % Create TasadevacunacinEditFieldLabel
+            app.TasadevacunacinEditFieldLabel = uilabel(app.UIFigure);
+            app.TasadevacunacinEditFieldLabel.HorizontalAlignment = 'right';
+            app.TasadevacunacinEditFieldLabel.Position = [410 281 112 22];
+            app.TasadevacunacinEditFieldLabel.Text = 'Tasa de vacunación';
+
+            % Create TasadevacunacinEditField
+            app.TasadevacunacinEditField = uieditfield(app.UIFigure, 'numeric');
+            app.TasadevacunacinEditField.Position = [533 281 67 22];
+
+            % Create ModeloDropDownLabel
+            app.ModeloDropDownLabel = uilabel(app.UIFigure);
+            app.ModeloDropDownLabel.HorizontalAlignment = 'right';
+            app.ModeloDropDownLabel.Position = [252 435 45 22];
+            app.ModeloDropDownLabel.Text = 'Modelo';
+
+            % Create ModeloDropDown
+            app.ModeloDropDown = uidropdown(app.UIFigure);
+            app.ModeloDropDown.Items = {'SI', 'SIS', 'SIR', 'SEIR', 'SIRV', 'SEIRV'};
+            app.ModeloDropDown.ValueChangedFcn = createCallbackFcn(app, @ModeloDropDownValueChanged, true);
+            app.ModeloDropDown.Position = [312 435 100 22];
+            app.ModeloDropDown.Value = 'SI';
+
+            % Create SimularButton
+            app.SimularButton = uibutton(app.UIFigure, 'push');
+            app.SimularButton.ButtonPushedFcn = createCallbackFcn(app, @SimularButtonPushed, true);
+            app.SimularButton.Position = [282 260 100 22];
+            app.SimularButton.Text = 'Simular';
+
+            % Create TiempoEditFieldLabel
+            app.TiempoEditFieldLabel = uilabel(app.UIFigure);
+            app.TiempoEditFieldLabel.HorizontalAlignment = 'right';
+            app.TiempoEditFieldLabel.Position = [252 341 62 22];
+            app.TiempoEditFieldLabel.Text = 'Tiempo';
+
+            % Create TiempoEditField
+            app.TiempoEditField = uieditfield(app.UIFigure, 'numeric');
+            app.TiempoEditField.Position = [323 341 71 22];
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = aplicacion_modelos
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
