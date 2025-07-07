@@ -3,7 +3,8 @@
 ### Tutores: Daniel Sarabia Ortiz y Alejandro Merino Gómez
 ### Ingeniería de la Salud, UBU, Curso 24/25
 
-![Logo de la UBU](ubu.png)
+<img src="ubu.png" alt="Logo de la UBU" width="100"/>
+
 
 
 
