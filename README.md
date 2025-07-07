@@ -8,11 +8,12 @@
 
 
 
-Este proyecto aborda el modelado determinista de epidemias mediante la implementación y análisis de modelos compartimentales clásicos como SI, SIS, SIR y SEIR, utilizando herramientas como MATLAB y Simulink. Estos modelos permiten estudiar la dinámica de transmisión de enfermedades infecciosas en poblaciones, simulando cómo evolucionan los distintos grupos a lo largo del tiempo.
+Este proyecto aborda el modelado determinista de epidemias mediante la implementación y análisis de modelos compartimentales clásicos como  SI (Susceptible - Infectado), SIS (Susceptible - Infec-
+tado - Susceptible), SIR (Susceptible - Infectado - Recuperado) y SEIR (Susceptible - Expuesto - Infectado - Recuperado), utilizando herramientas como MATLAB y Simulink. Estos modelos permiten estudiar la dinámica de transmisión de enfermedades infecciosas en poblaciones, simulando cómo evolucionan los distintos grupos a lo largo del tiempo.
 
 
 
-Se incorporan variantes con estrategias de vacunación, y se desarrolla un controlador PID aplicado al modelo SIR con el objetivo de simular medidas de control como cuarentenas y restricciones, evaluando su impacto en la propagación del contagio.
+Se incorporan variantes con estrategias de vacunación, y se desarrolla un controlador PID (Proporcional-Integral-Derivativo) aplicado al modelo SIR con el objetivo de simular medidas de control como cuarentenas y restricciones, evaluando su impacto en la propagación del contagio.
 
 
 
