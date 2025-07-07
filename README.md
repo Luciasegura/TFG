@@ -3,14 +3,17 @@
 ### Tutores: Daniel Sarabia Ortiz y Alejandro Merino Gómez
 ### Ingeniería de la Salud, UBU, Curso 24/25
 
-<img src="ubu.png" alt="Logo de la UBU" width="100"/>
+<img src="ubu.png" alt="Logo de la UBU" width="200"/>
 
 
 
 
-En este proyecto se estudia el modelado determinista de epidemias mediante el análisis e implementación de modelos compartimentales clásicos como SI (Susceptible - Infectado), SIS (Susceptible - Infectado - Susceptible), SIR (Susceptible - Infectado - Recuperado) y SEIR (Susceptible - Expuesto - Infectado - Recuperado), utilizando herramientas de simulación en MATLAB y Simulink. Se incorporan variantes con vacunación y se desarrolla un controlador PID (Proporcional Integral y Derivativo) aplicado al modelo SIR para simular medidas de control como cuarentenas.
+Este proyecto aborda el modelado determinista de epidemias mediante la implementación y análisis de modelos compartimentales clásicos como SI, SIS, SIR y SEIR, utilizando herramientas como MATLAB y Simulink. Estos modelos permiten estudiar la dinámica de transmisión de enfermedades infecciosas en poblaciones, simulando cómo evolucionan los distintos grupos a lo largo del tiempo.
 
 
 
+Se incorporan variantes con estrategias de vacunación, y se desarrolla un controlador PID aplicado al modelo SIR con el objetivo de simular medidas de control como cuarentenas y restricciones, evaluando su impacto en la propagación del contagio.
 
-El trabajo incluye la simulación con datos hipotéticos y reales, permitiendo evaluar la capacidad predictiva de cada modelo. Además, se diseña una aplicación interactiva que permite al usuario introducir parámetros y visualizar la evolución de la epidemia de forma gráfica y accesible, sin necesidad de conocimientos técnicos avanzados.
+
+
+El proyecto incluye simulaciones con datos reales e hipotéticos, lo que permite validar el comportamiento de los modelos y explorar su capacidad para hacer predicciones. Además, se diseña una aplicación interactiva que permite al usuario introducir parámetros personalizados y visualizar gráficamente la evolución de la epidemia, facilitando así la comprensión de los resultados sin necesidad de conocimientos técnicos avanzados.
